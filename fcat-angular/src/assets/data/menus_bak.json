@@ -1,0 +1,269 @@
+{
+  "data":[
+    {
+      "id":13,
+      "code":"adminSys",
+      "title":"权限管理系统",
+      "href":null,
+      "icon":"fa fa-terminal",
+      "orderNum":0,
+      "path":"/adminSys",
+      "enabled":"Y",
+      "createTime":"2017-10-6 15:36:15",
+      "updateTime":"2017-10-6 15:36:15",
+      "children":[
+        {
+          "id":5,
+          "code":"baseManager",
+          "title":"基础配置",
+          "parentId":13,
+          "href":null,
+          "icon":"fa fa-cog fa-spin",
+          "orderNum":0,
+          "path":"/adminSys/baseManager",
+          "enabled":"Y",
+          "createTime":"2017-10-6 15:36:15",
+          "updateTime":"2017-10-6 15:36:15",
+          "children":[
+            {
+              "id":1,
+              "code":"userManager",
+              "title":"用户管理",
+              "parentId":5,
+              "href":"/userAdmin/userMgr",
+              "icon":"fa fa-user",
+              "orderNum":0,
+              "path":"/adminSys/baseManager/userManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":6,
+              "code":"menuManager",
+              "title":"菜单管理",
+              "parentId":5,
+              "href":"/userAdmin/menuMgr",
+              "icon":"fa fa-list",
+              "orderNum":0,
+              "path":"/adminSys/baseManager/menuManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":7,
+              "code":"groupManager",
+              "title":"用户组管理",
+              "parentId":5,
+              "href":"/userAdmin/userGroupMgr",
+              "icon":"fa fa-users",
+              "orderNum":0,
+              "path":"/adminSys/baseManager/groupManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":8,
+              "code":"groupTypeManager",
+              "title":"组类型管理",
+              "parentId":5,
+              "href":"/index/groupTypeMgr",
+              "icon":"fa fa-address-card-o",
+              "orderNum":0,
+              "path":"/adminSys/baseManager/groupTypeManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":21,
+              "code":"dictManager",
+              "title":"数据字典",
+              "parentId":5,
+              "href":"/index/dict",
+              "icon":"fa fa-book",
+              "orderNum":0,
+              "path":"/adminSys/baseManager/dictManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            }
+          ]
+        },
+        {
+          "id":9,
+          "code":"monitorManager",
+          "title":"系统监控",
+          "parentId":13,
+          "href":null,
+          "icon":"fa fa-area-chart",
+          "orderNum":0,
+          "path":"/adminSys/monitorManager",
+          "enabled":"Y",
+          "createTime":"2017-10-6 15:36:15",
+          "updateTime":"2017-10-6 15:36:15",
+          "children":[
+            {
+              "id":10,
+              "code":"bootMonitor",
+              "title":"Spring-Boot监控",
+              "parentId":9,
+              "href":"http://localhost:8764",
+              "icon":"fa fa-line-chart",
+              "orderNum":0,
+              "path":"/adminSys/monitorManager/bootMonitor",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":11,
+              "code":"hystrixMonitor",
+              "title":"Hystrix监控",
+              "parentId":9,
+              "href":"http://localhost:8764/hystrix",
+              "icon":"fa fa-bar-chart",
+              "orderNum":0,
+              "path":"/adminSys/monitorManager/hystrixMonitor",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":24,
+              "code":"druidMonitor",
+              "title":"Admin Druid数据监控",
+              "parentId":9,
+              "href":"/ace-admin/druid/datasource.html",
+              "icon":"fa fa-line-chart",
+              "orderNum":0,
+              "path":"/adminSys/monitorManager/druidMonitor",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            }
+          ]
+        },
+        {
+          "id":22,
+          "code":"apiManager",
+          "title":"服务端api文档",
+          "parentId":13,
+          "href":null,
+          "icon":"fa fa-folder",
+          "orderNum":0,
+          "path":"/adminSys/apiManager",
+          "enabled":"Y",
+          "createTime":"2017-10-6 15:36:15",
+          "updateTime":"2017-10-6 15:36:15",
+          "children":[
+            {
+              "id":23,
+              "code":"adminAPI",
+              "title":"Admin Rest API",
+              "parentId":22,
+              "href":"/ace-admin/swagger-ui.html",
+              "icon":"fa fa-file-code-o",
+              "orderNum":0,
+              "path":"/adminSys/apiManager/adminAPI",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id":14,
+      "code":"contentSys",
+      "title":"内容管理系统",
+      "href":null,
+      "icon":"fa-newspaper-o",
+      "orderNum":0,
+      "path":"/contentSys",
+      "enabled":"Y",
+      "createTime":"2017-10-6 15:36:15",
+      "updateTime":"2017-10-6 15:36:15",
+      "children":[
+        {
+          "id":20,
+          "code":"artComManger",
+          "title":"文章评论管理",
+          "parentId":14,
+          "href":null,
+          "icon":"fa fa-bookmark",
+          "orderNum":0,
+          "path":"/contentSys/artComManger",
+          "enabled":"Y",
+          "createTime":"2017-10-6 15:36:15",
+          "updateTime":"2017-10-6 15:36:15",
+          "children":[
+            {
+              "id":17,
+              "code":"articleManger",
+              "title":"文章管理",
+              "parentId":20,
+              "href":null,
+              "icon":null,
+              "orderNum":0,
+              "path":"/contentSys/artComManger/articleManger",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            },
+            {
+              "id":18,
+              "code":"commentManager",
+              "title":"评论管理",
+              "parentId":20,
+              "href":null,
+              "icon":null,
+              "orderNum":0,
+              "path":"/contentSys/artComManger/commentManager",
+              "enabled":"Y",
+              "createTime":"2017-10-6 15:36:15",
+              "updateTime":"2017-10-6 15:36:15",
+              "children":[
+
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "code":0
+}
