@@ -30,7 +30,9 @@ cd 项目下载路径
 cd FCat\fcat-angular
 npm install
 ng server --open
+登录用户：xiaoliu   密码：123456
 ```
+
 
 - 5、前端效果
 ![img](http://upload-images.jianshu.io/upload_images/6756205-77654260d96f4a5f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
