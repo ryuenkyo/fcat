@@ -140,7 +140,7 @@ export class TMenuMockService{
       "code":"groupManager",
       "title":"组织架构管理",
       "parentId":5,
-      "href":"/index/tUserGroupList",
+      "href":"/index/tGroupList",
       "icon":"fa fa-users",
       "orderNum":0,
       "path":"/adminSys/baseManager/groupManager",

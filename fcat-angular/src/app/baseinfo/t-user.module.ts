@@ -13,7 +13,7 @@ import {TMenuListComponent} from "./t-menu-list.component";
 import {TMenuService} from "./t-menu.service";
 import {TElementService} from "./t-element.service";
 import {TGroupTypeListComponent} from "./t-group-type-list.component";
-import {TGroupTypeService} from "./t-group-type.service"; 
+import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
 import {TUserAddComponent} from "./t-user-add.component";
 import {TUserUpdateComponent} from "./t-user-update.component";
@@ -30,7 +30,8 @@ import {TElementUpdateComponent} from "./t-element-update.component";
 import {TGroupTypeMockService} from "./t-group-type-mock.service";
 import {TGroupTypeUpdateComponent} from "./t-group-type-update.component";
 import {TGroupTypeAddComponent} from "./t-group-type-add.component";
-import {TUserGroupListComponent} from "./t-user-group-list.component";
+import {TGroupListComponent} from "./t-group-list.component";
+import {TGroupMockService} from "./t-group-mock.service";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule],
@@ -38,11 +39,11 @@ import {TUserGroupListComponent} from "./t-user-group-list.component";
     TMenuListComponent,TMenuAddComponent,TMenuUpdateComponent,
     TElementAddComponent,TElementUpdateComponent,
     TGroupTypeListComponent,TGroupTypeUpdateComponent,TGroupTypeAddComponent,
-    TUserGroupListComponent,
+    TGroupListComponent,
     InfoComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,TUserMockService,
-    TElementMockService,TMenuMockService,CommonHttpService,TGroupTypeMockService
+    TElementMockService,TMenuMockService,CommonHttpService,TGroupTypeMockService,TGroupMockService
   ]
 })
 export class TUserModule {

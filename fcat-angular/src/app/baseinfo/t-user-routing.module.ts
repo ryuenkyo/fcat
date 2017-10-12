@@ -12,7 +12,7 @@ import {TMenuListComponent} from "./t-menu-list.component";
 import {TGroupTypeListComponent} from "./t-group-type-list.component";
 import {TGroupTypeUpdateComponent} from "./t-group-type-update.component";
 import {TGroupTypeAddComponent} from "./t-group-type-add.component";
-import {TUserGroupListComponent} from "./t-user-group-list.component";
+import {TGroupListComponent} from "./t-group-list.component";
 
 
 const routes: Routes = [
@@ -62,8 +62,8 @@ const routes: Routes = [
       component: TGroupTypeAddComponent
     },
     {
-      path: 'tUserGroupList',
-      component: TUserGroupListComponent
+      path: 'tGroupList',
+      component: TGroupListComponent
     }
   ]}
 ];

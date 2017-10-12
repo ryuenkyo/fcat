@@ -17,8 +17,7 @@ export class TGroupTypeMockService{
 
   getGroupTypeList(currentPage:number, pageSize:number):Promise<any> {
     let limit = pageSize;
-    let offset = currentPage-1;
-    let param = "?limit="+limit+"&offset="+offset;
+    let offset = currentPage-1; 
     let groupTypes = [];
     this.getGroupTypes().forEach((groupType,index,array) =>{
       console.log("array:",array);

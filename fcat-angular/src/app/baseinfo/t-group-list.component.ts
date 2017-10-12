@@ -3,10 +3,11 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {TMenuService} from './t-menu.service';
-import {TElementService} from "./t-element.service";
 import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
+import {TGroupTypeMockService} from "./t-group-type-mock.service";
+import {TGroupMockService} from "./t-group-mock.service";
+import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 
 @Component({
   template: `
@@ -99,7 +100,8 @@ import {TGroupService} from "./t-group.service";
 </section>
 `,
 })
-export class TUserGroupListComponent implements OnInit {
+export class TGroupListComponent implements OnInit {
+  msg:string;
   groupTypeList:any[];
   selectedGroupTypeId:any;
   pageSize:number = 8;
@@ -107,24 +109,41 @@ export class TUserGroupListComponent implements OnInit {
   currentPage:number = 1;
   firstText:string = '首页';
   disabled:boolean;
-  firstName:string = '用户组类型管理';
-  secondName:string = '用户组类型';
+  firstName:string = '基础配置';
+  secondName:string = '组织架构管理';
   maxSize:number = 5;
   groupList:any[];
 
 
-  constructor(private router:Router, private groupTypeService:TGroupTypeService, private groupService:TGroupService) {
+  constructor(private router:Router,
+              private tGroupTypeService:TGroupTypeService,
+              private tGroupService:TGroupService,
+              private tGroupTypeMockService:TGroupTypeMockService,
+              private tGroupMockService:TGroupMockService) {
   }
 
   ngOnInit():void {
     this.getGrupTypeByPage();
   }
 
+  msg_(msg_:string) {
+    this.msg = msg_;
+  }
+  pageChanged(page:PageChangedEvent) {
+    this.currentPage = page.page;
+    this.pageSize = page.itemsPerPage;
+    this.selectedGroupType(this.selectedGroupTypeId);
+  }
+
+  numPages(numPages:number) {
+    console.log(numPages);
+  }
 
   getGrupTypeByPage() {
-    this.groupTypeService.getGroupTypeList().subscribe(data => {
-      this.groupTypeList = data.rows;
-      this.totalItems = data.totalElements;
+    this.tGroupTypeMockService.getGroupTypeList(1,100).then(data => {
+      console.log("data:",data);
+      this.groupTypeList = data.data.data;
+      this.totalItems = data.data.size;
       this.selectedGroupTypeId = this.groupTypeList[0].id;
       this.selectedGroupType(this.selectedGroupTypeId);
     })
@@ -132,8 +151,8 @@ export class TUserGroupListComponent implements OnInit {
 
   selectedGroupType(groupTypeId:any) {
     this.selectedGroupTypeId = groupTypeId;
-    this.groupService.getGroupList(this.selectedGroupTypeId, '').subscribe(data => {
-      this.groupList = data;
+    this.tGroupMockService.getGroupListByGroupTypeId(this.selectedGroupTypeId).then(data => {
+      this.groupList = data.data;
     });
   }
 
