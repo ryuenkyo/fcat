@@ -14,7 +14,7 @@ export class TGroupTypeAddComponent implements OnInit {
   data:any;
   errorMessage:any;
   firstName:string = '基础配置';
-  secondName:string = '用户管理';
+  secondName:string = '组织类型管理';
   constructor(private tGroupTypeService:TGroupTypeService,
               private tGroupTypeMockService:TGroupTypeMockService,
               private location:Location) {

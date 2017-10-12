@@ -25,6 +25,7 @@ export class TMenuUpdateComponent implements OnInit {
   }
 
   ngOnInit():void {
+    //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => this.tMenuMockService.getById(+params['id']))
       .subscribe(data => this.tMenu = data.data);

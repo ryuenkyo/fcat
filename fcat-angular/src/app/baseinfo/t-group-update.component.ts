@@ -2,54 +2,61 @@ import { Location }               from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { ActivatedRoute, Params } from '@angular/router';
 import {Component, OnInit, enableProdMode}      from '@angular/core';
-import {TGroupType} from "./t-group-type";
-import {TGroupTypeService} from "./t-group-type.service";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
+import {TGroup} from "./t-group";
+import {TGroupService} from "./t-group.service";
+import {TGroupMockService} from "./t-group-mock.service";
+import {element} from "protractor/built/index";
 enableProdMode();
 @Component({
-  templateUrl: './t-group-type-update.component.html',
+  templateUrl: './t-group-update.component.html',
 })
-export class TGroupTypeUpdateComponent implements OnInit {
+export class TGroupUpdateComponent implements OnInit {
   msg:string;
-  tGroupType:any = new TGroupType();
+  tGroup:any = new TGroup();
   data:any;
   errorMessage:any;
   firstName:string = '基础配置';
   secondName:string = '组织类型管理';
-  constructor(private tGroupTypeService:TGroupTypeService,
+
+  tGroupList:any[];
+  constructor(private tGroupService:TGroupService,
               private route: ActivatedRoute,
               private location:Location,
-              private tGroupTypeMockService:TGroupTypeMockService) {
+              private tGroupMockService:TGroupMockService) {
   }
 
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tGroupTypeMockService.getById(+params['id']))
-      .subscribe(data => this.tGroupType = data.data);
-/*    this.route.params
-      .switchMap((params: Params) => this.tGroupTypeMockService.getById(+params['id']))
-      .subscribe(data => this.tGroupType = data.data);*/
+      .switchMap((params: Params) => {
+        return this.tGroupMockService.getById(+params['id'])
+      })
+      .subscribe(data => {
+        this.tGroup = data.data
+        this.tGroupMockService.getGroupListByGroupTypeId(this.tGroup.groupTypeId).then(data =>{
+          this.tGroupList = data.data.filter(group => group.id!=this.tGroup.id);
+        });
+      });
 
-    /*  this.tGroupType = this.tGroupTypeService.getList().find(groupType => groupType.id ===2);*/
   }
-  checkGroupType(groupType:TGroupType){
+
+  checkGroup(group:TGroup){
     let result =true;
-    if(!groupType.name){
+    if(!group.name){
       this.msg = '名称不能为空';
       result = false;
     }
-    if(!groupType.code){
+    if(!group.code){
       this.msg = '编码不能为空';
       result = false;
     }
     return result;
   }
   onSubmit(){
-    if(!this.checkGroupType(this.tGroupType)){
+    if(!this.checkGroup(this.tGroup)){
       return;
     }
-    this.tGroupTypeMockService.add(this.tGroupType)
+    this.tGroupMockService.add(this.tGroup)
       .then(
         data  => {
           if(data.code == 0){

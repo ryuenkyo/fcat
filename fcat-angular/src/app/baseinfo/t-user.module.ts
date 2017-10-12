@@ -32,6 +32,8 @@ import {TGroupTypeUpdateComponent} from "./t-group-type-update.component";
 import {TGroupTypeAddComponent} from "./t-group-type-add.component";
 import {TGroupListComponent} from "./t-group-list.component";
 import {TGroupMockService} from "./t-group-mock.service";
+import {TGroupAddComponent} from "./t-group-add.component";
+import {TGroupUpdateComponent} from "./t-group-update.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule],
@@ -39,7 +41,7 @@ import {TGroupMockService} from "./t-group-mock.service";
     TMenuListComponent,TMenuAddComponent,TMenuUpdateComponent,
     TElementAddComponent,TElementUpdateComponent,
     TGroupTypeListComponent,TGroupTypeUpdateComponent,TGroupTypeAddComponent,
-    TGroupListComponent,
+    TGroupListComponent,TGroupAddComponent,TGroupUpdateComponent,
     InfoComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,TUserMockService,

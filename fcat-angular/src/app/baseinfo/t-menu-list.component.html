@@ -36,7 +36,12 @@
             </div>
           </div>
         </div>
-        <!-- /.box-header -->
+        <!-- /.box-header
+                [dataReader]="'data'" [pageSize]="2"
+                [title]="'菜单列表'" [httpMethod]="'get'"
+                [httpUrl]="'assets/data/menus.json'"
+                (selectedRecord)="selectedMenu1($event)">
+         -->
         <div class="box-body">
           <amexio-card-pane>
             <amexio-pane-body>

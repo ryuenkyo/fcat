@@ -16,6 +16,7 @@ enableProdMode();
 export class TMenuListComponent implements OnInit {
   msg:string;
   menuList:any[];
+  menuTree:any[];
   elementList:any[];
   pageSize:number = 8;
   totalItems:number;
@@ -39,10 +40,12 @@ export class TMenuListComponent implements OnInit {
 
   ngOnInit():void {
     this.getMenuList();
-/*console.log("tree:",this.menuMockService.getMenuTree());
-    console.log("tree:",JSON.stringify(this.menuMockService.getMenuTree()));*/
-
+    this.tMenuMockService.getMenuTree().then(data => {
+      this.menuTree = data.data;
+      console.log("tree:",JSON.stringify(this.menuTree));
+    })
   }
+  
   msg_(msg_:string) {
     this.msg = msg_;
   }

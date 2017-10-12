@@ -30,8 +30,7 @@ export class TMenuMockService{
     console.log("menus:",JSON.stringify(menus));
     let result = [];
     menus.forEach(function(menu,index,array){
-        if(menu.parentId==-1){
-          console.log("result:",this.getChildren1(menu,array));
+        if(!menu.parentId || menu.parentId==-1){
           result.push(this.getChildren1(menu,array));
         }
     },this);
@@ -165,7 +164,6 @@ export class TMenuMockService{
       "id":13,
       "code":"adminSys",
       "title":"权限管理系统",
-      "parentId":-1,
       "href":null,
       "icon":"fa fa-terminal",
       "orderNum":0,
@@ -178,7 +176,6 @@ export class TMenuMockService{
       "id":14,
       "code":"contentSys",
       "title":"区域管理系统",
-      "parentId":-1,
       "href":null,
       "icon":"fa-newspaper-o",
       "orderNum":0,
