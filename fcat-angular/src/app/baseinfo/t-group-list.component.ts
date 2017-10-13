@@ -75,7 +75,7 @@ export class TGroupListComponent implements OnInit {
 
   delete():void {
     if(!this.selectedGroup.id){
-      this.msg = "请选择用户信息";
+      this.msg = "请选择组织";
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
@@ -92,7 +92,7 @@ export class TGroupListComponent implements OnInit {
 
   edit(){
     if(!this.selectedGroup.id){
-      this.msg = "请选择用户信息";
+      this.msg = "请选择组织";
     }else{
       this.router.navigate(['/index/tGroupUpdate', this.selectedGroup.id]);
     }
@@ -100,6 +100,14 @@ export class TGroupListComponent implements OnInit {
 
   add(){
     this.router.navigate(['/index/tGroupAdd', this.selectedGroupTypeId]);
+  }
+
+  groupAddUser(){
+    if(!this.selectedGroup.id){
+      this.msg = "请选择组织";
+    }else{
+      this.router.navigate(['/index/tGroupAddUser', this.selectedGroup.id]);
+    }
   }
 
 }

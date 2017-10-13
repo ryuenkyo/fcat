@@ -15,6 +15,7 @@ import {TGroupTypeAddComponent} from "./t-group-type-add.component";
 import {TGroupListComponent} from "./t-group-list.component";
 import {TGroupAddComponent} from "./t-group-add.component";
 import {TGroupUpdateComponent} from "./t-group-update.component";
+import {TGroupAddUserComponent} from "./t-group-add-user.component";
 
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
     {
       path: 'tGroupUpdate/:id',
       component: TGroupUpdateComponent
+    },
+    {
+      path: 'tGroupAddUser/:id',
+      component: TGroupAddUserComponent
     }
   ]}
 ];
