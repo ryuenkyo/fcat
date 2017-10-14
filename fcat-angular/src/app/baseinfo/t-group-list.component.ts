@@ -110,4 +110,12 @@ export class TGroupListComponent implements OnInit {
     }
   }
 
+  groupAuthority(){
+    if(!this.selectedGroup.id){
+      this.msg = "请选择组织";
+    }else{
+      this.router.navigate(['/index/tGroupAuthority', this.selectedGroup.id]);
+    }
+  }
+
 }
