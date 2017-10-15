@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class Config{
   public appConfig:any = {
-    baseUrl:"http://localhost:7765/ace-admin",
+    baseUrl:"",
     name: '想飞的猫',
     version: '4.0.0',
     testFlag:true,
