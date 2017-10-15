@@ -32,7 +32,6 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-      <li class="header" >权限管理系统{{selectedMenuId}}</li>
       <li class="treeview" *ngFor="let menu of menuList;let i=index" [ngClass]="{'active':i==0}"><!--[ngClass]="{'active':selectedMenuId==menu.id}"-->
         <a> <!--(click)="selectedMenuId = menu.id"-->
           <i class="{{menu.icon}}"></i>
