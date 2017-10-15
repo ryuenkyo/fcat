@@ -10,7 +10,7 @@ QQ群号（1群）：549141844
 - 1、用户管理（已完成）
 - 2、菜单管理（已完成）
 - 3、组织类型管理（已完成）
-- 4、组织架构管理（开发中）
+- 4、组织架构管理（已完成）
 #### 部署
 - 1、安装node  
 去官网下载：http://nodejs.cn/download/下载相应的版本；  
@@ -40,3 +40,6 @@ ng server --open
 ![img](http://upload-images.jianshu.io/upload_images/6756205-9d04f049e89ac986.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![img](http://upload-images.jianshu.io/upload_images/6756205-065369a0f34f4cfa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![img](http://upload-images.jianshu.io/upload_images/6756205-9c372a7abfce3674.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![img](http://upload-images.jianshu.io/upload_images/6756205-ae87eb83261dc2b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![img](http://upload-images.jianshu.io/upload_images/6756205-5735e4281266cd28.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![img](http://upload-images.jianshu.io/upload_images/6756205-97b82ad220708088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
