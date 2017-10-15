@@ -19,21 +19,11 @@
       </select>
     </div>
 
-<!--    <div class="form-group sidebar-menu">
-      <label class="col-sm-2 control-label">性别</label>
-      <div class="col-sm-10">
-        <select [(ngModel)]="tUser.sex" name="sex" class="form-control">
-          <option value="M">男</option>
-          <option value="F">女</option>
-          <option value="S">保密</option>
-        </select>
-      </div>
-    </div>-->
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="treeview" *ngFor="let menu of menuList;let i=index" [ngClass]="{'active':i==0}"><!--[ngClass]="{'active':selectedMenuId==menu.id}"-->
-        <a> <!--(click)="selectedMenuId = menu.id"-->
+        <a>
           <i class="{{menu.icon}}"></i>
           <span>{{menu.title}}</span>
             <span class="pull-right-container">
@@ -41,28 +31,9 @@
             </span>
         </a>
         <ul class="treeview-menu">
-          <li *ngFor="let childMenu of menu?.children"  ><a routerLink="{{childMenu.href}}" ><i class="{{childMenu.icon}}"></i>{{childMenu.title}}</a></li>
+          <li *ngFor="let childMenu of menu?.children" (click)="selectedMenuId=childMenu.id" class="{{selectedMenuId==childMenu.id?'active':''}}"  ><a routerLink="{{childMenu.href}}" ><i class="{{childMenu.icon}}"></i>{{childMenu.title}}</a></li>
         </ul>
       </li>
-<!--
-      <li class="treeview" #group [ngClass]="{'active':!group?.isOpen}">
-        <a class="auto"  (click)="group.isOpen = !group.isOpen">
-          <i class="fa  fa-cog"></i>
-          <span>基础配置{{group?.isOpen}}</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a routerLink="tUserList"  routerLinkActive="active"><i class="fa fa-user"></i> 用户管理</a></li>
-          <li><a routerLink="tMenuList"  routerLinkActive="active"><i class="fa  fa-bars"></i> 菜单管理</a></li>
-          <li><a routerLink="tUserList"  routerLinkActive="active"><i class="fa fa-group (alias)"></i> 用户组管理</a></li>
-          <li><a routerLink="tUserList"  routerLinkActive="active"><i class="fa fa-object-group"></i> 组类型管理</a></li>
-          <li><a routerLink="chinaList"  routerLinkActive="active"><i class="fa fa-map-o"></i> 区域管理</a></li>
-          <li><a routerLink="tUserList"  routerLinkActive="active"><i class="fa fa-square-o"></i> 数据字典</a></li>
-        </ul>
-      </li>
--->
 
 
     </ul>
