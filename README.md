@@ -1,5 +1,5 @@
 #  **FCat** 
-FCat是基于Angular4+SpringCloud 企业级用户权限系统管理框架，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子；
+FCat是基于Angular4+SpringCloud的企业级用户权限系统管理框架，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子；
 
 - 前端技术：Angular4；
 - 后端技术：SpringCloud；
