@@ -5,6 +5,7 @@
       "code":"adminSys",
       "title":"权限管理系统",
       "text":"权限管理系统",
+      "expanded": true,
       "href":null,
       "icon":"fa fa-terminal",
       "orderNum":0,
@@ -16,8 +17,9 @@
         {
           "id":5,
           "code":"baseManager",
-          "title":"权限管理系统",
-          "text":"权限管理系统",
+          "title":"基础配置",
+          "text":"基础配置",
+          "expanded": true,
           "parentId":13,
           "href":null,
           "icon":"fa fa-cog fa-spin",
@@ -40,10 +42,7 @@
               "path":"/adminSys/baseManager/userManager",
               "enabled":"Y",
               "createTime":"2017-10-6 15:36:15",
-              "updateTime":"2017-10-6 15:36:15",
-              "children":[
-
-              ]
+              "updateTime":"2017-10-6 15:36:15"
             },
             {
               "id":6,
@@ -58,10 +57,7 @@
               "path":"/adminSys/baseManager/menuManager",
               "enabled":"Y",
               "createTime":"2017-10-6 15:36:15",
-              "updateTime":"2017-10-6 15:36:15",
-              "children":[
-
-              ]
+              "updateTime":"2017-10-6 15:36:15"
             },
             {
               "id":7,
@@ -76,10 +72,7 @@
               "path":"/adminSys/baseManager/groupManager",
               "enabled":"Y",
               "createTime":"2017-10-6 15:36:15",
-              "updateTime":"2017-10-6 15:36:15",
-              "children":[
-
-              ]
+              "updateTime":"2017-10-6 15:36:15"
             },
             {
               "id":8,
@@ -94,10 +87,7 @@
               "path":"/adminSys/baseManager/groupTypeManager",
               "enabled":"Y",
               "createTime":"2017-10-6 15:36:15",
-              "updateTime":"2017-10-6 15:36:15",
-              "children":[
-
-              ]
+              "updateTime":"2017-10-6 15:36:15"
             },
             {
               "id":21,
@@ -112,10 +102,7 @@
               "path":"/adminSys/baseManager/dictManager",
               "enabled":"Y",
               "createTime":"2017-10-6 15:36:15",
-              "updateTime":"2017-10-6 15:36:15",
-              "children":[
-
-              ]
+              "updateTime":"2017-10-6 15:36:15"
             }
           ]
         }

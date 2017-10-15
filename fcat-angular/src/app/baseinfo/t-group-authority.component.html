@@ -24,15 +24,6 @@
             <button type="button"  class="btn btn-info" (click)="addGroupAuthority()">提交</button>
           </div>
 
-          <div>
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control" placeholder="Search">
-
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /.box-header
                 [dataReader]="'data'" [pageSize]="2"
@@ -46,7 +37,11 @@
               菜单列表
             </amexio-pane-header>
             <amexio-pane-body>
-              <amexio-tree-view [enableCheckBox]="true" [dataReader]="'data'" [httpMethod]="'get'" [httpUrl]="'assets/data/menus.json'" (onTreeNodeChecked)="onCheckboxSelect($event)"></amexio-tree-view>
+              <amexio-tree-view [enableCheckBox]="true"
+                                (onTreeNodeChecked)="onCheckboxSelect($event)"
+                                (selectedRecord)="selectedRecord($event)"
+                                [dataTableBindData]="menuTree"
+              ></amexio-tree-view>
             </amexio-pane-body>
           </amexio-card-pane>
 
@@ -75,48 +70,26 @@
         <div class="box-header with-border">
           <h3 class="box-title">元素</h3>
 
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
           <table class="table table-bordered table-hover ">
             <tr>
-              <th></th>
+              <th><input hidden="{{elementList?.length==0?'hidden':''}}" type="checkbox"  checked="{{selectedAll?'checked':''}}" class="minimal" (click)="selectedAllElement()" ></th>
               <th>名称</th>
               <th>uri</th>
               <th>method</th>
             </tr>
-            <tr *ngFor="let element of elementList" (click)="radio.checked=true;selectedElement=element;" >
+            <tr *ngFor="let element of elementList"  >
               <td>
-                <input type="radio" name="r1" class="minimal" #radio >
+                <input type="checkbox"  checked="{{element.selected?'checked':''}}" class="minimal" (click)="selectedElement_(element)" >
               </td>
               <td>{{element.name}}</td>
               <td>{{element.uri}}</td>
               <td>{{element.method}}</td>
             </tr>
           </table>
-         <!-- <amexio-card-pane>
-            <amexio-pane-body>
-              <amexio-tree-data-table
-                [dataReader]="'data'" [pageSize]="2"
-                [title]="'元素列表'" [httpMethod]="'get'"
-                [httpUrl]="'assets/data/elements.json'"
-                (selectedRecord)="selectedElement = $event">
-                <amexio-data-table-column [dataIndex]="'name'" [dataType]="'string'" [hidden]="false" [text]="'名称'"></amexio-data-table-column>
-                <amexio-data-table-column [dataIndex]="'uri'" [dataType]="'string'" [hidden]="false" [text]="'uri'"></amexio-data-table-column>
-                <amexio-data-table-column [dataIndex]="'method'" [dataType]="'string'" [hidden]="false" [text]="'method'"></amexio-data-table-column>
-              </amexio-tree-data-table>
-            </amexio-pane-body>
-          </amexio-card-pane>
-          {{selectedElement}}-->
         </div>
         <!-- /.box-body -->
       </div>

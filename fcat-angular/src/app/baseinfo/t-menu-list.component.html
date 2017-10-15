@@ -45,11 +45,9 @@
         <div class="box-body">
           <amexio-card-pane>
             <amexio-pane-body>
-              <amexio-tree-data-table
-                [dataReader]="'data'" [pageSize]="2"
-                [title]="'菜单列表'" [httpMethod]="'get'"
-                [httpUrl]="'assets/data/menus.json'"
-                (selectedRecord)="selectedMenu1($event)">
+              <amexio-tree-data-table  [pageSize]="2"
+                [title]="'菜单列表'" [dataTableBindData]="menuTree"
+                (selectedRecord)="selectedMenu1($event)" >
                 <amexio-data-table-column [dataIndex]="'title'" [dataType]="'string'" [hidden]="false" [text]="'名称'"></amexio-data-table-column>
                 <amexio-data-table-column [dataIndex]="'code'" [dataType]="'string'" [hidden]="false" [text]="'编码'"></amexio-data-table-column>
                 <amexio-data-table-column [dataIndex]="'icon'" [dataType]="'string'" [hidden]="false" [text]="'图标'"></amexio-data-table-column>

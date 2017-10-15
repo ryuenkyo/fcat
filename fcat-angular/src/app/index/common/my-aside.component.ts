@@ -9,10 +9,11 @@ import {TMenuMockService} from "../../baseinfo/t-menu-mock.service";
 })
 
 export class MyAsideComponent implements OnInit{
+  treeMenu:any[];
   app:any;
   selectedMenuId:any;
   username:string;
-  selectedSystemId:any = 13;
+  selectedSystemId:any;
   menuList:any[];
   constructor(private config:Config,
               private tMenuService:TMenuService,
@@ -27,14 +28,24 @@ export class MyAsideComponent implements OnInit{
 
   getUserMenu():void {
     this.tMenuMockService.getMenuTree().then(data => {
-      console.log("data:",data.data);
-      for(let i=0;i<data.data.length;i++){
-        console.log("data:",data.data[i]);
-        if(data.data[i].id==this.selectedSystemId){
-          this.menuList = data.data[i].children;
-        }
-      }
+      this.treeMenu = data.data;
+      this.selectMenuList();
+
 
     });
+  }
+
+  private selectMenuList():void {
+    if(this.treeMenu && this.treeMenu.length>0 ){
+      if(!this.selectedSystemId){
+        this.selectedSystemId = this.treeMenu[0].id;
+      }
+    }
+    for(let i=0;i<this.treeMenu.length;i++){
+      console.log("data:",this.treeMenu[i]);
+      if(this.treeMenu[i].id==this.selectedSystemId){
+        this.menuList = this.treeMenu[i].children;
+      }
+    }
   }
 }

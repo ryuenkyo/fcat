@@ -1,3 +1,4 @@
+
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
@@ -12,22 +13,26 @@
       </div>
     </div>
     <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+    <div class="form-group sidebar-menu">
+      <select [(ngModel)]="selectedSystemId"  (change)="selectMenuList()" type="text" name="q" class="form-control" style="background-color:#222d32;color:#FFF;border-color:#3b568c;">
+        <option *ngFor="let menu of treeMenu" value="{{menu.id}}">{{menu.title}}</option>
+      </select>
+    </div>
+
+<!--    <div class="form-group sidebar-menu">
+      <label class="col-sm-2 control-label">性别</label>
+      <div class="col-sm-10">
+        <select [(ngModel)]="tUser.sex" name="sex" class="form-control">
+          <option value="M">男</option>
+          <option value="F">女</option>
+          <option value="S">保密</option>
+        </select>
       </div>
-    </form>
+    </div>-->
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header" >权限管理系统{{selectedMenuId}}</li>
-
-
-
       <li class="treeview" *ngFor="let menu of menuList;let i=index" [ngClass]="{'active':i==0}"><!--[ngClass]="{'active':selectedMenuId==menu.id}"-->
         <a> <!--(click)="selectedMenuId = menu.id"-->
           <i class="{{menu.icon}}"></i>

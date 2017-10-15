@@ -28,12 +28,16 @@ export class TGroupAuthorityComponent implements OnInit {
   firstName:string = '基础配置';
   secondName:string = '组织架构管理';
   maxSize:number = 5;
-
   selectedMenu : TMenu = new TMenu();
-
   selectedElement:TElement = new TElement();
-
   tGroup:TGroup = new TGroup();
+  selectedAll:boolean;
+
+  /**选中的树形菜单**/
+  treeSelected:any[];
+  /**选中的元素**/
+  selectedElementIds:number[] = [];
+
 
   constructor(private router:Router,
               private tMenuService:TMenuService,
@@ -62,12 +66,79 @@ export class TGroupAuthorityComponent implements OnInit {
       });
   }
 
+  selectedAllElement(){
+    this.selectedAll = !this.selectedAll;
+    if(this.selectedAll){
+      this.elementList.forEach((element,i,arr1) => {
+        let flag = false;
+        for(let id of this.selectedElementIds){
+          if(id==element.id){
+            flag =true;
+          }
+        }
+        if(!flag){
+          this.selectedElementIds.push(element.id);
+        }
+      })
+    }else{
+      this.elementList.forEach((element,i,arr1) => {
+        this.selectedElementIds = this.selectedElementIds.filter(id => id!=element.id);
+      });
+    }
+    this.setCheckedElements();
+  }
+
+  selectedElement_(element:any){
+    element.selected = !element.selected;
+    if(element.selected){
+      this.selectedElementIds.push(element.id);
+    }else{
+      this.selectedElementIds = this.selectedElementIds.filter(elementId => elementId!=element.id);
+    }
+    console.log("selectedElementIds:",this.selectedElementIds);
+  }
+
+  onCheckboxSelect(data){
+    this.treeSelected=data;
+    console.log("treeSelected:",this.treeSelected);
+  }
+
+  selectedRecord(data){
+    this.selectedMenu = data;
+    console.log("selectedMenu:",this.selectedMenu);
+    this.getElementByMenuId(this.selectedMenu.id);
+    this.selectedElement = new TElement();
+  }
+
+
   msg_(msg_:string) {
     this.msg = msg_;
   }
 
   addGroupAuthority(){
-    this.msg = '开发中';
+    let selectedMenuIds = [];
+    console.log("treeSelected:",this.treeSelected);
+    this.treeSelected.forEach((menu,i,arr1) => {
+      if(menu.checked){
+        selectedMenuIds.push(menu.id);
+      }
+      if(menu.children && menu.children.length>0){
+         this.setChildrenChecked(selectedMenuIds,menu.children);
+      }
+    });
+    this.msg = '授权的菜单：'+JSON.stringify(selectedMenuIds)+"  授权的元素："+JSON.stringify(this.selectedElementIds);
+  }
+
+
+  private setChildrenChecked(selectedMenuIds:any[], children:any[]):void {
+    children.forEach((menu,i,arr1) => {
+      if(menu.checked){
+        selectedMenuIds.push(menu.id);
+      }
+      if(menu.children && menu.children.length>0){
+        this.setChildrenChecked(selectedMenuIds,menu.children);
+      }
+    })
   }
 
    selectedMenu1(menu:any) {
@@ -146,10 +217,30 @@ export class TGroupAuthorityComponent implements OnInit {
   }
 
   getElementByMenuId(menuId:number){
+    this.selectedAll = false;
     this.tElementMockService.getElementByMenuId(menuId).then(data => {
       this.elementList = data.data;
       console.log(this.elementList);
+      this.selectedAll = this.setCheckedElements();
     })
+  }
+
+  setCheckedElements(){
+    let selectedAllFlag = true;
+    this.elementList.forEach((element,i,arr1) => {
+      let flag = false;
+      this.selectedElementIds.forEach((id,j,arr2) => {
+        if(element.id==id){
+          element.selected = true;
+          flag = true;
+        }
+      })
+      if(!flag){
+        element.selected = false;
+        selectedAllFlag = false;
+      }
+    })
+    return selectedAllFlag;
   }
 
 }

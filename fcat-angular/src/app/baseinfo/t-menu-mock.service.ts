@@ -30,7 +30,9 @@ export class TMenuMockService{
     console.log("menus:",JSON.stringify(menus));
     let result = [];
     menus.forEach(function(menu,index,array){
+      menu.text = menu.title;
         if(!menu.parentId || menu.parentId==-1){
+          menu.expanded = true;
           result.push(this.getChildren1(menu,array));
         }
     },this);
@@ -38,11 +40,15 @@ export class TMenuMockService{
   }
 
   getChildren1(menu1,menus){
-    menu1.children = [];
     let hasChild = false;
     menus.forEach(function(menu,index,array){
+      menu.text = menu.title;
       if(menu.parentId==menu1.id){
+        menu.expanded = true;
         hasChild = true;
+        if(!menu1.children){
+          menu1.children = [];
+        }
         menu1.children.push(this.getChildren1(menu,array));
       }
     },this);
@@ -189,7 +195,7 @@ export class TMenuMockService{
       "code":"dictManager",
       "title":"数据字典",
       "parentId":5,
-      "href":"/index/chinaList",
+      "href":"/index/dictList",
       "icon":"fa fa-book",
       "orderNum":0,
       "path":"/adminSys/baseManager/dictManager",
