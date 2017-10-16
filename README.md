@@ -53,13 +53,13 @@ ng server --open
 ![img](http://upload-images.jianshu.io/upload_images/6756205-5735e4281266cd28.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![img](http://upload-images.jianshu.io/upload_images/6756205-97b82ad220708088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 3、后端项目fcat-springcloud
-##### 3.1 功能
-3.1.1 项目搭建、架构设计 （待开发）
-3.1.2 用户管理 （待开发）
-3.1.3 菜单管理 （待开发）
-3.1.4 组织类型管理 （待开发）
-3.1.5 组织架构管理————组织管理、关联用户、组织授权 （待开发）
-3.1.6 数据字典 （待开发）
+## 3、后端项目fcat-springcloud  
+##### 3.1 功能  
+3.1.1 项目搭建、架构设计 （待开发）    
+3.1.2 用户管理 （待开发）  
+3.1.3 菜单管理 （待开发）  
+3.1.4 组织类型管理 （待开发）  
+3.1.5 组织架构管理————组织管理、关联用户、组织授权 （待开发）  
+3.1.6 数据字典 （待开发）  
 
 #### 3.2 部署
