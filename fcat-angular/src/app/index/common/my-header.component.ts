@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Config } from '../../app-config';
+import { Config } from '../../app-config'; 
 
 @Component({
   selector: 'my-header',
@@ -11,7 +11,13 @@ export class MyHeaderComponent {
   username:string;
   constructor(private config:Config){
     this.app = config.appConfig;
+
     let sessionInfo = JSON.parse(localStorage.getItem("sessionInfo"));
+    if(!sessionInfo){
+      sessionInfo = {username:"xiaoliu"};
+      localStorage.setItem('sessionInfo',JSON.stringify(sessionInfo));
+    }
+
     this.username = sessionInfo.username;
   }
 }

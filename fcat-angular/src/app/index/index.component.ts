@@ -1,6 +1,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Config} from "../app-config";
+import {TUserMockService} from "../baseinfo/t-user-mock.service";
 
 declare var $:any;
 @Component({
@@ -18,4 +19,5 @@ export class IndexComponent implements OnInit{
   ngOnInit(){
     $.widget.bridge('uibutton', $.ui.button);
   }
+
 }
