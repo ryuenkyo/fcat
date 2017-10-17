@@ -18,7 +18,6 @@ export class MyAsideComponent implements OnInit{
   menuList:any[];
   constructor(private config:Config,
               private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService,
               private tUserService:TUserService){
     this.app = config.appConfig;
   }
@@ -29,11 +28,10 @@ export class MyAsideComponent implements OnInit{
   }
 
   getUserMenu():void {
-    this.tMenuMockService.getMenuTree().then(data => {
+    this.tMenuService.getTree().subscribe(data => {
+      console.log("data:",data);
       this.treeMenu = data.data;
       this.selectMenuList();
-
-
     });
   }
 

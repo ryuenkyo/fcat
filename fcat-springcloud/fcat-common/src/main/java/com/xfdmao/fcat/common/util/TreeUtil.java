@@ -60,7 +60,7 @@ public class TreeUtil{
     for (T it : treeNodes) {
       if (treeNode.getId() == it.getParentId()) {
         if (treeNode.getChildren() == null) {
-          treeNode.setChildren(new ArrayList<TreeNode>());
+          treeNode.setChildren(new ArrayList<>());
         }
         treeNode.add(findChildren(it, treeNodes));
       }

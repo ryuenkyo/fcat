@@ -5,12 +5,12 @@ import {HttpUtil} from "../util/http.util";
 
 @Injectable()
 export class TUserService{
-  private baseUrl = "/fcat-user/v1/";
+  private baseUrl = "/fcat-user/v1/tUser";
   constructor(private httpUtil: HttpUtil){
   }
 
   getSessionInfo(){
-    let url = this.baseUrl+"session/sessionInfo";
+    let url = "/fcat-user/v1/session/sessionInfo";
     return this.httpUtil.get(url);
   }
 
@@ -19,39 +19,32 @@ export class TUserService{
   }
 
   getLocalSessionInfo():any{
+    console.log(sessionStorage.getItem("sessionInfo"));
     return JSON.parse(sessionStorage.getItem("sessionInfo"));
   }
 
 
   getUserList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
-    let url = this.baseUrl+"/tUser/getTUsersByPage"+param;
+    let url = this.baseUrl+"/listByPage"+param;
     return this.httpUtil.get(url);
   }
 
   delete(id:any){
-    let url = this.baseUrl+"/tUser/"+id;
+    let url = this.baseUrl+"/"+id;
     return this.httpUtil.delete(url);
   }
 
   add(tUser: TUser){
-    let url = this.baseUrl+"/tUser/add";
+    let url = this.baseUrl+"/add";
     return this.httpUtil.post(url, tUser);
   }
-  getUserCount(){
-    let url = this.baseUrl+"/count";
-    return this.httpUtil.get(url);
-  }
-
   getById(id:number){
-    let url = this.baseUrl+"/tUser/"+id;
+    let url = this.baseUrl+"/"+id;
     return this.httpUtil.get(url);
   }
   update(user: TUser){
-    let url = this.baseUrl+"/tUser/update";
+    let url = this.baseUrl+"/update";
     return this.httpUtil.put(url, user);
   }
-
-
-
 }

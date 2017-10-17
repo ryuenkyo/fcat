@@ -1,6 +1,8 @@
 package com.xfdmao.fcat.common.rest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xfdmao.fcat.common.constant.CommonConstant;
 import com.xfdmao.fcat.common.service.BaseService;
 import com.xfdmao.fcat.common.util.JsonUtil;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,10 +69,19 @@ public class BaseController<Bsi extends BaseService,Entity,T> {
         return JsonUtil.getSuccessJsonObject(bsi.selectListAll());
     }
 
-    public String getCurrentUserName(){
-        String authorization = request.getHeader("Authorization");
-        return new String(Base64Utils.decodeFromString(authorization));
+    @RequestMapping(value = "/listByPage",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject listByPage(Integer pageNum, Integer pageSize){
+
+        pageNum = pageNum == null? CommonConstant.PAGE_NUM:pageNum;
+        pageSize = pageSize == null?CommonConstant.PAGE_SIZE:pageSize;
+
+        PageHelper.startPage(pageNum, pageSize);
+        List<Entity> tMenuList = bsi.selectListAll();
+        PageInfo page = new PageInfo(tMenuList);
+        return JsonUtil.getSuccessJsonObject(page);
     }
+
 
     /**
      * 获取所有请求参数，封装为map对象

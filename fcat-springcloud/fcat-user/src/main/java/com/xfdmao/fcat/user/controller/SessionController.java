@@ -1,28 +1,22 @@
 package com.xfdmao.fcat.user.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
-import com.xfdmao.fcat.user.entity.TUser;
+import com.alibaba.fastjson.JSONObject;
+import com.xfdmao.fcat.api.vo.authority.SessionInfo;
+import com.xfdmao.fcat.common.util.JsonUtil;
+import com.xfdmao.fcat.user.entity.LoginUser;
 import com.xfdmao.fcat.user.rpc.TUserServiceRpc;
-import com.xfdmao.fcat.user.service.TUserService;
-import org.apache.commons.beanutils.BeanUtils;
+import com.xfdmao.fcat.user.service.LoginUserService;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.xfdmao.fcat.api.vo.authority.SessionInfo;
-import com.xfdmao.fcat.common.util.JsonUtil;
-import com.xfdmao.fcat.user.service.LoginUserService;
-import com.xfdmao.fcat.user.entity.LoginUser;
-
-import io.swagger.annotations.ApiOperation;
+import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by xiangfei on 2017/7/25.
+ * Created by xiangfei on 2017/10/17.
  */
 @RestController
 @RequestMapping("v1/session")
@@ -37,7 +31,7 @@ public class SessionController extends TUserServiceRpc{
      * @return
      * @throws RuntimeException
      */
-    @ApiOperation(value = "测试session中的用户信息" )
+    @ApiOperation(value = "获取session中的信息" )
     @RequestMapping(value = "sessionInfo", method = RequestMethod.GET)
     public JSONObject sessionUserInfo()throws Exception{
         try {
@@ -51,7 +45,7 @@ public class SessionController extends TUserServiceRpc{
     }
 
 
-    @ApiOperation(value = "测试session中的用户信息" )
+    @ApiOperation(value = "测试保存用户动态验证码" )
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public JSONObject login(String username) {
         String password = String.valueOf(RandomStringUtils.randomNumeric(6));

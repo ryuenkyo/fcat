@@ -1,18 +1,35 @@
 import {Injectable} from "@angular/core";
 import {HttpUtil} from "../util/http.util";
+import {TGroupType} from "./t-group-type";
 
 
 @Injectable()
 export class TGroupTypeService{
-  private baseUrl = "/groupType";
+  private baseUrl = "/tGroupType";
   constructor(private httpUtil: HttpUtil){
   }
 
-  getGroupTypeList() {
-    let param = "?limit=100&offset=0";
-    let url = this.baseUrl+"/page"+param;
+  getUserList(currentPage:number, pageSize:number) {
+    let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
+    let url = this.baseUrl+"/listByPage"+param;
     return this.httpUtil.get(url);
   }
 
+  delete(id:any){
+    let url = this.baseUrl+"/"+id;
+    return this.httpUtil.delete(url);
+  }
 
+  add(tGroupType: TGroupType){
+    let url = this.baseUrl+"/add";
+    return this.httpUtil.post(url, tGroupType);
+  }
+  getById(id:number){
+    let url = this.baseUrl+"/"+id;
+    return this.httpUtil.get(url);
+  }
+  update(tGroupType: TGroupType){
+    let url = this.baseUrl+"/update";
+    return this.httpUtil.put(url, tGroupType);
+  }
 }
