@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Config } from '../../app-config';
 import {TMenuService} from "../../baseinfo/t-menu.service";
 import {TMenuMockService} from "../../baseinfo/t-menu-mock.service";
+import {TUserService} from "../../baseinfo/t-user.service";
 
 @Component({
   selector: 'my-aside',
@@ -17,12 +18,13 @@ export class MyAsideComponent implements OnInit{
   menuList:any[];
   constructor(private config:Config,
               private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService ){
+              private tMenuMockService:TMenuMockService,
+              private tUserService:TUserService){
     this.app = config.appConfig;
   }
   ngOnInit():void {
-    let sessionInfo = JSON.parse(localStorage.getItem("sessionInfo"));
-    this.username = sessionInfo.username;
+    let sessionInfo = this.tUserService.getLocalSessionInfo();
+    this.username = sessionInfo.userName;
     this.getUserMenu();
   }
 

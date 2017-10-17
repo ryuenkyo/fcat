@@ -5,26 +5,38 @@ import {HttpUtil} from "../util/http.util";
 
 @Injectable()
 export class TUserService{
-  private baseUrl = "/user";
+  private baseUrl = "/fcat-user/v1/";
   constructor(private httpUtil: HttpUtil){
   }
 
-  getUserList(currentPage:number, pageSize:number) {
-    let limit = pageSize;
-    let offset = currentPage-1;
-    let param = "?limit="+limit+"&offset="+offset;
-    let url = this.baseUrl+"/page"+param;
+  getSessionInfo(){
+    let url = this.baseUrl+"session/sessionInfo";
     return this.httpUtil.get(url);
   }
 
-  delete(userId:string){
-    let url = this.baseUrl+"/delete/"+userId;
+  setLocalSessionInfo(sessionInfo:any){
+    sessionStorage.setItem("sessionInfo",JSON.stringify(sessionInfo));
+  }
+
+  getLocalSessionInfo():any{
+    return JSON.parse(sessionStorage.getItem("sessionInfo"));
+  }
+
+
+  getUserList(currentPage:number, pageSize:number) {
+    let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
+    let url = this.baseUrl+"/tUser/getTUsersByPage"+param;
+    return this.httpUtil.get(url);
+  }
+
+  delete(id:any){
+    let url = this.baseUrl+"/tUser/"+id;
     return this.httpUtil.delete(url);
   }
 
-  add(user: TUser){
-    let url = this.baseUrl+"/add";
-    return this.httpUtil.post(url, user);
+  add(tUser: TUser){
+    let url = this.baseUrl+"/tUser/add";
+    return this.httpUtil.post(url, tUser);
   }
   getUserCount(){
     let url = this.baseUrl+"/count";
@@ -32,14 +44,14 @@ export class TUserService{
   }
 
   getById(id:number){
-    let url = this.baseUrl+"/get/"+id;
-    // TODO 2、根据用户ID查询用户信息 alert(url);
+    let url = this.baseUrl+"/tUser/"+id;
     return this.httpUtil.get(url);
   }
   update(user: TUser){
-    let url = this.baseUrl+"/update";
-    return this.httpUtil.post(url, user);
+    let url = this.baseUrl+"/tUser/update";
+    return this.httpUtil.put(url, user);
   }
+
 
 
 }

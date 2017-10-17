@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
  * Created by xiangfei on 2017/7/25.
  */
 @RestController
-@RequestMapping("v1/SessionController")
+@RequestMapping("v1/session")
 public class SessionController extends TUserServiceRpc{
     @Autowired
     protected HttpServletRequest request;
@@ -38,7 +38,7 @@ public class SessionController extends TUserServiceRpc{
      * @throws RuntimeException
      */
     @ApiOperation(value = "测试session中的用户信息" )
-    @RequestMapping(value = "session/userInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "sessionInfo", method = RequestMethod.GET)
     public JSONObject sessionUserInfo()throws Exception{
         try {
             SessionInfo sessionInfo  = (SessionInfo) request.getSession().getAttribute("sessionInfo");

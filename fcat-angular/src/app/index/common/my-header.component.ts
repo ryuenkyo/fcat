@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Config } from '../../app-config'; 
+import { Config } from '../../app-config';
+import {TUserService} from "../../baseinfo/t-user.service";
 
 @Component({
   selector: 'my-header',
@@ -9,15 +10,12 @@ import { Config } from '../../app-config';
 export class MyHeaderComponent {
   app:any;
   username:string;
-  constructor(private config:Config){
+  constructor(private config:Config,
+              private tUserService:TUserService){
     this.app = config.appConfig;
-
-    let sessionInfo = JSON.parse(localStorage.getItem("sessionInfo"));
-    if(!sessionInfo){
-      sessionInfo = {username:"xiaoliu"};
-      localStorage.setItem('sessionInfo',JSON.stringify(sessionInfo));
-    }
-
-    this.username = sessionInfo.username;
+    this.tUserService.getSessionInfo().subscribe(data =>{
+      this.tUserService.setLocalSessionInfo(data.data);
+      this.username = data.data.userName;
+    });
   }
 }

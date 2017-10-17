@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit{
   }
   ngOnInit(){
     $.widget.bridge('uibutton', $.ui.button);
+    
   }
 
 }

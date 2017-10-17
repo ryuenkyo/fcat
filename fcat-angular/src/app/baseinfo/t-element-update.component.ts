@@ -29,6 +29,7 @@ export class TElementUpdateComponent implements OnInit {
   }
 
   ngOnInit():void {
+    //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => this.tElementMockService.getById(+params['id']))
       .subscribe(data => {

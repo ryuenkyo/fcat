@@ -26,34 +26,5 @@ public class SessionInfo implements Serializable{
     private String userName;
 
     private AuthInfo authinfo;
-    
-	public String getUserName() {
-		return userName;
-	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public AuthInfo getAuthinfo() {
-		return authinfo;
-	}
-
-	public void setAuthinfo(AuthInfo authinfo) {
-		this.authinfo = authinfo;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
-	
 }

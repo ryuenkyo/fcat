@@ -2,7 +2,6 @@ import { Location }               from '@angular/common';
 import {Component, OnInit, enableProdMode} from '@angular/core';
 import {TUser} from "./t-user";
 import {TUserService} from "./t-user.service";
-import {TUserMockService} from "./t-user-mock.service";
 enableProdMode();
 @Component({
   templateUrl: './t-user-add.component.html',
@@ -16,7 +15,6 @@ export class TUserAddComponent implements OnInit {
   firstName:string = '基础配置';
   secondName:string = '用户管理';
   constructor(private tUserService:TUserService,
-              private tUserMockService:TUserMockService,
               private location:Location) {
   }
 
@@ -53,17 +51,14 @@ export class TUserAddComponent implements OnInit {
     if(!this.checkUser(this.tUser)){
       return;
     }
-    this.tUserMockService.add(this.tUser)
-      .then(
-        data  => {
-          if(data.code == 0){
-            this.msg = "添加成功";
-            setTimeout(() => {this.goBack()},1000);
-          }else{
-            this.msg = "添加失败";
-          }
-        },
-        error =>  this.errorMessage = <any>error);
+    this.tUserService.add(this.tUser).subscribe( data =>{
+      if(data.code == 0){
+        this.msg = "添加成功";
+        setTimeout(() => {this.goBack()},1000);
+      }else{
+        this.msg = "添加失败";
+      }
+    })
   }
   goBack(): void {
     this.location.back();

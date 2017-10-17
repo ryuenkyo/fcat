@@ -8,7 +8,7 @@ import {Injectable} from "@angular/core";
 export class Config{
   public appConfig:any = {
     baseUrl:"",
-    name: '想飞的猫',
+    name: 'FCat',
     version: '4.0.0',
     testFlag:true,
     // for chart colors

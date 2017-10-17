@@ -1,6 +1,7 @@
 package com.xfdmao.fcat.common.rest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xfdmao.fcat.common.constant.CommonConstant;
 import com.xfdmao.fcat.common.service.BaseService;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@ spring:
         name: fcat-gate
     redis:
         host:  192.168.9.202
-        database: 6
+        database: 7
         pool:
           max-active: 8
           min-idle: 0

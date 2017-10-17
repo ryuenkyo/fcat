@@ -21,7 +21,20 @@ export class HttpUtil{
     //url = this.getSessionIdUrl(url);
     let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
     let options = new RequestOptions({ headers: headers,withCredentials: this.withCredentials});
+    //noinspection TypeScriptValidateTypes
     return this.http.post(url, param,options)
+      .map(this.extractData)
+      .catch(this.handleError);
+
+  }
+
+  put(url:string, param?:any){
+    url = this.baseUrl + url;
+    //url = this.getSessionIdUrl(url);
+    let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
+    let options = new RequestOptions({ headers: headers,withCredentials: this.withCredentials});
+    //noinspection TypeScriptValidateTypes
+    return this.http.put(url, param,options)
       .map(this.extractData)
       .catch(this.handleError);
 
@@ -32,6 +45,7 @@ export class HttpUtil{
     //url = this.getSessionIdUrl(url);
     let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
     let options = new RequestOptions({ headers: headers,withCredentials: this.withCredentials});
+    //noinspection TypeScriptValidateTypes
     return this.http.delete(url, options)
       .map(this.extractData)
       .catch(this.handleError);
@@ -42,6 +56,7 @@ export class HttpUtil{
     url = this.baseUrl + url;
     //url = this.getSessionIdUrl(url);
     let options = new RequestOptions({withCredentials:this.withCredentials});
+    //noinspection TypeScriptValidateTypes
     return this.http.get(url, options)
       .map(this.extractData)
       .catch(this.handleError);

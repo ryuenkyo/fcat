@@ -3,7 +3,7 @@ package com.xfdmao.fcat.user.constant;
 /**
  * Created by xiangfei on 2017/7/25.
  */
-public class CommonConstant {
+public class UserConstant {
     public final static int ROOT = -1;
     public final static int DEFAULT_GROUP_TYPE = 0;
     /**

@@ -1,11 +1,10 @@
 /**
  * Created by F1 on 2017/6/1.
  */
-import {Component, OnInit, enableProdMode} from '@angular/core';
-import {Router} from '@angular/router';
-import {TUserService} from './t-user.service';
+import {Component, OnInit, enableProdMode} from "@angular/core";
+import {Router} from "@angular/router";
+import {TUserService} from "./t-user.service";
 import {TUser} from "./t-user";
-import {TUserMockService} from "./t-user-mock.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 enableProdMode();//阻止报错：Expression has changed after it was checked
 @Component({
@@ -27,8 +26,7 @@ export class TUserListComponent implements OnInit {
   currentPage:number = 1;
 
   constructor(private router:Router,
-              private userService:TUserService,
-              private tUserMockService:TUserMockService) {
+              private tUserService:TUserService) {
   }
 
   ngOnInit():void {
@@ -54,13 +52,10 @@ export class TUserListComponent implements OnInit {
   }
 
   getUserList():void {
-    //TODO 1、获取用户列表（分页）  subscribe
-    this.tUserMockService.getUserList(this.currentPage, this.pageSize).then(data => {
-      console.log(data);
-      this.userList = data.data.data;
-      this.totalItems = data.data.size;
-    });
-
+    this.tUserService.getUserList(this.currentPage,this.pageSize).subscribe(data =>{
+      this.userList = data.data.list;
+      this.totalItems = data.data.total;
+    })
    }
 
   delete():void {
@@ -69,7 +64,7 @@ export class TUserListComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tUserMockService.delete(this.selectedUser.id).then(data => {
+      this.tUserService.delete(this.selectedUser.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getUserList();
@@ -84,7 +79,7 @@ export class TUserListComponent implements OnInit {
     if(!this.selectedUser.id){
       this.msg = "请选择用户信息";
     }else{
-      this.router.navigate(['/index/tUserUpdate', this.selectedUser.id]);
+      this.router.navigate(['/index/tUserUpdate',this.selectedUser.id]);
     }
   }
 

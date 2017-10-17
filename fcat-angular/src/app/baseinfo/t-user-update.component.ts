@@ -3,8 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { ActivatedRoute, Params } from '@angular/router';
 import {Component, OnInit, enableProdMode}      from '@angular/core';
 import {TUser} from "./t-user";
-import {TUserService} from "./t-user.service";
-import {TUserMockService} from "./t-user-mock.service";
+import {TUserService} from "./t-user.service"; 
 enableProdMode();
 @Component({
   templateUrl: './t-user-update.component.html',
@@ -18,19 +17,16 @@ export class TUserUpdateComponent implements OnInit {
   secondName:string = '用户管理';
   constructor(private tUserService:TUserService,
               private route: ActivatedRoute,
-              private location:Location,
-              private tUserMockService:TUserMockService) {
+              private location:Location) {
   }
 
-  ngOnInit():void { 
+  ngOnInit():void {
+    //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tUserMockService.getById(+params['id']))
+      .switchMap((params: Params) => { 
+        return this.tUserService.getById(params['id']);
+      })
       .subscribe(data => this.tUser = data.data);
-/*    this.route.params
-      .switchMap((params: Params) => this.tUserMockService.getById(+params['id']))
-      .subscribe(data => this.tUser = data.data);*/
-
-    /*  this.tUser = this.tUserService.getList().find(user => user.id ===2);*/
   }
   checkUser(user:TUser){
     let result =true;
@@ -60,8 +56,8 @@ export class TUserUpdateComponent implements OnInit {
     if(!this.checkUser(this.tUser)){
       return;
     }
-    this.tUserMockService.add(this.tUser)
-      .then(
+    this.tUserService.update(this.tUser)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = '更新成功';
