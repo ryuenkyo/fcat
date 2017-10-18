@@ -66,3 +66,5 @@ ng server --open
 3.1.6 数据字典 （待开发）  
 
 #### 3.2 部署
+3.2.1 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap
+3.2.1 前端：ng serve --base-href /fcat-angular/
