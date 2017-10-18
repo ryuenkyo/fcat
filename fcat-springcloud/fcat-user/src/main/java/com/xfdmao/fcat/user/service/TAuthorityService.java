@@ -1,5 +1,7 @@
 package com.xfdmao.fcat.user.service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.xfdmao.fcat.common.service.BaseService;
 import com.xfdmao.fcat.user.entity.TAuthority;
 
@@ -8,4 +10,7 @@ import com.xfdmao.fcat.user.entity.TAuthority;
  */
 public interface TAuthorityService extends BaseService<TAuthority>{
 
+    boolean saveBatch(Integer groupId, JSONArray menuIds, JSONArray elementIds);
+
+    JSONObject getAuthority(Integer groupId);
 }

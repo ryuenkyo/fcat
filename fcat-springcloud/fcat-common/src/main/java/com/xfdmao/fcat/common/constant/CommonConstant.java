@@ -14,7 +14,7 @@ public class CommonConstant {
      * 权限资源类型
      */
     public final static String RESOURCE_TYPE_MENU = "menu";
-    public final static String RESOURCE_TYPE_BTN = "button";
+    public final static String RESOURCE_TYPE_ELEMENT = "element";
 
     public final static String RESOURCE_REQUEST_METHOD_GET = "GET";
     public final static String RESOURCE_REQUEST_METHOD_PUT = "PUT";

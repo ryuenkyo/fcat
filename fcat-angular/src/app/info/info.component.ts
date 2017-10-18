@@ -28,7 +28,7 @@ export class InfoComponent implements OnInit {
     this.msg_.emit(this._msg);
   }
 
-  showInfo(msg:string){
+  showInfo(){
     this.msgFlag = true;
     setTimeout(() => {
       this.ngOnInit();
@@ -42,12 +42,11 @@ export class InfoComponent implements OnInit {
 
 
   public set msg(msg:string) {
-      console.log("设置msg="+msg);
       if(msg==this.msgStr){
         return;
       }
       if(!msg || msg=='')return;
       this._msg = msg;
-      this.showInfo(msg);
+      this.showInfo();
   }
 }

@@ -36,6 +36,7 @@ import {TGroupAddComponent} from "./t-group-add.component";
 import {TGroupUpdateComponent} from "./t-group-update.component";
 import {TGroupAddUserComponent} from "./t-group-add-user.component";
 import {TGroupAuthorityComponent} from "./t-group-authority.component";
+import {TAuthorityService} from "./t-authority.service";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule],
@@ -47,7 +48,7 @@ import {TGroupAuthorityComponent} from "./t-group-authority.component";
     InfoComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,TUserMockService,
-    TElementMockService,TMenuMockService,CommonHttpService,TGroupTypeMockService,TGroupMockService
+    TElementMockService,TMenuMockService,CommonHttpService,TGroupTypeMockService,TGroupMockService,TAuthorityService
   ]
 })
 export class TUserModule {

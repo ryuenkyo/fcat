@@ -12,6 +12,8 @@ import {TElement} from "./t-element";
 import {TGroupMockService} from "./t-group-mock.service";
 import {TGroup} from "./t-group";
 import {TGroupService} from "./t-group.service";
+import {TAuthorityService} from "./t-authority.service";
+import {element} from "protractor/built/index";
 enableProdMode();
 @Component({
   templateUrl: './t-group-authority.component.html',
@@ -38,22 +40,21 @@ export class TGroupAuthorityComponent implements OnInit {
   treeSelected:any[];
   /**选中的元素**/
   selectedElementIds:number[] = [];
+  /**选中的元素**/
+  selectedMenuIds:number[] = [];
 
 
   constructor(private router:Router,
               private tMenuService:TMenuService,
               private tElementService:TElementService,
               private tGroupService:TGroupService,
+              private tAuthorityService:TAuthorityService,
               private route: ActivatedRoute) {
-
-
   }
 
   ngOnInit():void {
-    this.getMenuList();
-    this.tMenuService.getTree().subscribe(data => {
-      this.menuTree = data.data;
-    })
+    //this.getMenuList();
+
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => {
@@ -61,7 +62,30 @@ export class TGroupAuthorityComponent implements OnInit {
       })
       .subscribe(data => {
         this.tGroup = data.data;
+        this.tMenuService.getTree().subscribe(data => {
+          this.menuTree = data.data;
+          this.tAuthorityService.getAuthority(this.tGroup.id).subscribe(data =>{
+            this.selectedElementIds = data.data.elementIds;
+            this.selectedMenuIds = data.data.menuIds;
+            this.setText(this.menuTree,data.data.menuIds);
+          })
+        })
       });
+  }
+
+
+  private setText(nodeTree:any[],menuIds:any[]) {
+    nodeTree.forEach((node) =>{
+      node.text = node.title;
+      menuIds.forEach((menuId)=>{
+        if(menuId==node.id){
+          node.checked = true;
+        }
+      })
+      if(node.children && node.children.length>0){
+        this.setText(node.children,menuIds);
+      }
+    })
   }
 
   selectedAllElement(){
@@ -111,17 +135,28 @@ export class TGroupAuthorityComponent implements OnInit {
   }
 
   addGroupAuthority(){
-    let selectedMenuIds = [];
-    console.log("treeSelected:",this.treeSelected);
+    if(!this.treeSelected || this.treeSelected.length<1){
+      this.msg = "请设置权限";
+      return;
+    }
     this.treeSelected.forEach((menu) => {
       if(menu.checked){
-        selectedMenuIds.push(menu.id);
+        this.selectedMenuIds.push(menu.id);
       }
       if(menu.children && menu.children.length>0){
-         this.setChildrenChecked(selectedMenuIds,menu.children);
+         this.setChildrenChecked(this.selectedMenuIds,menu.children);
       }
     });
-    this.msg = '授权的菜单：'+JSON.stringify(selectedMenuIds)+"  授权的元素："+JSON.stringify(this.selectedElementIds);
+    let param = {menuIds:[],elementIds:[]};
+    param.menuIds = this.selectedMenuIds;
+    param.elementIds = this.selectedElementIds;
+    this.tAuthorityService.authority(param,this.tGroup.id).subscribe(data => {
+      if(data.code == 0){
+        this.msg = "授权成功";
+      }else{
+        this.msg = "授权失败";
+      }
+    });
   }
 
 
@@ -141,75 +176,6 @@ export class TGroupAuthorityComponent implements OnInit {
      this.getElementByMenuId(this.selectedMenu.id);
      this.selectedElement = new TElement();
    }
-
-  getMenuList(){
-    this.tMenuService.getList(1,1000).subscribe(data => {
-      this.menuList = data.data;
-    });
-  }
-
-  getElementList() {
-    this.tElementService.getList(0,1000).subscribe(data => {
-      this.elementList = data.data;
-    });
-  }
-
-  updateMenu(){
-    if(!this.selectedMenu.id){
-      this.msg = "请选择菜单";
-    }else{
-      this.router.navigate(['/index/tMenuUpdate', this.selectedMenu.id]);
-    }
-  }
-  deleteMenu(){
-    if(!this.selectedMenu.id){
-      this.msg = "请选择菜单";
-      return;
-    }
-    if(window.confirm('你确定要删除记录吗？')){
-      this.tMenuService.delete(this.selectedMenu.id).subscribe(data => {
-        if(data.code==0){
-          this.msg = "删除成功";
-          this.getMenuList();
-        }else{
-          this.msg = "删除失败";
-        }
-      });
-    }
-  }
-
-  updateElement(){
-    if(!this.selectedElement.id){
-      this.msg = "请选择元素";
-    }else{
-      this.router.navigate(['/index/tElementUpdate', this.selectedElement.id]);
-    }
-  }
-
-  addElement(){
-    if(!this.selectedMenu.id){
-      this.msg = "请选择菜单";
-    }else{
-      this.router.navigate(['/index/tElementAdd', this.selectedMenu.id]);
-    }
-  }
-
-  deleteElement(){
-    if(!this.selectedElement.id){
-      this.msg = "请选择元素";
-      return;
-    }
-    if(window.confirm('你确定要删除记录吗？')){
-      this.tElementService.delete(this.selectedElement.id).subscribe(data => {
-        if(data.code==0){
-          this.msg = "删除成功";
-          this.getElementByMenuId(this.selectedMenu.id);
-        }else{
-          this.msg = "删除失败";
-        }
-      });
-    }
-  }
 
   getElementByMenuId(menuId:number){
     this.selectedAll = false;
