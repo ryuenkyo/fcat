@@ -1,8 +1,7 @@
 import { Location }               from '@angular/common';
 import {Component, OnInit, enableProdMode} from '@angular/core';
 import {TMenu} from "./t-menu";
-import {TMenuService} from "./t-menu.service";
-import {TMenuMockService} from "./t-menu-mock.service";
+import {TMenuService} from "./t-menu.service"; 
 enableProdMode();
 @Component({
   templateUrl: './t-menu-add.component.html',
@@ -17,19 +16,18 @@ export class TMenuAddComponent implements OnInit {
   secondName:string = '菜单管理';
   menuList:any;
   constructor(private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService,
               private location:Location) {
   }
 
   ngOnInit():void {
-    this.getMenuList();
+    this.getList();
   }
   msg_(msg_:string) {
     this.msg = msg_;
   }
 
-  getMenuList(){
-    this.tMenuMockService.getMenuList().then(data => {
+  getList(){
+    this.tMenuService.getList(1,1000).subscribe(data => {
       this.menuList = data.data;
     });
   }
@@ -59,8 +57,8 @@ export class TMenuAddComponent implements OnInit {
     if(!this.checkMenu(this.tMenu)){
       return;
     }
-    this.tMenuMockService.add(this.tMenu)
-      .then(
+    this.tMenuService.add(this.tMenu)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = "添加成功";

@@ -17,4 +17,11 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <select id="getListByMenuId" parameterType="Integer" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT a.*
+    FROM t_element a WHERE a.menu_id=#{menuId}
+  </select>
+
 </mapper>

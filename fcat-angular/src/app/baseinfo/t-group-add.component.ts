@@ -18,7 +18,6 @@ export class TGroupAddComponent implements OnInit {
   secondName:string = '组织架构管理';
   tGroupList:any[];
   constructor(private tGroupService:TGroupService,
-              private tGroupMockService:TGroupMockService,
               private route: ActivatedRoute,
               private location:Location) {
 
@@ -30,7 +29,7 @@ export class TGroupAddComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => {
         this.tGroup.groupTypeId = +params['id'];
-        return this.tGroupMockService.getGroupListByGroupTypeId(this.tGroup.groupTypeId);
+        return this.tGroupService.getListByGroupTypeId(this.tGroup.groupTypeId);
       })
       .subscribe(data => this.tGroupList = data.data);
   }
@@ -57,8 +56,8 @@ export class TGroupAddComponent implements OnInit {
     if(!this.checkGroup(this.tGroup)){
       return;
     }
-    this.tGroupMockService.add(this.tGroup)
-      .then(
+    this.tGroupService.add(this.tGroup)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = "添加成功";

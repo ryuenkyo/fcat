@@ -14,4 +14,9 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <select id="getListByGroupTypeId" parameterType="Integer" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT a.*
+    FROM t_group a WHERE a.group_type_id=#{groupTypeId}
+  </select>
 </mapper>

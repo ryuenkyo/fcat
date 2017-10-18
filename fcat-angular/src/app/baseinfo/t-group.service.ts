@@ -5,11 +5,11 @@ import {TGroup} from "./t-group";
 
 @Injectable()
 export class TGroupService{
-  private baseUrl = "/tGroup";
+  private baseUrl = "/fcat-user/v1/tGroup";
   constructor(private httpUtil: HttpUtil){
   }
 
-  getUserList(currentPage:number, pageSize:number) {
+  getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
     let url = this.baseUrl+"/tGroup/listByPage"+param;
     return this.httpUtil.get(url);
@@ -33,4 +33,8 @@ export class TGroupService{
     return this.httpUtil.put(url, tGroup);
   }
 
+  getListByGroupTypeId(groupTypeId:number|any) {
+    let url = this.baseUrl+"/groupTypeId/"+groupTypeId;
+    return this.httpUtil.get(url);
+  }
 }

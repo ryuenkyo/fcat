@@ -1,15 +1,14 @@
 /**
  * Created by F1 on 2017/6/1.
  */
-import {Component, OnInit, enableProdMode} from '@angular/core';
-import {Router, Params, ActivatedRoute} from '@angular/router';
-import {TUserService} from './t-user.service';
+import {Component, OnInit, enableProdMode} from "@angular/core";
+import {Router, Params, ActivatedRoute} from "@angular/router";
+import {TUserService} from "./t-user.service";
 import {TUser} from "./t-user";
-import {TUserMockService} from "./t-user-mock.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
-import {TGroupMockService} from "./t-group-mock.service";
 import {TGroup} from "./t-group";
-import { Location }               from '@angular/common';
+import {Location} from "@angular/common";
+import {TGroupService} from "./t-group.service";
 enableProdMode();//阻止报错：Expression has changed after it was checked
 declare var $:any;
 
@@ -33,18 +32,15 @@ export class TGroupAddUserComponent implements OnInit {
   totalItems:number;
   currentPage:number = 1;
 
-
-
   constructor(private router:Router,
-              private userService:TUserService,
               private route: ActivatedRoute,
-              private tGroupMockService: TGroupMockService,
-              private tUserMockService:TUserMockService,
+              private tGroupService: TGroupService,
+              private tUserService:TUserService,
               private location:Location) {
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => {
-        return this.tGroupMockService.getById(+params['id'])
+        return this.tGroupService.getById(+params['id'])
       })
       .subscribe(data => {
         this.tGroup = data.data;
@@ -83,16 +79,12 @@ export class TGroupAddUserComponent implements OnInit {
     console.log(numPages);
   }
 
-
-
   onSelect(user:TUser):void {
     this.selectedUser = user;
   }
 
   getUserList():void {
-    //TODO 1、获取用户列表（分页）  subscribe
-    this.tUserMockService.getUserList(this.currentPage, this.pageSize).then(data => {
-      console.log(data);
+    this.tUserService.getList(this.currentPage, this.pageSize).subscribe(data => {
       this.userList = data.data.data;
       this.totalItems = data.data.size;
     });
@@ -105,7 +97,7 @@ export class TGroupAddUserComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tUserMockService.delete(this.selectedUser.id).then(data => {
+      this.tUserService.delete(this.selectedUser.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getUserList();

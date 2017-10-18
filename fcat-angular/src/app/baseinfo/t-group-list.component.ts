@@ -1,12 +1,10 @@
 /**
  * Created by F1 on 2017/6/1.
  */
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
-import {TGroupMockService} from "./t-group-mock.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroup} from "./t-group";
 
@@ -32,9 +30,7 @@ export class TGroupListComponent implements OnInit {
 
   constructor(private router:Router,
               private tGroupTypeService:TGroupTypeService,
-              private tGroupService:TGroupService,
-              private tGroupTypeMockService:TGroupTypeMockService,
-              private tGroupMockService:TGroupMockService) {
+              private tGroupService:TGroupService) {
   }
 
   ngOnInit():void {
@@ -51,14 +47,13 @@ export class TGroupListComponent implements OnInit {
   }
 
   numPages(numPages:number) {
-    console.log(numPages);
+   // console.log(numPages);
   }
 
   getGrupTypeByPage() {
-    this.tGroupTypeMockService.getGroupTypeList(1,100).then(data => {
-      console.log("data:",data);
-      this.groupTypeList = data.data.data;
-      this.totalItems = data.data.size;
+    this.tGroupTypeService.getList(1,1000).subscribe(data => {
+      this.groupTypeList = data.data.list;
+      this.totalItems = data.data.total;
       this.selectedGroupTypeId = this.groupTypeList[0].id;
       this.selectedGroupType(this.selectedGroupTypeId);
     })
@@ -67,7 +62,8 @@ export class TGroupListComponent implements OnInit {
   selectedGroupType(groupTypeId:any) {
     this.selectedGroup=new TGroup();
     this.selectedGroupTypeId = groupTypeId;
-    this.tGroupMockService.getGroupListByGroupTypeId(this.selectedGroupTypeId).then(data => {
+    this.tGroupService.getListByGroupTypeId(this.selectedGroupTypeId).subscribe(data => {
+      console.log(this.groupList);
       this.groupList = data.data;
     });
   }
@@ -79,7 +75,7 @@ export class TGroupListComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tGroupMockService.delete(this.selectedGroup.id).then(data => {
+      this.tGroupService.delete(this.selectedGroup.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getGrupTypeByPage();

@@ -24,7 +24,7 @@ export class TUserService{
   }
 
 
-  getUserList(currentPage:number, pageSize:number) {
+  getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
     let url = this.baseUrl+"/listByPage"+param;
     return this.httpUtil.get(url);

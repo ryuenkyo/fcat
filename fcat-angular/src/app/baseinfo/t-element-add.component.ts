@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap';
 import {Params, ActivatedRoute} from '@angular/router';
 import {TMenuMockService} from "./t-menu-mock.service";
 import {TMenu} from "./t-menu";
+import {TMenuService} from "./t-menu.service";
 enableProdMode();
 @Component({
   templateUrl: './t-element-add.component.html',
@@ -22,8 +23,7 @@ export class TElementAddComponent implements OnInit {
   tMenu:TMenu;
   menuList:any;
   constructor(private tElementService:TElementService,
-              private tElementMockService:TElementMockService,
-              private tMenuMockService:TMenuMockService,
+              private tMenuService:TMenuService,
               private route: ActivatedRoute,
               private location:Location) {
   }
@@ -31,7 +31,7 @@ export class TElementAddComponent implements OnInit {
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tMenuMockService.getById(+params['id']))
+      .switchMap((params: Params) => this.tMenuService.getById(+params['id']))
       .subscribe(data => {
         this.tMenu = data.data;
         this.tElement.menuId = this.tMenu.id;
@@ -45,7 +45,7 @@ export class TElementAddComponent implements OnInit {
   }
 
   getMenuList(){
-    this.tMenuMockService.getMenuList().then(data => {
+    this.tMenuService.getList(1,1000).subscribe(data => {
       this.menuList = data.data;
     });
   }
@@ -75,8 +75,8 @@ export class TElementAddComponent implements OnInit {
     if(!this.checkElement(this.tElement)){
       return;
     }
-    this.tElementMockService.add(this.tElement)
-      .then(
+    this.tElementService.add(this.tElement)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = "添加成功";

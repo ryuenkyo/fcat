@@ -1,11 +1,10 @@
 /**
  * Created by F1 on 2017/6/1.
  */
-import {Component, OnInit,  enableProdMode} from '@angular/core';
-import {Router} from '@angular/router';
-import {TMenuService} from './t-menu.service';
+import {Component, OnInit, enableProdMode} from "@angular/core";
+import {Router} from "@angular/router";
+import {TMenuService} from "./t-menu.service";
 import {TElementService} from "./t-element.service";
-import {TMenuMockService} from "./t-menu-mock.service";
 import {TElementMockService} from "./t-element-mock.service";
 import {TMenu} from "./t-menu";
 import {TElement} from "./t-element";
@@ -33,19 +32,20 @@ export class TMenuListComponent implements OnInit {
 
   constructor(private router:Router,
               private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService,
-              private tElementService:TElementService,
-              private tElementMockService:TElementMockService) {
+              private tElementService:TElementService) {
   }
 
   ngOnInit():void {
-    this.getMenuList();
-    this.tMenuMockService.getMenuTree().then(data => {
+    this.getList();
+    this.tMenuService.getTree().subscribe(data => {
       this.menuTree = data.data;
-      console.log("tree:",JSON.stringify(this.menuTree));
+      this.menuTree.forEach((menu) =>{
+        menu.parentId = null;
+      });
+      console.log("menuTree:",this.menuTree);
     })
   }
-  
+
   msg_(msg_:string) {
     this.msg = msg_;
   }
@@ -56,15 +56,9 @@ export class TMenuListComponent implements OnInit {
      this.selectedElement = new TElement();
    }
 
-  getMenuList(){
-    this.tMenuMockService.getMenuList().then(data => {
+  getList(){
+    this.tMenuService.getList(1,1000).subscribe(data => {
       this.menuList = data.data;
-    });
-  }
-
-  private getElementList() {
-    this.tElementMockService.getElementList().then(data => {
-      this.elementList = data.data;
     });
   }
 
@@ -81,10 +75,10 @@ export class TMenuListComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tMenuMockService.delete(this.selectedMenu.id).then(data => {
+      this.tMenuService.delete(this.selectedMenu.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
-          this.getMenuList();
+          this.getList();
         }else{
           this.msg = "删除失败";
         }
@@ -114,7 +108,7 @@ export class TMenuListComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tElementMockService.delete(this.selectedElement.id).then(data => {
+      this.tElementService.delete(this.selectedElement.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getElementByMenuId(this.selectedMenu.id);
@@ -126,10 +120,13 @@ export class TMenuListComponent implements OnInit {
   }
 
   getElementByMenuId(menuId:number){
-    this.tElementMockService.getElementByMenuId(menuId).then(data => {
+    this.tElementService.getByMenuId(menuId).subscribe(data => {
       this.elementList = data.data;
       console.log(this.elementList);
     })
   }
+
+
+
 
 }

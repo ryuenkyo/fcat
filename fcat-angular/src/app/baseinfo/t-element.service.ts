@@ -5,11 +5,11 @@ import {TElement} from "./t-element";
 
 @Injectable()
 export class TElementService{
-  private baseUrl = "/tElement";
+  private baseUrl = "/fcat-user/v1/tElement";
   constructor(private httpUtil: HttpUtil){
   }
 
-  getUserList(currentPage:number, pageSize:number) {
+  getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
     let url = this.baseUrl+"/listByPage"+param;
     return this.httpUtil.get(url);
@@ -31,5 +31,10 @@ export class TElementService{
   update(tElement: TElement){
     let url = this.baseUrl+"/update";
     return this.httpUtil.put(url, tElement);
+  }
+
+  getByMenuId(menuId:number) {
+    let url = this.baseUrl+"/getByMenuId/"+menuId;
+    return this.httpUtil.get(url);
   }
 }

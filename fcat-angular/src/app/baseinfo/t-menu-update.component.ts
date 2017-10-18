@@ -2,7 +2,6 @@ import { Location }               from '@angular/common';
 import {Component, OnInit, enableProdMode} from '@angular/core';
 import {TMenu} from "./t-menu";
 import {TMenuService} from "./t-menu.service";
-import {TMenuMockService} from "./t-menu-mock.service";
 import 'rxjs/add/operator/switchMap';
 import {Params, ActivatedRoute} from '@angular/router';
 enableProdMode();
@@ -19,7 +18,6 @@ export class TMenuUpdateComponent implements OnInit {
   secondName:string = '菜单管理';
   menuList:any;
   constructor(private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService,
               private route: ActivatedRoute,
               private location:Location) {
   }
@@ -27,13 +25,13 @@ export class TMenuUpdateComponent implements OnInit {
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tMenuMockService.getById(+params['id']))
+      .switchMap((params: Params) => this.tMenuService.getById(+params['id']))
       .subscribe(data => this.tMenu = data.data);
     this.getMenuList();
   }
 
   getMenuList(){
-    this.tMenuMockService.getMenuList().then(data => {
+    this.tMenuService.getList(1,1000).subscribe(data => {
       this.menuList = data.data;
     });
   }
@@ -68,8 +66,8 @@ export class TMenuUpdateComponent implements OnInit {
     if(!this.checkMenu(this.tMenu)){
       return;
     }
-    this.tMenuMockService.add(this.tMenu)
-      .then(
+    this.tMenuService.add(this.tMenu)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = "添加成功";

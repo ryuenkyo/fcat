@@ -11,6 +11,7 @@ import {TMenu} from "./t-menu";
 import {TElement} from "./t-element";
 import {TGroupMockService} from "./t-group-mock.service";
 import {TGroup} from "./t-group";
+import {TGroupService} from "./t-group.service";
 enableProdMode();
 @Component({
   templateUrl: './t-group-authority.component.html',
@@ -41,25 +42,22 @@ export class TGroupAuthorityComponent implements OnInit {
 
   constructor(private router:Router,
               private tMenuService:TMenuService,
-              private tMenuMockService:TMenuMockService,
               private tElementService:TElementService,
-              private tElementMockService:TElementMockService,
-              private route: ActivatedRoute,
-              private tGroupMockService:TGroupMockService) {
+              private tGroupService:TGroupService,
+              private route: ActivatedRoute) {
 
 
   }
 
   ngOnInit():void {
     this.getMenuList();
-    this.tMenuMockService.getMenuTree().then(data => {
+    this.tMenuService.getTree().subscribe(data => {
       this.menuTree = data.data;
-      console.log("tree:",JSON.stringify(this.menuTree));
     })
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => {
-        return this.tGroupMockService.getById(+params['id'])
+        return this.tGroupService.getById(+params['id'])
       })
       .subscribe(data => {
         this.tGroup = data.data;
@@ -69,7 +67,7 @@ export class TGroupAuthorityComponent implements OnInit {
   selectedAllElement(){
     this.selectedAll = !this.selectedAll;
     if(this.selectedAll){
-      this.elementList.forEach((element,i,arr1) => {
+      this.elementList.forEach((element) => {
         let flag = false;
         for(let id of this.selectedElementIds){
           if(id==element.id){
@@ -81,7 +79,7 @@ export class TGroupAuthorityComponent implements OnInit {
         }
       })
     }else{
-      this.elementList.forEach((element,i,arr1) => {
+      this.elementList.forEach((element) => {
         this.selectedElementIds = this.selectedElementIds.filter(id => id!=element.id);
       });
     }
@@ -95,17 +93,14 @@ export class TGroupAuthorityComponent implements OnInit {
     }else{
       this.selectedElementIds = this.selectedElementIds.filter(elementId => elementId!=element.id);
     }
-    console.log("selectedElementIds:",this.selectedElementIds);
   }
 
   onCheckboxSelect(data){
     this.treeSelected=data;
-    console.log("treeSelected:",this.treeSelected);
   }
 
   selectedRecord(data){
     this.selectedMenu = data;
-    console.log("selectedMenu:",this.selectedMenu);
     this.getElementByMenuId(this.selectedMenu.id);
     this.selectedElement = new TElement();
   }
@@ -118,7 +113,7 @@ export class TGroupAuthorityComponent implements OnInit {
   addGroupAuthority(){
     let selectedMenuIds = [];
     console.log("treeSelected:",this.treeSelected);
-    this.treeSelected.forEach((menu,i,arr1) => {
+    this.treeSelected.forEach((menu) => {
       if(menu.checked){
         selectedMenuIds.push(menu.id);
       }
@@ -131,7 +126,7 @@ export class TGroupAuthorityComponent implements OnInit {
 
 
   private setChildrenChecked(selectedMenuIds:any[], children:any[]):void {
-    children.forEach((menu,i,arr1) => {
+    children.forEach((menu) => {
       if(menu.checked){
         selectedMenuIds.push(menu.id);
       }
@@ -148,13 +143,13 @@ export class TGroupAuthorityComponent implements OnInit {
    }
 
   getMenuList(){
-    this.tMenuMockService.getMenuList().then(data => {
+    this.tMenuService.getList(1,1000).subscribe(data => {
       this.menuList = data.data;
     });
   }
 
-  private getElementList() {
-    this.tElementMockService.getElementList().then(data => {
+  getElementList() {
+    this.tElementService.getList(0,1000).subscribe(data => {
       this.elementList = data.data;
     });
   }
@@ -172,7 +167,7 @@ export class TGroupAuthorityComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tMenuMockService.delete(this.selectedMenu.id).then(data => {
+      this.tMenuService.delete(this.selectedMenu.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getMenuList();
@@ -205,7 +200,7 @@ export class TGroupAuthorityComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tElementMockService.delete(this.selectedElement.id).then(data => {
+      this.tElementService.delete(this.selectedElement.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getElementByMenuId(this.selectedMenu.id);
@@ -218,7 +213,7 @@ export class TGroupAuthorityComponent implements OnInit {
 
   getElementByMenuId(menuId:number){
     this.selectedAll = false;
-    this.tElementMockService.getElementByMenuId(menuId).then(data => {
+    this.tElementService.getByMenuId(menuId).subscribe(data => {
       this.elementList = data.data;
       console.log(this.elementList);
       this.selectedAll = this.setCheckedElements();
@@ -227,9 +222,9 @@ export class TGroupAuthorityComponent implements OnInit {
 
   setCheckedElements(){
     let selectedAllFlag = true;
-    this.elementList.forEach((element,i,arr1) => {
+    this.elementList.forEach((element) => {
       let flag = false;
-      this.selectedElementIds.forEach((id,j,arr2) => {
+      this.selectedElementIds.forEach((id) => {
         if(element.id==id){
           element.selected = true;
           flag = true;

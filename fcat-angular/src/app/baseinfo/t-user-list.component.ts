@@ -52,7 +52,7 @@ export class TUserListComponent implements OnInit {
   }
 
   getUserList():void {
-    this.tUserService.getUserList(this.currentPage,this.pageSize).subscribe(data =>{
+    this.tUserService.getList(this.currentPage,this.pageSize).subscribe(data =>{
       this.userList = data.data.list;
       this.totalItems = data.data.total;
     })
