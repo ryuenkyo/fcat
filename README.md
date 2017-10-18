@@ -23,7 +23,7 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - 2.1.4、组织架构管理（已完成）
 - 2.1.5、数据字典（后续开发）
 
-#### 2.2 部署
+#### 2.2 部署 （部署fcat-angular-v1分支）
 - 2.2.1、安装node  
 去官网下载：http://nodejs.cn/download/下载相应的版本；  
 运行下载文件node-v6.11.0-x64.msi安装node，默认一步一步执行  
