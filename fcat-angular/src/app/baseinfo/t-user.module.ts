@@ -17,21 +17,16 @@ import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
 import {TUserAddComponent} from "./t-user-add.component";
 import {TUserUpdateComponent} from "./t-user-update.component";
-import {TUserMockService} from "./t-user-mock.service";
 import {InfoComponent} from "../info/info.component";
-import {TElementMockService} from "./t-element-mock.service";
-import {TMenuMockService} from "./t-menu-mock.service";
 
 import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
 import {TMenuAddComponent} from "./t-menu-add.component";
 import {TMenuUpdateComponent} from "./t-menu-update.component";
 import {TElementAddComponent} from "./t-element-add.component";
 import {TElementUpdateComponent} from "./t-element-update.component";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
 import {TGroupTypeUpdateComponent} from "./t-group-type-update.component";
 import {TGroupTypeAddComponent} from "./t-group-type-add.component";
 import {TGroupListComponent} from "./t-group-list.component";
-import {TGroupMockService} from "./t-group-mock.service";
 import {TGroupAddComponent} from "./t-group-add.component";
 import {TGroupUpdateComponent} from "./t-group-update.component";
 import {TGroupAddUserComponent} from "./t-group-add-user.component";
@@ -48,8 +43,8 @@ import {TUserGroupService} from "./t-user-group.service";
     TGroupListComponent,TGroupAddComponent,TGroupUpdateComponent,TGroupAddUserComponent,TGroupAuthorityComponent,
     InfoComponent
      ],
-  providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,TUserMockService,
-    TElementMockService,TMenuMockService,CommonHttpService,TGroupTypeMockService,TGroupMockService,TAuthorityService,TUserGroupService
+  providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,
+    CommonHttpService,TAuthorityService,TUserGroupService
   ]
 })
 export class TUserModule {

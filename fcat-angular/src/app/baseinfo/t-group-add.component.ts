@@ -2,7 +2,6 @@ import { Location }               from '@angular/common';
 import {Component, OnInit, enableProdMode} from '@angular/core';
 import {TGroup} from "./t-group";
 import {TGroupService} from "./t-group.service";
-import {TGroupMockService} from "./t-group-mock.service";
 import {ActivatedRoute, Params} from "@angular/router";
 enableProdMode();
 @Component({

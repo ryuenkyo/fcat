@@ -4,7 +4,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TGroupTypeService} from "./t-group-type.service";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroupType} from "./t-group-type";
 

@@ -4,7 +4,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import {Component, OnInit, enableProdMode}      from '@angular/core';
 import {TGroupType} from "./t-group-type";
 import {TGroupTypeService} from "./t-group-type.service";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
 enableProdMode();
 @Component({
   templateUrl: './t-group-type-update.component.html',
@@ -25,7 +24,7 @@ export class TGroupTypeUpdateComponent implements OnInit {
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => this.tGroupTypeService.getById(+params['id']))
-      .subscribe(data => this.tGroupType = data.data); 
+      .subscribe(data => this.tGroupType = data.data);
   }
   checkGroupType(groupType:TGroupType){
     let result =true;
