@@ -23,7 +23,7 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - 2.1.4、组织架构管理（已完成）
 - 2.1.5、数据字典（后续开发）
 
-#### 2.2 部署 （部署fcat-angular-v1分支）
+#### 2.2 部署 （使用fcat-angular-v1分支部署）
 - 2.2.1、安装node  
 去官网下载：http://nodejs.cn/download/下载相应的版本；  
 运行下载文件node-v6.11.0-x64.msi安装node，默认一步一步执行  
@@ -58,13 +58,13 @@ ng server --open
 
 ## 3、后端项目fcat-springcloud  
 ##### 3.1 功能  
-3.1.1 项目搭建、架构设计 （2017-10-17开发完成）    
-3.1.2 用户管理 （2017-10-18开发完成）  
-3.1.3 菜单管理 （2017-10-18开发完成）  
-3.1.4 组织类型管理 （2017-10-18开发完成）  
-3.1.5 组织架构管理————组织管理、关联用户、组织授权 （2017-10-18开发完成）  
+3.1.1 项目搭建、架构设计
+3.1.2 用户管理   
+3.1.3 菜单管理
+3.1.4 组织类型管理
+3.1.5 组织架构管理————组织管理、关联用户、组织授权
 3.1.6 数据字典 （待开发）  
 
-#### 3.2 部署
-3.2.1 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap
-3.2.1 前端：ng serve --base-href /fcat-angular/
+#### 3.2 前后端一起部署  
+3.2.1 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap  
+3.2.1 前端：ng serve --base-href /fcat-angular/  
