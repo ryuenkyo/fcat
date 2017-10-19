@@ -16,6 +16,9 @@ public class CommonConstant {
     public final static String RESOURCE_TYPE_MENU = "menu";
     public final static String RESOURCE_TYPE_ELEMENT = "element";
 
+    public final static String GROUP_USER_TYPE_LEADER = "leader";
+    public final static String GROUP_USER_TYPE_MEMBER = "member";
+
     public final static String RESOURCE_REQUEST_METHOD_GET = "GET";
     public final static String RESOURCE_REQUEST_METHOD_PUT = "PUT";
     public final static String RESOURCE_REQUEST_METHOD_DELETE = "DELETE";

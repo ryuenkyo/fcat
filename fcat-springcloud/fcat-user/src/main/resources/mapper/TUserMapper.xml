@@ -26,4 +26,26 @@
     FROM t_user a WHERE a.username=#{username}
   </select>
 
+  <select id="getByKey" parameterType="String" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT a.*
+    FROM t_user a WHERE UPPER(a.username) like UPPER('%${key}%') || UPPER(a.name) like UPPER('%${key}%')
+  </select>
+
+  <select id="getLeadersByGroupId" parameterType="Integer" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT b.*
+    FROM t_user_group a
+    join t_user b on a.user_id = b.id
+    WHERE a.group_id = #{groupId} and a.type = 'leader'
+  </select>
+
+  <select id="getMembersByGroupId" parameterType="Integer" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT b.*
+    FROM t_user_group a
+    join t_user b on a.user_id = b.id
+    WHERE a.group_id = #{groupId} and a.type = 'member'
+  </select>
+
 </mapper>

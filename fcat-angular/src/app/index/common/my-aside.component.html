@@ -35,8 +35,6 @@
           <li *ngFor="let childMenu of menu?.children" (click)="selectedMenuId=childMenu.id" class="{{selectedMenuId==childMenu.id?'active':''}}"  ><a routerLink="{{childMenu.href}}" ><i class="{{childMenu.icon}}"></i>{{childMenu.title}}</a></li>
         </ul>
       </li>
-
-
     </ul>
   </section>
   <!-- /.sidebar -->

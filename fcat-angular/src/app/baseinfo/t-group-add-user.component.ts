@@ -9,6 +9,8 @@ import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroup} from "./t-group";
 import {Location} from "@angular/common";
 import {TGroupService} from "./t-group.service";
+import {TUserGroup} from "./t-user-group";
+import {TUserGroupService} from "./t-user-group.service";
 enableProdMode();//阻止报错：Expression has changed after it was checked
 declare var $:any;
 
@@ -18,13 +20,12 @@ declare var $:any;
 
 export class TGroupAddUserComponent implements OnInit {
   msg: string;
-  userList:TUser[];
-  selectedUser:TUser = new TUser();
+  userList:any[];
   firstText:string = '首页';
   disabled:boolean;
   firstName:string = '基础配置';
   secondName:string = '组织架构管理';
-  tGroup:TGroup;
+  tGroup:TGroup = new TGroup();
 
   /**分页用到的参数**/
   pageSize:number = 2;
@@ -32,11 +33,20 @@ export class TGroupAddUserComponent implements OnInit {
   totalItems:number;
   currentPage:number = 1;
 
+  leaders:any[] = [];
+  members:any[] = [];
+  leaderUserIds:number[]=[];
+  memberUserIds:number[]=[];
+
+  tUserGroup:TUserGroup = new TUserGroup();
+
   constructor(private router:Router,
               private route: ActivatedRoute,
               private tGroupService: TGroupService,
               private tUserService:TUserService,
+              private tUserGroupService:TUserGroupService,
               private location:Location) {
+
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => {
@@ -44,28 +54,14 @@ export class TGroupAddUserComponent implements OnInit {
       })
       .subscribe(data => {
         this.tGroup = data.data;
+        this.getTUserGroupByGroupId();
       });
   }
 
   ngOnInit():void {
-      this.getUserList();
-    $(".select2").select2();
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass: 'iradio_minimal-blue'
-    });
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass: 'iradio_minimal-red'
-    });
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass: 'iradio_flat-green'
-    });
+    this.tUserGroup.type = "leader";
   }
+
   msg_(msg_:string) {
     this.msg = msg_;
   }
@@ -76,66 +72,82 @@ export class TGroupAddUserComponent implements OnInit {
   }
 
   numPages(numPages:number) {
-    console.log(numPages);
+    //console.log(numPages);
   }
 
-  onSelect(user:TUser):void {
-    this.selectedUser = user;
-  }
 
   getUserList():void {
     this.tUserService.getList(this.currentPage, this.pageSize).subscribe(data => {
-      this.userList = data.data.data;
-      this.totalItems = data.data.size;
+      this.userList = data.data.list;
+      this.totalItems = data.data.total;
+      this.selectGroupUserType();
     });
-
    }
-
-  delete():void {
-    if(!this.selectedUser.id){
-      this.msg = "请选择用户信息";
-      return;
-    }
-    if(window.confirm('你确定要删除记录吗？')){
-      this.tUserService.delete(this.selectedUser.id).subscribe(data => {
-        if(data.code==0){
-          this.msg = "删除成功";
-          this.getUserList();
-        }else{
-          this.msg = "删除失败";
-        }
-      });
-    }
-  }
-
-  edit(){
-    if(!this.selectedUser.id){
-      this.msg = "请选择用户信息";
-    }else{
-      this.router.navigate(['/index/tUserUpdate', this.selectedUser.id]);
-    }
-  }
-
-  onSubmit(){
-    this.msg = "添加成功";
-    setTimeout(() => {this.goBack()},1000);
-/*    if(!this.checkGroup(this.tGroup)){
-      return;
-    }
-    this.tGroupMockService.add(this.tGroup)
-      .then(
-        data  => {
-          if(data.code == 0){
-            this.msg = "添加成功";
-            setTimeout(() => {this.goBack()},1000);
-          }else{
-            this.msg = "添加失败";
-          }
-        },
-        error =>  this.errorMessage = <any>error);*/
-  }
 
   goBack(): void {
     this.location.back();
+  }
+
+
+  selectedUser_(user:any){
+    user.selected = !user.selected;
+    this.tUserGroup.groupId = this.tGroup.id;
+    this.tUserGroup.userId = user.id;
+    if(user.selected){
+      this.tUserGroupService.addByUserIdAndGroupId(this.tUserGroup).subscribe(data =>{
+        if(data.code == 0){
+          this.msg = "成功";
+          this.getTUserGroupByGroupId()
+        }else{
+          this.msg = "失败";
+        }
+      });
+    }else{
+      this.tUserGroupService.deleteByUserIdAndGroupId(this.tUserGroup).subscribe(data=>{
+        if(data.code == 0){
+          this.msg = "成功";
+          this.getTUserGroupByGroupId()
+        }else{
+          this.msg = "失败";
+        }
+      })
+    }
+  }
+
+  getTUserGroupByGroupId() {
+    this.tUserService.getListByGroupId(this.tGroup.id).subscribe(data => {
+
+      data.data.leaders.forEach((user) =>{
+        this.leaderUserIds.push(user.id);
+      });
+      data.data.members.forEach((user) =>{
+        this.memberUserIds.push(user.id);
+      });
+
+      this.getUserList();
+    });
+  }
+
+  changeUserGroupType(){
+    this.selectGroupUserType();
+  }
+
+  selectGroupUserType() {
+    this.userList.forEach((user) =>{
+      user.selected = false;
+      if(this.tUserGroup.type=='leader') {
+        this.leaderUserIds.forEach((userId) =>{
+          if(userId==user.id){
+            user.selected = true;
+          }
+        });
+      }else if(this.tUserGroup.type=='member'){
+        this.memberUserIds.forEach((userId) =>{
+          if(userId==user.id){
+            user.selected = true;
+          }
+        });
+      }
+    })
   }
 }

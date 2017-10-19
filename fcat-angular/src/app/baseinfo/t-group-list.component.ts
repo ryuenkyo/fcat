@@ -63,7 +63,6 @@ export class TGroupListComponent implements OnInit {
     this.selectedGroup=new TGroup();
     this.selectedGroupTypeId = groupTypeId;
     this.tGroupService.getListByGroupTypeId(this.selectedGroupTypeId).subscribe(data => {
-      console.log(this.groupList);
       this.groupList = data.data;
     });
   }

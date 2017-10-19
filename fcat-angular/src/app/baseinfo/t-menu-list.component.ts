@@ -41,7 +41,6 @@ export class TMenuListComponent implements OnInit {
       this.menuTree.forEach((menu) =>{
         menu.parentId = null;
       });
-      console.log("menuTree:",this.menuTree);
     })
   }
 
@@ -121,7 +120,6 @@ export class TMenuListComponent implements OnInit {
   getElementByMenuId(menuId:number){
     this.tElementService.getByMenuId(menuId).subscribe(data => {
       this.elementList = data.data;
-      console.log(this.elementList);
     })
   }
 

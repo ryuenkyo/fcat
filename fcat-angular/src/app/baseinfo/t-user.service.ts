@@ -19,7 +19,6 @@ export class TUserService{
   }
 
   getLocalSessionInfo():any{
-    console.log(sessionStorage.getItem("sessionInfo"));
     return JSON.parse(sessionStorage.getItem("sessionInfo"));
   }
 
@@ -46,5 +45,15 @@ export class TUserService{
   update(user: TUser){
     let url = this.baseUrl+"/update";
     return this.httpUtil.put(url, user);
+  }
+
+  getListByGroupId(groupId:number) {
+    let url = this.baseUrl+"/getListByGroupId/"+groupId;
+    return this.httpUtil.get(url);
+  }
+
+  getByKey(term:any) {
+    let url = this.baseUrl+"/getList/"+term;
+    return this.httpUtil.get(url);
   }
 }

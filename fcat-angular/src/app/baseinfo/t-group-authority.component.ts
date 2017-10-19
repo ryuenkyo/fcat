@@ -181,7 +181,6 @@ export class TGroupAuthorityComponent implements OnInit {
     this.selectedAll = false;
     this.tElementService.getByMenuId(menuId).subscribe(data => {
       this.elementList = data.data;
-      console.log(this.elementList);
       this.selectedAll = this.setCheckedElements();
     })
   }

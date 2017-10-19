@@ -12,4 +12,17 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <delete id="deleteByGroupId">
+    delete from t_user_group
+    where group_id=#{groupId}
+  </delete>
+
+  <select id="getByUserIdAndGroupId" resultMap="BaseResultMap" parameterType="com.xfdmao.fcat.user.entity.TUserGroup">
+    select a.* from t_user_group a where a.group_id = #{groupId} and a.user_id=#{userId} and  a.type=#{type}
+  </select>
+  
+  <delete id="deleteByUserIdAndGroupId">
+    delete from t_user_group  where group_id = #{groupId} and user_id=#{userId} and  type=#{type}
+  </delete>
 </mapper>

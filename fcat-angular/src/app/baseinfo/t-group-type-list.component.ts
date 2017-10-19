@@ -56,8 +56,8 @@ export class TGroupTypeListComponent implements OnInit {
 
   getGroupTypeList():void {
     this.tGroupTypeService.getList(this.currentPage, this.pageSize).subscribe(data => {
-      this.groupTypeList = data.data.data;
-      this.totalItems = data.data.size;
+      this.groupTypeList = data.data.list;
+      this.totalItems = data.data.total;
     });
 
   }

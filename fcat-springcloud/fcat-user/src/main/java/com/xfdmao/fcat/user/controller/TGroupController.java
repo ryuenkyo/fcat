@@ -5,11 +5,10 @@ import com.xfdmao.fcat.common.rest.BaseController;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.user.entity.TGroup;
 import com.xfdmao.fcat.user.service.TGroupService;
+import com.xfdmao.fcat.user.service.TUserGroupService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +19,8 @@ import java.util.List;
 @RequestMapping("v1/tGroup")
 public class TGroupController extends BaseController<TGroupService,TGroup,Integer>{
 
+    @Autowired
+    private TUserGroupService tUserGroupService;
     /**
      * 通过groupTypeId获取组织列表
      * @return
@@ -29,6 +30,19 @@ public class TGroupController extends BaseController<TGroupService,TGroup,Intege
     @RequestMapping(value = "groupTypeId/{groupTypeId}", method = RequestMethod.GET)
     public JSONObject getByMenuId(@PathVariable Integer groupTypeId)throws Exception{
         List<TGroup> result = bsi.getListBygroupTypeId(groupTypeId);
+        return JsonUtil.getSuccessJsonObject(result);
+    }
+
+    /**
+     * 保存组织关联的用户
+     * @return
+     * @throws RuntimeException
+     */
+    @ApiOperation(value = "保存组织关联的用户" )
+    @RequestMapping(value = "/{groupId}", method = RequestMethod.POST)
+    public JSONObject groupId(@PathVariable Integer groupId, @RequestBody JSONObject param)throws Exception{
+
+        Boolean result = tUserGroupService.saveGroupRelateUsers(groupId,param);
         return JsonUtil.getSuccessJsonObject(result);
     }
 }
