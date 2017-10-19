@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-10-18 22:04:17
+Date: 2017-10-19 18:27:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `t_authority` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1516 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1551 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_authority
@@ -123,6 +123,27 @@ INSERT INTO `t_authority` VALUES ('1512', '2', 'group', '32', 'element', null, n
 INSERT INTO `t_authority` VALUES ('1513', '2', 'group', '33', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('1514', '2', 'group', '34', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('1515', '2', 'group', '35', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1530', '1', 'group', '5', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1531', '1', 'group', '1', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1532', '1', 'group', '6', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1533', '1', 'group', '7', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1534', '1', 'group', '8', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1535', '1', 'group', '21', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1536', '1', 'group', '13', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1537', '1', 'group', '5', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1538', '1', 'group', '1', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1539', '1', 'group', '6', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1540', '1', 'group', '7', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1541', '1', 'group', '8', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1542', '1', 'group', '21', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('1543', '1', 'group', '10', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1544', '1', 'group', '11', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1545', '1', 'group', '12', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1546', '1', 'group', '13', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1547', '1', 'group', '14', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1548', '1', 'group', '15', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1549', '1', 'group', '24', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('1550', '1', 'group', '27', 'element', null, null);
 
 -- ----------------------------
 -- Table structure for t_element
@@ -296,10 +317,14 @@ CREATE TABLE `t_user_group` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_group
 -- ----------------------------
-INSERT INTO `t_user_group` VALUES ('15', '4', '2', 'leader', '2017-10-06 14:45:03', '2017-10-06 14:45:03');
-INSERT INTO `t_user_group` VALUES ('19', '1', '1', 'member', '2017-10-06 14:45:03', '2017-10-06 14:45:03');
+INSERT INTO `t_user_group` VALUES ('36', '1', '1', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('37', '1', '2', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('38', '1', '5', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('39', '1', '3', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('40', '1', '5', 'member', null, null);
+INSERT INTO `t_user_group` VALUES ('41', '1', '7', 'member', null, null);
