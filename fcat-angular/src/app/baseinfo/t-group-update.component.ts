@@ -1,11 +1,9 @@
-import { Location }               from '@angular/common';
-import 'rxjs/add/operator/switchMap';
-import { ActivatedRoute, Params } from '@angular/router';
-import {Component, OnInit, enableProdMode}      from '@angular/core';
+import {Location} from "@angular/common";
+import "rxjs/add/operator/switchMap";
+import {ActivatedRoute, Params} from "@angular/router";
+import {Component, OnInit, enableProdMode} from "@angular/core";
 import {TGroup} from "./t-group";
 import {TGroupService} from "./t-group.service";
-import {TGroupMockService} from "./t-group-mock.service";
-import {element} from "protractor/built/index";
 enableProdMode();
 @Component({
   templateUrl: './t-group-update.component.html',
@@ -21,19 +19,18 @@ export class TGroupUpdateComponent implements OnInit {
   tGroupList:any[];
   constructor(private tGroupService:TGroupService,
               private route: ActivatedRoute,
-              private location:Location,
-              private tGroupMockService:TGroupMockService) {
+              private location:Location) {
   }
 
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
       .switchMap((params: Params) => {
-        return this.tGroupMockService.getById(+params['id'])
+        return this.tGroupService.getById(+params['id'])
       })
       .subscribe(data => {
         this.tGroup = data.data
-        this.tGroupMockService.getGroupListByGroupTypeId(this.tGroup.groupTypeId).then(data =>{
+        this.tGroupService.getListByGroupTypeId(this.tGroup.groupTypeId).subscribe(data =>{
           this.tGroupList = data.data.filter(group => group.id!=this.tGroup.id);
         });
       });
@@ -56,8 +53,8 @@ export class TGroupUpdateComponent implements OnInit {
     if(!this.checkGroup(this.tGroup)){
       return;
     }
-    this.tGroupMockService.add(this.tGroup)
-      .then(
+    this.tGroupService.add(this.tGroup)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = '更新成功';

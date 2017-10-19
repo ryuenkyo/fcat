@@ -1,8 +1,7 @@
-import { Location }               from '@angular/common';
-import {Component, OnInit, enableProdMode} from '@angular/core';
+import {Location} from "@angular/common";
+import {Component, OnInit, enableProdMode} from "@angular/core";
 import {TGroupType} from "./t-group-type";
 import {TGroupTypeService} from "./t-group-type.service";
-import {TGroupTypeMockService} from "./t-group-type-mock.service";
 enableProdMode();
 @Component({
   templateUrl: './t-group-type-add.component.html',
@@ -16,7 +15,6 @@ export class TGroupTypeAddComponent implements OnInit {
   firstName:string = '基础配置';
   secondName:string = '组织类型管理';
   constructor(private tGroupTypeService:TGroupTypeService,
-              private tGroupTypeMockService:TGroupTypeMockService,
               private location:Location) {
   }
 
@@ -41,8 +39,8 @@ export class TGroupTypeAddComponent implements OnInit {
     if(!this.checkGroupType(this.tGroupType)){
       return;
     }
-    this.tGroupTypeMockService.add(this.tGroupType)
-      .then(
+    this.tGroupTypeService.add(this.tGroupType)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = "添加成功";

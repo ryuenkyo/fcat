@@ -18,20 +18,14 @@ export class TGroupTypeUpdateComponent implements OnInit {
   secondName:string = '组织类型管理';
   constructor(private tGroupTypeService:TGroupTypeService,
               private route: ActivatedRoute,
-              private location:Location,
-              private tGroupTypeMockService:TGroupTypeMockService) {
+              private location:Location) {
   }
 
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tGroupTypeMockService.getById(+params['id']))
-      .subscribe(data => this.tGroupType = data.data);
-/*    this.route.params
-      .switchMap((params: Params) => this.tGroupTypeMockService.getById(+params['id']))
-      .subscribe(data => this.tGroupType = data.data);*/
-
-    /*  this.tGroupType = this.tGroupTypeService.getList().find(groupType => groupType.id ===2);*/
+      .switchMap((params: Params) => this.tGroupTypeService.getById(+params['id']))
+      .subscribe(data => this.tGroupType = data.data); 
   }
   checkGroupType(groupType:TGroupType){
     let result =true;
@@ -49,8 +43,8 @@ export class TGroupTypeUpdateComponent implements OnInit {
     if(!this.checkGroupType(this.tGroupType)){
       return;
     }
-    this.tGroupTypeMockService.add(this.tGroupType)
-      .then(
+    this.tGroupTypeService.add(this.tGroupType)
+      .subscribe(
         data  => {
           if(data.code == 0){
             this.msg = '更新成功';

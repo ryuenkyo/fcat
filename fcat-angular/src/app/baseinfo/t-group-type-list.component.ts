@@ -28,8 +28,7 @@ export class TGroupTypeListComponent implements OnInit {
 
 
   constructor(private router:Router,
-              private tGroupTypeService:TGroupTypeService,
-              private tGroupTypeMockService:TGroupTypeMockService) {
+              private tGroupTypeService:TGroupTypeService) {
 
   }
 
@@ -56,9 +55,7 @@ export class TGroupTypeListComponent implements OnInit {
   }
 
   getGroupTypeList():void {
-    //TODO 1、获取用户列表（分页）  subscribe
-    this.tGroupTypeMockService.getGroupTypeList(this.currentPage, this.pageSize).then(data => {
-      console.log(data);
+    this.tGroupTypeService.getList(this.currentPage, this.pageSize).subscribe(data => {
       this.groupTypeList = data.data.data;
       this.totalItems = data.data.size;
     });
@@ -71,7 +68,7 @@ export class TGroupTypeListComponent implements OnInit {
       return;
     }
     if(window.confirm('你确定要删除记录吗？')){
-      this.tGroupTypeMockService.delete(this.selectedGroupType.id).then(data => {
+      this.tGroupTypeService.delete(this.selectedGroupType.id).subscribe(data => {
         if(data.code==0){
           this.msg = "删除成功";
           this.getGroupTypeList();
