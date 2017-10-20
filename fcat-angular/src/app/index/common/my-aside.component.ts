@@ -12,6 +12,7 @@ export class MyAsideComponent implements OnInit{
   treeMenu:any[];
   app:any;
   selectedMenuId:any;
+  firstMenuId:any;
   username:string;
   selectedSystemId:any;
   menuList:any[];

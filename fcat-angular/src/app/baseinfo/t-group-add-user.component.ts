@@ -12,8 +12,7 @@ import {TGroupService} from "./t-group.service";
 import {TUserGroup} from "./t-user-group";
 import {TUserGroupService} from "./t-user-group.service";
 enableProdMode();//阻止报错：Expression has changed after it was checked
-declare var $:any;
-
+  
 @Component({
   templateUrl: './t-group-add-user.component.html',
 })

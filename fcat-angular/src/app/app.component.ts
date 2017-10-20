@@ -3,8 +3,7 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {Config} from "./app-config";
-
-declare var $:any;
+ 
 @Component({
   selector: 'my-app',
   template: `
@@ -18,7 +17,6 @@ export class AppComponent implements  OnInit{
     this.app = config.appConfig;
   };
   ngOnInit(){
-    $.widget.bridge('uibutton', $.ui.button);
   }
 
 }
