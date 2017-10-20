@@ -67,4 +67,5 @@ ng server --open
 
 #### 3.2 前后端一起部署  
 3.2.1 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap  
-3.2.1 前端：ng serve --base-href /fcat-angular/  
+3.2.2 前端：ng serve --base-href /fcat-angular/  
+3.2.3 访问： http://localhost:8965
