@@ -74,7 +74,7 @@ export class TElementUpdateComponent implements OnInit {
     if(typeof this.tElement.menuId === 'string'){
       this.tElement.menuId = Number(this.tElement.menuId);
     }
-    this.tElementService.add(this.tElement)
+    this.tElementService.update(this.tElement)
       .subscribe(
         data  => {
           if(data.code == 0){

@@ -39,7 +39,7 @@ export class TGroupTypeAddComponent implements OnInit {
     if(!this.checkGroupType(this.tGroupType)){
       return;
     }
-    this.tGroupTypeService.add(this.tGroupType)
+    this.tGroupTypeService.update(this.tGroupType)
       .subscribe(
         data  => {
           if(data.code == 0){

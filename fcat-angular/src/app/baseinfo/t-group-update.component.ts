@@ -53,7 +53,7 @@ export class TGroupUpdateComponent implements OnInit {
     if(!this.checkGroup(this.tGroup)){
       return;
     }
-    this.tGroupService.add(this.tGroup)
+    this.tGroupService.update(this.tGroup)
       .subscribe(
         data  => {
           if(data.code == 0){

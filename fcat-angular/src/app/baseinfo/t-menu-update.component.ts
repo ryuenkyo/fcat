@@ -66,7 +66,7 @@ export class TMenuUpdateComponent implements OnInit {
     if(!this.checkMenu(this.tMenu)){
       return;
     }
-    this.tMenuService.add(this.tMenu)
+    this.tMenuService.update(this.tMenu)
       .subscribe(
         data  => {
           if(data.code == 0){
