@@ -29,7 +29,6 @@ export class MyAsideComponent implements OnInit{
 
   getUserMenu():void {
     this.tMenuService.getTree().subscribe(data => {
-      console.log("data:",data);
       this.treeMenu = data.data;
       this.selectMenuList();
     });
@@ -42,7 +41,6 @@ export class MyAsideComponent implements OnInit{
       }
     }
     for(let i=0;i<this.treeMenu.length;i++){
-      console.log("data:",this.treeMenu[i]);
       if(this.treeMenu[i].id==this.selectedSystemId){
         this.menuList = this.treeMenu[i].children;
       }

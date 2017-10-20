@@ -11,7 +11,7 @@ export class TUserService{
 
   getSessionInfo(){
     let url = "/fcat-user/v1/session/sessionInfo";
-    return this.httpUtil.get(url);
+    return  this.httpUtil.get(url);
   }
 
   setLocalSessionInfo(sessionInfo:any){

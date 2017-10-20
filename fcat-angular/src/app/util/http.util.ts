@@ -57,10 +57,11 @@ export class HttpUtil{
     //url = this.getSessionIdUrl(url);
     let options = new RequestOptions({withCredentials:this.withCredentials});
     //noinspection TypeScriptValidateTypes
-    return this.http.get(url, options)
+    return  this.http.get(url, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
+
 
   private extractData(res: Response) {
     let body = res.json();
