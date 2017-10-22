@@ -65,6 +65,7 @@ export class TGroupAuthorityComponent implements OnInit {
             this.selectedElementIds = data.data.elementIds;
             this.selectedMenuIds = data.data.menuIds;
             this.setText(this.menuTree,data.data.menuIds);
+            this.treeSelected = this.menuTree;
           })
         })
       });
@@ -132,10 +133,7 @@ export class TGroupAuthorityComponent implements OnInit {
   }
 
   addGroupAuthority(){
-    if(!this.treeSelected || this.treeSelected.length<1){
-      this.msg = "请设置权限";
-      return;
-    }
+    this.selectedMenuIds = [];
     this.treeSelected.forEach((menu) => {
       if(menu.checked){
         this.selectedMenuIds.push(menu.id);
@@ -147,6 +145,7 @@ export class TGroupAuthorityComponent implements OnInit {
     let param = {menuIds:[],elementIds:[]};
     param.menuIds = this.selectedMenuIds;
     param.elementIds = this.selectedElementIds;
+    console.log(JSON.stringify(param));
     this.tAuthorityService.authority(param,this.tGroup.id).subscribe(data => {
       if(data.code == 0){
         this.msg = "授权成功";

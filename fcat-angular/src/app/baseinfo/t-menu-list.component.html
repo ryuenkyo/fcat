@@ -21,9 +21,9 @@
         <div class="box-header with-border">
           <h3 class="box-title">导航菜单</h3>
           <div class="btn-group" style="margin-left:10px;">
-            <button type="button" class="btn btn-info" routerLink="../tMenuAdd" ><i class="fa fa-plus"></i></button>
-            <button type="button"  class="btn btn-info" (click)="updateMenu()"><i class="fa fa-pencil"></i></button>
-            <button type="button" class="btn btn-info" (click)="deleteMenu()"><i class="fa fa-institution (alias)"></i></button>
+            <button *ngIf="addTMenuButton" type="button" class="btn btn-info" routerLink="../tMenuAdd" ><i class="fa fa-plus"></i></button>
+            <button *ngIf="editTMenuButton" type="button"  class="btn btn-info" (click)="updateMenu()"><i class="fa fa-pencil"></i></button>
+            <button *ngIf="deleteTMenuButton" type="button" class="btn btn-info" (click)="deleteMenu()"><i class="fa fa-trash"></i></button>
           </div>
 
           <div class="box-tools">
@@ -66,9 +66,9 @@
         <div class="box-header with-border">
           <h3 class="box-title">元素</h3>
           <div class="btn-group" style="margin-left:10px;">
-            <button type="button" class="btn btn-info" (click)="addElement()"  ><i class="fa fa-plus"></i></button>
-            <button type="button" class="btn btn-info" (click)="updateElement()"><i class="fa fa-pencil"></i></button>
-            <button type="button" class="btn btn-info" (click)="deleteElement()"><i class="fa fa-institution (alias)"></i></button>
+            <button *ngIf="addTElementButton" type="button" class="btn btn-info" (click)="addElement()"  ><i class="fa fa-plus"></i></button>
+            <button *ngIf="editTElementButton" type="button" class="btn btn-info" (click)="updateElement()"><i class="fa fa-pencil"></i></button>
+            <button *ngIf="deleteTElementButton" type="button" class="btn btn-info" (click)="deleteElement()"><i class="fa fa-trash"></i></button>
           </div>
 
           <div class="box-tools">

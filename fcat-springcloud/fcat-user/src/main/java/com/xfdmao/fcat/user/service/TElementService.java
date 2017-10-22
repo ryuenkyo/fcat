@@ -11,4 +11,6 @@ import java.util.List;
 public interface TElementService extends BaseService<TElement>{
 
     List<TElement> getListByMenuId(Integer menuId);
+
+    List<TElement> getAuthorityElementsByUsername(String username);
 }

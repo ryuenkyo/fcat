@@ -30,11 +30,11 @@
         <div class="box-header">
           <h3 class="box-title">组织列表</h3>
           <div class="btn-group" style="margin-left:10px;">
-            <button (click)="add()" type="button" class="btn btn-info"><i class="fa fa-plus"></i></button>
-            <button (click)="edit()"  type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
-            <button (click)="delete()"  type="button" class="btn btn-info"><i class="fa fa-trash"></i></button>
-            <button (click)="groupAuthority()"  type="button" class="btn btn-info"><i class="fa fa-object-group"></i>角色授权</button>
-            <button (click)="groupAddUser()"  type="button" class="btn btn-info"><i class="fa fa-user-plus"></i>关联用户</button>
+            <button *ngIf="addButton"  (click)="add()" type="button" class="btn btn-info"><i class="fa fa-plus"></i></button>
+            <button *ngIf="editButton"  (click)="edit()"  type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
+            <button *ngIf="deleteButton"  (click)="delete()"  type="button" class="btn btn-info"><i class="fa fa-trash"></i></button>
+            <button *ngIf="groupAuthorityButton"  (click)="groupAuthority()"  type="button" class="btn btn-info"><i class="fa fa-object-group"></i>角色授权</button>
+            <button *ngIf="groupAddUserButton"  (click)="groupAddUser()"  type="button" class="btn btn-info"><i class="fa fa-user-plus"></i>关联用户</button>
           </div>
 
           <div class="box-tools">

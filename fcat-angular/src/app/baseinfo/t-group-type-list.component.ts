@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {TGroupTypeService} from "./t-group-type.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroupType} from "./t-group-type";
+import {TUserService} from "./t-user.service";
 
 @Component({
   templateUrl: './t-group-type-list.component.html',
@@ -25,14 +26,34 @@ export class TGroupTypeListComponent implements OnInit {
   totalItems:number;
   currentPage:number = 1;
 
+  authorityTElements:any[];
+  editButton:boolean=false;
+  deleteButton:boolean=false;
+  addButton:boolean=false;
+  viewButton:boolean=false;
 
   constructor(private router:Router,
+              private tUserService:TUserService,
               private tGroupTypeService:TGroupTypeService) {
 
   }
 
   ngOnInit():void {
-    this.getGroupTypeList();
+    this.authorityTElements = this.tUserService.getLocalAuthorityTElements();
+    this.authorityTElements.forEach((tElement) =>{
+      if(tElement.code == 'groupTypeManager:view'){
+        this.viewButton=true;
+      }else if(tElement.code == 'groupTypeManager:btn_add'){
+        this.addButton = true;
+      }else if(tElement.code == 'groupTypeManager:btn_edit'){
+        this.editButton = true;
+      }else if(tElement.code == 'groupTypeManager:btn_del'){
+        this.deleteButton = true;
+      }
+    })
+    if(this.viewButton) {
+      this.getGroupTypeList();
+    }
   }
   msg_(msg_:string) {
     this.msg = msg_;

@@ -7,6 +7,7 @@ import {TMenuService} from "./t-menu.service";
 import {TElementService} from "./t-element.service";
 import {TMenu} from "./t-menu";
 import {TElement} from "./t-element";
+import {TUserService} from "./t-user.service";
 enableProdMode();
 @Component({
   templateUrl: './t-menu-list.component.html',
@@ -29,19 +30,50 @@ export class TMenuListComponent implements OnInit {
 
   selectedElement:TElement = new TElement();
 
+  authorityTElements:any[];
+  editTMenuButton:boolean=false;
+  deleteTMenuButton:boolean=false;
+  addTMenuButton:boolean=false;
+  viewTMenuButton:boolean=false;
+
+  editTElementButton:boolean=false;
+  deleteTElementButton:boolean=false;
+  addTElementButton:boolean=false;
+  viewTElementButton:boolean=false;
+
   constructor(private router:Router,
               private tMenuService:TMenuService,
+              private tUserService:TUserService,
               private tElementService:TElementService) {
   }
 
   ngOnInit():void {
-    this.getList();
-    this.tMenuService.getTree().subscribe(data => {
-      this.menuTree = data.data;
-      this.menuTree.forEach((menu) =>{
-        menu.parentId = null;
-      });
+    this.authorityTElements = this.tUserService.getLocalAuthorityTElements();
+    console.log("this.authorityTElements",this.authorityTElements);
+    this.authorityTElements.forEach((tElement) =>{
+      if(tElement.code == 'menuManager:view'){
+        this.viewTMenuButton=true;
+      }else if(tElement.code == 'menuManager:btn_add'){
+        this.addTMenuButton = true;
+      }else if(tElement.code == 'menuManager:btn_edit'){
+        this.editTMenuButton = true;
+      }else if(tElement.code == 'menuManager:btn_del'){
+        this.deleteTMenuButton = true;
+      }
+
+      if(tElement.code == 'menuManager:element_view'){
+        this.viewTElementButton=true;
+      }else if(tElement.code == 'menuManager:btn_element_add'){
+        this.addTElementButton = true;
+      }else if(tElement.code == 'menuManager:btn_element_edit'){
+        this.editTElementButton = true;
+      }else if(tElement.code == 'menuManager:btn_element_del'){
+        this.deleteTElementButton = true;
+      }
     })
+    if(this.viewTMenuButton){
+      this.getList();
+    }
   }
 
   msg_(msg_:string) {
@@ -55,9 +87,12 @@ export class TMenuListComponent implements OnInit {
    }
 
   getList(){
-    this.tMenuService.getList(1,1000).subscribe(data => {
-      this.menuList = data.data;
-    });
+    this.tMenuService.getTree().subscribe(data => {
+      this.menuTree = data.data;
+      this.menuTree.forEach((menu) =>{
+        menu.parentId = null;
+      });
+    })
   }
 
   updateMenu(){

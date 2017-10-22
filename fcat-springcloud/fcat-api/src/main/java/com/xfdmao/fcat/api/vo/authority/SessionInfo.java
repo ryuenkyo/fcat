@@ -25,6 +25,5 @@ public class SessionInfo implements Serializable{
 	 */
     private String userName;
 
-    private AuthInfo authinfo;
 
 }

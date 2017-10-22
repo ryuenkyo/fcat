@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TElementMapper extends Mapper<TElement> {
     List<TElement> getListByMenuId(Integer menuId);
+
+    List<TElement> getAuthorityElementsByUsername(String username);
 }

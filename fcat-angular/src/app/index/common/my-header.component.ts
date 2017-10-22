@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Config } from '../../app-config';
 import {TUserService} from "../../baseinfo/t-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'my-header',
@@ -13,11 +14,16 @@ export class MyHeaderComponent  implements OnInit{
 
   sidebar:boolean=true;
   constructor(private config:Config,
+              private router: Router,
               private tUserService:TUserService){
     this.app = config.appConfig;
     this.tUserService.getSessionInfo().subscribe(data =>{
-      this.tUserService.setLocalSessionInfo(data.data);
-      this.username = data.data.userName;
+      if( data.code==0 && data.data && data.data.userName){
+        this.tUserService.setLocalSessionInfo(data.data);
+        this.username = data.data.userName;
+      }else{
+        top.location.href = "/";
+      }
     });
   }
 

@@ -4,7 +4,6 @@ import {FormsModule}   from '@angular/forms';
 
 
 import {IndexComponent}        from './index.component';
-import {DashboardComponent}  from './dashboard.component';
 import {IndexRoutingModule} from "./index-routing.module";
 import {MyAsideComponent} from "./common/my-aside.component";
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -20,7 +19,7 @@ import {TUserModule} from "../baseinfo/t-user.module";
     JsonpModule,
     TUserModule
   ],
-  declarations: [IndexComponent, DashboardComponent, MyHeaderComponent,
+  declarations: [IndexComponent, MyHeaderComponent,
     MyAsideComponent
      ],
   providers: [

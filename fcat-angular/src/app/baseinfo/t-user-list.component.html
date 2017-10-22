@@ -19,9 +19,9 @@
         <div class="box-header">
           <h3 class="box-title">用户列表</h3>
           <div class="btn-group" style="margin-left:10px;">
-            <button routerLink="../tUserAdd" type="button" class="btn btn-info"><i class="fa fa-plus"></i></button>
-            <button (click)="edit()"  type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
-            <button (click)="delete()"  type="button" class="btn btn-info"><i class="fa fa-trash"></i></button>
+            <button *ngIf="addButton" routerLink="../tUserAdd" type="button" class="btn btn-info"><i class="fa fa-plus"></i></button>
+            <button *ngIf="editButton" (click)="edit()"  type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
+            <button *ngIf="deleteButton" (click)="delete()"  type="button" class="btn btn-info"><i class="fa fa-trash"></i></button>
           </div>
 
           <div class="box-tools">

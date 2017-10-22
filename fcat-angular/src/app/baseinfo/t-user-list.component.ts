@@ -25,12 +25,33 @@ export class TUserListComponent implements OnInit {
   totalItems:number;
   currentPage:number = 1;
 
+  authorityTElements:any[];
+
+  editButton:boolean=false;
+  deleteButton:boolean=false;
+  addButton:boolean=false;
+  viewButton:boolean=false;
+
   constructor(private router:Router,
               private tUserService:TUserService) {
   }
 
   ngOnInit():void {
+    this.authorityTElements = this.tUserService.getLocalAuthorityTElements();
+    this.authorityTElements.forEach((tElement) =>{
+      if(tElement.code == 'userManager:view'){
+        this.viewButton=true;
+      }else if(tElement.code == 'menuManager:btn_add'){
+        this.addButton = true;
+      }else if(tElement.code == 'menuManager:btn_edit'){
+        this.editButton = true;
+      }else if(tElement.code == 'menuManager:btn_del'){
+        this.deleteButton = true;
+      }
+    })
+    if(this.viewButton){
       this.getUserList();
+    }
   }
   msg_(msg_:string) {
     this.msg = msg_;

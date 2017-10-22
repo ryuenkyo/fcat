@@ -7,6 +7,7 @@ import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroup} from "./t-group";
+import {TUserService} from "./t-user.service";
 
 @Component({
   templateUrl: 't-group-list.component.html'
@@ -27,14 +28,41 @@ export class TGroupListComponent implements OnInit {
 
   selectedGroup:TGroup = new TGroup();
 
+  authorityTElements:any[];
+  editButton:boolean=false;
+  deleteButton:boolean=false;
+  addButton:boolean=false;
+  viewButton:boolean=false;
+  groupAuthorityButton:boolean=false;
+  groupAddUserButton:boolean=false;
 
   constructor(private router:Router,
               private tGroupTypeService:TGroupTypeService,
+              private tUserService:TUserService,
               private tGroupService:TGroupService) {
   }
 
   ngOnInit():void {
-    this.getGrupTypeByPage();
+    this.authorityTElements = this.tUserService.getLocalAuthorityTElements();
+    this.authorityTElements.forEach((tElement) =>{
+      if(tElement.code == 'groupManager:view'){
+        this.viewButton=true;
+      }else if(tElement.code == 'groupManager:btn_add'){
+        this.addButton = true;
+      }else if(tElement.code == 'groupManager:btn_edit'){
+        this.editButton = true;
+      }else if(tElement.code == 'groupManager:btn_del'){
+        this.deleteButton = true;
+      }else if(tElement.code == 'groupManager:btn_resourceManager'){
+        this.groupAuthorityButton = true;
+      }else if(tElement.code == 'groupManager:btn_userManager'){
+        this.groupAddUserButton = true;
+      }
+
+    })
+    if(this.viewButton) {
+      this.getGrupTypeByPage();
+    }
   }
 
   msg_(msg_:string) {

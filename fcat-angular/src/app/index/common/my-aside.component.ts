@@ -26,9 +26,16 @@ export class MyAsideComponent implements OnInit{
     this.flag=false;
   }
   ngOnInit():void {
-    let sessionInfo = this.tUserService.getLocalSessionInfo();
-    this.username = sessionInfo.userName;
-    this.getUserMenu();
+    this.tUserService.getSessionInfo().subscribe(data =>{
+      this.tUserService.setLocalSessionInfo(data.data);
+      this.username = data.data.userName;
+      //this.getUserMenu();
+      this.tUserService.getAuthorityByUsername(this.username).subscribe(data =>{
+        this.treeMenu = data.data.tMenuTrees;
+        this.selectMenuList();
+        this.tUserService.setLocalAuthorityTElements(data.data.tElements);
+      });
+    });
   }
 
   toggle(){
@@ -38,7 +45,6 @@ export class MyAsideComponent implements OnInit{
   getUserMenu():void {
     this.tMenuService.getTree().subscribe(data => {
       this.treeMenu = data.data;
-      console.log(this.treeMenu);
       this.selectMenuList();
     });
   }

@@ -18,4 +18,9 @@ public class TElementServiceImpl extends BaseServiceImpl<TElementMapper,TElement
     public List<TElement> getListByMenuId(Integer menuId) {
         return mapper.getListByMenuId(menuId);
     }
+
+    @Override
+    public List<TElement> getAuthorityElementsByUsername(String username) {
+        return mapper.getAuthorityElementsByUsername(username);
+    }
 }

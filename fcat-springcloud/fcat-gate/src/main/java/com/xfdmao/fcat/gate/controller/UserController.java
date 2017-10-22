@@ -24,7 +24,7 @@ public class UserController {
 		sessionInfo.setUserName(username);
 		request.getSession().setAttribute("sessionInfo", sessionInfo);
 
-        return "redirect:/fcat-angular/index";
+        return "redirect:/fcat-angular/index/dashboard";
     }
     
     

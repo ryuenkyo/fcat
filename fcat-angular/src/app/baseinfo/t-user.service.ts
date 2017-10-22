@@ -21,7 +21,13 @@ export class TUserService{
   getLocalSessionInfo():any{
     return JSON.parse(sessionStorage.getItem("sessionInfo"));
   }
+  setLocalAuthorityTElements(tElements:any){
+    sessionStorage.setItem("tElements",JSON.stringify(tElements));
+  }
 
+  getLocalAuthorityTElements():any{
+    return JSON.parse(sessionStorage.getItem("tElements"));
+  }
 
   getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
@@ -54,6 +60,11 @@ export class TUserService{
 
   getByKey(term:any) {
     let url = this.baseUrl+"/getList/"+term;
+    return this.httpUtil.get(url);
+  }
+
+  getAuthorityByUsername(username:string):any {
+    let url = this.baseUrl+"/getAuthority/"+username;
     return this.httpUtil.get(url);
   }
 }
