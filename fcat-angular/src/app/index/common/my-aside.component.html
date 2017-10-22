@@ -14,7 +14,8 @@
     </div>
     <!-- search form -->
     <div class="form-group sidebar-menu">
-      <select [(ngModel)]="selectedSystemId"  (change)="selectMenuList()" type="text" name="q" class="form-control" style="background-color:#222d32;color:#FFF;border-color:#3b568c;">
+      <select [(ngModel)]="selectedSystemId"   (change)="selectMenuList()" type="text" name="q"
+              class="form-control treeview" style="background-color:#222d32;color:#FFF;border-color:#3b568c;">
         <option *ngFor="let menu of treeMenu" value="{{menu.id}}">{{menu.title}}</option>
       </select>
     </div>

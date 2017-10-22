@@ -16,10 +16,14 @@ export class MyAsideComponent implements OnInit{
   username:string;
   selectedSystemId:any;
   menuList:any[];
+
+  flag : boolean;
+
   constructor(private config:Config,
               private tMenuService:TMenuService,
               private tUserService:TUserService){
     this.app = config.appConfig;
+    this.flag=false;
   }
   ngOnInit():void {
     let sessionInfo = this.tUserService.getLocalSessionInfo();
@@ -27,9 +31,14 @@ export class MyAsideComponent implements OnInit{
     this.getUserMenu();
   }
 
+  toggle(){
+    this.flag = !this.flag;
+  }
+
   getUserMenu():void {
     this.tMenuService.getTree().subscribe(data => {
       this.treeMenu = data.data;
+      console.log(this.treeMenu);
       this.selectMenuList();
     });
   }

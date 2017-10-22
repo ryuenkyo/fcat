@@ -1,7 +1,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Config} from "../app-config";
- 
+
 @Component({
   selector: 'my-app',
   templateUrl: './index.component.html',
@@ -15,7 +15,6 @@ export class IndexComponent implements OnInit{
     this.app = config.appConfig;
   }
   ngOnInit(){
-
   }
 
 }
