@@ -4,7 +4,11 @@ import {IndexComponent} from "./index.component";
 
 const routes: Routes = [
   {path: 'index',  component: IndexComponent,children: [
-
+   {
+     path: '',
+     redirectTo: '/index/dashboard',
+     pathMatch: 'full'
+    }
   ]
   }
 ];

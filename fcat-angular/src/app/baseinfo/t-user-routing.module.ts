@@ -90,7 +90,11 @@ const routes: Routes = [
       path: 'dashboard',
       component:DashboardComponent
     }
-  ]}
+  ]},
+  { path: '**',
+    redirectTo: '/index/dashboard',
+    pathMatch: 'full'
+  }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
