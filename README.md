@@ -20,7 +20,6 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - IDEA
 
 
-## 前端项目：fcat-angular
 
 #### 部署
 ```
