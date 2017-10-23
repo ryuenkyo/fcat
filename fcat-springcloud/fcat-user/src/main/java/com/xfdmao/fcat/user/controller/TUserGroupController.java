@@ -1,7 +1,7 @@
 package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xfdmao.fcat.common.rest.BaseController;
+import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.user.entity.TUserGroup;
 import com.xfdmao.fcat.user.service.TUserGroupService;

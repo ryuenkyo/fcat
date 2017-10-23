@@ -1,6 +1,6 @@
 package com.xfdmao.fcat.user.controller;
 
-import com.xfdmao.fcat.common.rest.BaseController;
+import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.user.entity.TGroupType;
 import com.xfdmao.fcat.user.service.TGroupTypeService;
 import org.springframework.web.bind.annotation.RequestMapping;

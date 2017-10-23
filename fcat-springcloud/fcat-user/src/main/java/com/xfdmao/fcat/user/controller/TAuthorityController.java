@@ -2,15 +2,12 @@ package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xfdmao.fcat.common.rest.BaseController;
+import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.user.entity.TAuthority;
-import com.xfdmao.fcat.user.entity.TElement;
 import com.xfdmao.fcat.user.service.TAuthorityService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Created by xiangfei on 2017/10/17.

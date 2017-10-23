@@ -1,4 +1,4 @@
-package com.xfdmao.fcat.common.rest;
+package com.xfdmao.fcat.common.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
@@ -7,7 +7,6 @@ import com.xfdmao.fcat.common.constant.CommonConstant;
 import com.xfdmao.fcat.common.service.BaseService;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

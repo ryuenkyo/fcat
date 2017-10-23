@@ -1,11 +1,10 @@
 package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xfdmao.fcat.common.rest.BaseController;
+import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.common.util.TreeUtil;
 import com.xfdmao.fcat.user.entity.TElement;
-import com.xfdmao.fcat.user.entity.TGroup;
 import com.xfdmao.fcat.user.entity.TMenu;
 import com.xfdmao.fcat.user.entity.TUser;
 import com.xfdmao.fcat.user.po.TMenuTree;
