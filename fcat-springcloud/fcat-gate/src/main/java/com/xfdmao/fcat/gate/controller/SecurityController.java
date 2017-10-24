@@ -1,5 +1,6 @@
 package com.xfdmao.fcat.gate.controller;
 
+import com.xfdmao.fcat.common.util.UserDetailsUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class SecurityController {
 		if(redirectUrl != null){
 			return redirectUrl;
 		}
+		modelMap.put("user",UserDetailsUtil.getCurrentUser());
 		return "login";
 	}
 

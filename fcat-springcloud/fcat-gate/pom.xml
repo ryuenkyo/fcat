@@ -83,11 +83,6 @@
             <version>1.16.18</version>
             <scope>provided</scope>
         </dependency>
-          <dependency>
-            <groupId>com.yunpian.sdk</groupId>
-            <artifactId>yunpian-java-sdk</artifactId>
-            <version>1.2.3</version>
-        </dependency>
     </dependencies>
     <build>
         <finalName>fcat-gate</finalName>
