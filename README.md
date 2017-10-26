@@ -31,10 +31,25 @@ cd FCat\fcat-angular
 npm install
 ```
 ```
-- 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap  
-- 前端：ng serve --base-href /fcat-angular/  
-- 访问： http://localhost:8965
+- master分支  
+- 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
+- 前端：ng serve --base-href 
+- 访问： http://localhost:4200 
 ```
+
+```
+- fcat-v1分支
+- 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
+- 前端：ng serve --base-href /fcat-angular/  
+- 访问： http://localhost:8965 
+```
+
+```
+- fcat-angular分支 
+- 前端：ng serve --base-href  
+- 访问： http://localhost:4200
+```
+
 
 ##### 功能    
 - 项目搭建、架构设计  
