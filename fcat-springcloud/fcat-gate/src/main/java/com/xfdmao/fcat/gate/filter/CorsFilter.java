@@ -1,4 +1,3 @@
-/*
 package com.xfdmao.fcat.gate.filter;
 
 import org.springframework.stereotype.Component;
@@ -8,11 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-*/
 /**
  * Created by xiangfei on 2017/10/16.
- *//*
-
+ */
 @Component
 public class CorsFilter implements Filter{
     final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(CorsFilter.class);
@@ -21,9 +18,10 @@ public class CorsFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
 
+        System.err.println(request.getHeader("origin"));
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
          chain.doFilter(req, res);
@@ -31,4 +29,3 @@ public class CorsFilter implements Filter{
     public void init(FilterConfig filterConfig) {}
     public void destroy() {}
 }
-*/

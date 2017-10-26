@@ -6,6 +6,7 @@
 <generatorConfiguration>
 	<context id="Mysql" targetRuntime="MyBatis3Simple"
 		defaultModelType="flat">
+		<property name="javaFileEncoding" value="UTF-8"/>
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 		<property name="mergeable" value="false"></property>

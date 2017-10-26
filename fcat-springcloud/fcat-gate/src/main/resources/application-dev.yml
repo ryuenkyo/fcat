@@ -20,8 +20,7 @@ zuul:
   routes:
     fcat-user:
       path: /fcat-user/**
-    fcat-angular:
-      path: /fcat-angular/**
+      serviceId: fcat-user
   sensitive-headers:
   host:
      connect-timeout-millis: 60000
@@ -29,15 +28,9 @@ zuul:
 
 ribbon:
   eureka:
-    enabled: false
+    enabled: true
   ReadTimeout: 60000
   ConnectTimeout: 60000
-fcat-user:
-  ribbon:
-    listOfServers: localhost:8964
-fcat-angular:
-  ribbon:
-    listOfServers: localhost:4200
 
 eureka:
     instance:

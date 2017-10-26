@@ -39,13 +39,6 @@ public class SessionAccessFilter extends ZuulFilter {
 		final String requestUri = request.getRequestURI();
 		final String method = request.getMethod();
 
-		System.err.println("fcat-gate  sessionId:"+request.getSession().getId());
-
-		if (requestUri.contains(".") || requestUri.startsWith("/service")
-				|| requestUri.startsWith("/fcat-user") || requestUri.startsWith("/swagger-ui"))
-
-			log.info("uri：" + requestUri + "----method：" + method);
-
 		List<PermissionInfo> permissionInfos = null;
 		if (request.getSession().getAttribute("permission") == null) {
 			request.getSession().setAttribute("permission", permissionInfos);

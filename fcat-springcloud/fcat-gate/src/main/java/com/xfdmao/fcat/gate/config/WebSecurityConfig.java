@@ -1,5 +1,11 @@
 package com.xfdmao.fcat.gate.config;
 
+import com.alibaba.fastjson.JSON;
+import com.xfdmao.fcat.common.enumtype.ResultCodeEnum;
+import com.xfdmao.fcat.common.util.HttpHelper;
+import com.xfdmao.fcat.common.util.JsonUtil;
+import com.xfdmao.fcat.gate.filter.CodeUsernamePasswordAuthenticationFilter;
+import com.xfdmao.fcat.gate.filter.CorsFilter;
 import com.xfdmao.fcat.gate.service.GateUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
@@ -10,8 +16,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
@@ -21,7 +29,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.*;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -41,9 +52,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   OAuth2ClientContext oauth2ClientContext;
 
+  @Autowired
+  private CorsFilter corsFilter;
+
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(detailsService)/*.passwordEncoder(new BCryptPasswordEncoder())*/;
+    auth.userDetailsService(detailsService).and()
+            .authenticationProvider(rememberMeAuthenticationProvider()) /*.passwordEncoder(new BCryptPasswordEncoder())*/;
   }
 
   @Override
@@ -52,29 +67,93 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return super.authenticationManagerBean();
   }
 
+  /**
+   * 忽略静态文件
+   */
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring().antMatchers("/js/**", "/img/**", "/css/**", "/images/**","fav.ico");
+  }
+
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     //解决Refused to display 'http://......' in a frame because it set 'X-Frame-Options' to 'DENY'. "错误
     http.headers().frameOptions().disable();
-    http
-            .authorizeRequests()
-            .antMatchers("/user/**").authenticated().anyRequest().permitAll()
-            .and()
-            .exceptionHandling()
-            .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .defaultSuccessUrl("/user/info").permitAll()
-            .failureUrl("/login?err=1").permitAll()
-            .and()
-            .logout()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .logoutSuccessUrl("/login").permitAll()
-            .and()
-            .addFilterBefore(githubFilter(), BasicAuthenticationFilter.class);
+
+
+
+
+    http.authorizeRequests().antMatchers("/", "/login/**").permitAll()
+            // user权限可以访问的请求
+            .antMatchers("/security/user").hasRole("user")
+            // admin权限可以访问的请求
+            .antMatchers("/security/admin").hasRole("admin")
+            // SpEL表达式:需要拥有user权限，且进行了完全认证
+            .antMatchers("/user/account").access("hasRole('user') and isFullyAuthenticated()")
+            // 其他地址的访问均需验证权限（需要登录）
+            .anyRequest().authenticated().and()
+            .addFilterBefore(corsFilter,UsernamePasswordAuthenticationFilter.class)
+            .addFilterAt(codeUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class).exceptionHandling()
+            .authenticationEntryPoint((request, response, authException) -> {
+              String result = JSON.toJSONString(JsonUtil.getResultJson(ResultCodeEnum.NOLOGIN));
+              HttpHelper.setResponseJsonData(response,result);
+            }).and()
+            .addFilterBefore(corsFilter,LogoutFilter.class)
+            .addFilterAt(rememberMeAuthenticationFilter(), LogoutFilter.class)
+            .formLogin().loginPage("/login_page")
+            .loginProcessingUrl("/login").permitAll().and()
+            .logout().deleteCookies("remember-me").logoutSuccessHandler(new CustomLogoutSuccessHandler()).permitAll();
     http.csrf().disable();
   }
+
+
+  @Bean
+  public CodeUsernamePasswordAuthenticationFilter codeUsernamePasswordAuthenticationFilter() throws Exception {
+    CodeUsernamePasswordAuthenticationFilter codeUsernamePasswordAuthenticationFilter = new CodeUsernamePasswordAuthenticationFilter();
+    codeUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+    codeUsernamePasswordAuthenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler());
+    codeUsernamePasswordAuthenticationFilter.setAuthenticationFailureHandler(authenticationFailureHandler());
+    codeUsernamePasswordAuthenticationFilter.setRememberMeServices(tokenBasedRememberMeServices());
+    return codeUsernamePasswordAuthenticationFilter;
+  }
+
+
+
+  @Bean
+  public AuthenticationSuccessHandler authenticationSuccessHandler() {
+    return new CustomAuthenticationSuccessHandler();
+  }
+
+
+  @Bean
+  public AuthenticationFailureHandler authenticationFailureHandler() {
+    return new CustomAuthenticationFailureHandler();
+  }
+
+  @Bean
+  public RememberMeAuthenticationProvider rememberMeAuthenticationProvider() {
+    RememberMeAuthenticationProvider rmap = new RememberMeAuthenticationProvider("testallKey");
+    return rmap;
+  }
+
+  @Bean
+  public TokenBasedRememberMeServices tokenBasedRememberMeServices() {
+    TokenBasedRememberMeServices tbrms = new TokenBasedRememberMeServices("testallKey", detailsService);
+    // 设置cookie过期时间为2天
+    tbrms.setTokenValiditySeconds(60 * 60 * 24 * 2);
+    // 设置checkbox的参数名为rememberMe（默认为remember-me），注意如果是ajax请求，参数名不是checkbox的name而是在ajax的data里
+    tbrms.setParameter("rememberMe");
+    tbrms.setAlwaysRemember(false);
+    return tbrms;
+  }
+
+
+  @Bean
+  public RememberMeAuthenticationFilter rememberMeAuthenticationFilter() throws Exception {
+    RememberMeAuthenticationFilter myFilter = new RememberMeAuthenticationFilter(authenticationManagerBean(), tokenBasedRememberMeServices());
+    return myFilter;
+  }
+
 
 
   private Filter githubFilter() {

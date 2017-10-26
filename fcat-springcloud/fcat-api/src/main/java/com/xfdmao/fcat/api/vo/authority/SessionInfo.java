@@ -23,7 +23,7 @@ public class SessionInfo implements Serializable{
 	/**
 	 * 登录名
 	 */
-    private String userName;
+    private String username;
 
 
 }

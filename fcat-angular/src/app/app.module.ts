@@ -7,10 +7,11 @@ import {AppRoutingModule} from "./app-routing.module";
 import {Config} from "./app-config";
 import {IndexModule} from "./index/index.module";
 import {HttpUtil} from "./util/http.util";
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
   imports: [BrowserModule,
-    AppRoutingModule,IndexModule],
+    AppRoutingModule,LoginModule,IndexModule],
   declarations: [AppComponent
      ],
   providers: [

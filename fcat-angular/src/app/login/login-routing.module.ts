@@ -1,17 +1,15 @@
-/**
- * Created by F1 on 2017/5/28.
- */
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {LoginComponent} from "./login.component";
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
+  {
+    path: 'login',
+    component:  LoginComponent
   }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
+export class LoginRoutingModule {}

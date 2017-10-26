@@ -26,9 +26,9 @@ export class MyAsideComponent implements OnInit{
     this.flag=false;
   }
   ngOnInit():void {
-    this.tUserService.getSessionInfo().subscribe(data =>{
+    this.tUserService.getSessionInfo().subscribe(data =>{ 
       this.tUserService.setLocalSessionInfo(data.data);
-      this.username = data.data.userName;
+      this.username = data.data.username;
       //this.getUserMenu();
       this.tUserService.getAuthorityByUsername(this.username).subscribe(data =>{
         this.treeMenu = data.data.tMenuTrees;
