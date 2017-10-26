@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 /**
- * Created by F1 on 2017/5/31.
- * http://ace-admin.xfdmao.com
- * http://ace-admin-example.xfdmao.com/ace-admin
+ * Created by F1 on 2017/10/16.
  */
 @Injectable()
 export class Config{
