@@ -30,22 +30,53 @@ npm install -g @angular/cli
 cd FCat\fcat-angular
 npm install
 ```
-```
-- master分支  
+###### 使用master分支——默认CORS解决跨域问题
+``` 
 - 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
 - 前端：ng serve --base-href 
 - 访问： http://localhost:4200 
 ```
 
+###### 使用master分支——nginx做转发
+nginx.conf配置
 ```
-- fcat-v1分支
+worker_processes  1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server {
+        listen       80;
+		server_name  localhost:4200; 
+        location / {
+            proxy_pass   http://localhost:4200;
+        } 
+		location /apis {
+			rewrite    ^.+apis/?(.*)$ /$1 break;
+		    proxy_pass   http://localhost:8965;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+将fcat-angular/src/app/app-config.ts 文件中的baseUrl的值"http://localhost:8965"修改为"/apis"
+
+###### fcat-v1分支
+``` 
 - 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
 - 前端：ng serve --base-href /fcat-angular/  
 - 访问： http://localhost:8965 
 ```
 
-```
-- fcat-angular分支 
+###### fcat-angular分支 
+``` 
 - 前端：ng serve --base-href  
 - 访问： http://localhost:4200
 ```
