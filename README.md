@@ -33,7 +33,7 @@ npm install
 #### 使用master分支——默认CORS解决跨域问题
 ``` 
 - 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
-- 前端：ng serve --base-href 
+- 前端：ng serve  
 - 访问： http://localhost:4200 
 ```
 
@@ -83,7 +83,7 @@ http {
 
 #### 只部署前端代码，后端调用演示地址的api，使用master分支中的fcat-angular项目
 ``` 
-- 前端：ng serve --base-href  
+- 前端：ng serve 
 - 访问： http://localhost:4200
 ```
 
