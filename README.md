@@ -6,7 +6,7 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 
  **QQ群号（1群）：549141844**   
 
-[^_^]
+[^_^] 演示地址： http://112.74.73.143:4201
 
 # 架构设计 
 ![img](http://on-img.com/chart_image/5954b886e4b0ad619ac73246.png)
@@ -33,7 +33,7 @@ npm install
 #### 使用master分支——默认CORS解决跨域问题
 ``` 
 - 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
-- 前端：ng serve --base-href 
+- 前端：ng serve  
 - 访问： http://localhost:4200 
 ```
 
@@ -75,9 +75,15 @@ http {
 - 访问： http://localhost:8965 
 ```
 
-#### 使用fcat-angular分支 
+#### 使用fcat-angular分支，只有前端项目，利用模拟数据
 ``` 
-- 前端：ng serve --base-href  
+- 前端：ng serve    
+- 访问： http://localhost:4200
+```
+
+#### 只部署前端代码，后端调用演示地址的api，使用master分支中的fcat-angular项目
+``` 
+- 前端：ng serve 
 - 访问： http://localhost:4200
 ```
 
