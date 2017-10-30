@@ -112,18 +112,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mozilla.intl</groupId>
-            <artifactId>chardet.nsDetector</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>bsh.Interpreter</groupId>
-            <artifactId>interpreter</artifactId>
-            <version>bsh-2.0b4</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
