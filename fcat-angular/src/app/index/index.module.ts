@@ -11,6 +11,7 @@ import {Config} from "../app-config";
 import {MyHeaderComponent} from "./common/my-header.component";
 
 import {TUserModule} from "../baseinfo/t-user.module";
+import {DashboardComponent} from "../baseinfo/dashboard.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,
@@ -20,7 +21,7 @@ import {TUserModule} from "../baseinfo/t-user.module";
     TUserModule
   ],
   declarations: [IndexComponent, MyHeaderComponent,
-    MyAsideComponent
+    MyAsideComponent,DashboardComponent
      ],
   providers: [
     Config

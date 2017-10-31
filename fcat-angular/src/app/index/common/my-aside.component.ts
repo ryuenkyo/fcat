@@ -26,7 +26,7 @@ export class MyAsideComponent implements OnInit{
     this.flag=false;
   }
   ngOnInit():void {
-    this.tUserService.getSessionInfo().subscribe(data =>{ 
+    this.tUserService.getSessionInfo().subscribe(data =>{
       this.tUserService.setLocalSessionInfo(data.data);
       this.username = data.data.username;
       //this.getUserMenu();
@@ -49,7 +49,7 @@ export class MyAsideComponent implements OnInit{
     });
   }
 
-  private selectMenuList():void {
+  selectMenuList():void {
     if(this.treeMenu && this.treeMenu.length>0 ){
       if(!this.selectedSystemId){
         this.selectedSystemId = this.treeMenu[0].id;
