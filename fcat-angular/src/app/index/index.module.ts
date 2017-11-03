@@ -12,9 +12,11 @@ import {MyHeaderComponent} from "./common/my-header.component";
 
 import {TUserModule} from "../baseinfo/t-user.module";
 import {DashboardComponent} from "../baseinfo/dashboard.component";
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [BrowserModule, FormsModule,
+    BsDropdownModule.forRoot(),
     IndexRoutingModule,
     HttpModule,
     JsonpModule,
