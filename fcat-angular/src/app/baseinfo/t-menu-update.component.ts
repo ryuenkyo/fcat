@@ -32,7 +32,7 @@ export class TMenuUpdateComponent implements OnInit {
 
   getMenuList(){
     this.tMenuService.getList(1,1000).subscribe(data => {
-      this.menuList = data.data;
+      this.menuList = data.data.list;
     });
   }
 
