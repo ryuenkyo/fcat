@@ -52,13 +52,14 @@ http {
     keepalive_timeout  65;
     server {
         listen       80;
-		server_name  localhost:4200; 
+	    server_name  localhost:4200; 
         location / {
             proxy_pass   http://localhost:4200;
         } 
-		location /apis {
-			rewrite    ^.+apis/?(.*)$ /$1 break;
-		    proxy_pass   http://localhost:8965;
+	location /apis {
+	    rewrite    ^.+apis/?(.*)$ /$1 break;
+            include  uwsgi_params;
+            proxy_pass   http://localhost:8965;
         }
         error_page   500 502 503 504  /50x.html;
         location = /50x.html {
