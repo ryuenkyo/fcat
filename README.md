@@ -6,7 +6,7 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 
  **QQ群号（1群）：549141844**   
 
-[^_^] 演示地址： http://112.74.73.143:4201   
+[^_^] 演示地址： http://www.xfdmao.com   
 用户名：aki  密码：123456
 
 # 架构设计 
@@ -52,13 +52,14 @@ http {
     keepalive_timeout  65;
     server {
         listen       80;
-		server_name  localhost:4200; 
+	    server_name  localhost:4200; 
         location / {
             proxy_pass   http://localhost:4200;
         } 
-		location /apis {
-			rewrite    ^.+apis/?(.*)$ /$1 break;
-		    proxy_pass   http://localhost:8965;
+	location /apis {
+	    rewrite    ^.+apis/?(.*)$ /$1 break;
+            include  uwsgi_params;
+            proxy_pass   http://localhost:8965;
         }
         error_page   500 502 503 504  /50x.html;
         location = /50x.html {

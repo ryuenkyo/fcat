@@ -28,7 +28,7 @@ export class TMenuAddComponent implements OnInit {
 
   getList(){
     this.tMenuService.getList(1,1000).subscribe(data => {
-      this.menuList = data.data;
+      this.menuList = data.data.list; 
     });
   }
 

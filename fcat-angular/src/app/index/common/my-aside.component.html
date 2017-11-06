@@ -24,8 +24,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header" ></li>
-      <li class="treeview" *ngFor="let menu of menuList;let i=index" [ngClass]="{'active':menu.isOpen}">
-        <a (click)="menu.isOpen=!menu.isOpen">
+      <li class="treeview" *ngFor="let menu of menuList;let i=index" [ngClass]="{'active':(menu.isOpen)}">
+        <a (click)="selectFirstMenu(menu)">
           <i class="{{menu.icon}}"></i>
           <span>{{menu.title}}</span>
             <span class="pull-right-container">
@@ -33,8 +33,8 @@
             </span>
         </a>
         <ul class="treeview-menu" *ngIf="menu.isOpen">
-          <li *ngFor="let childMenu of menu?.children" (click)="selectedMenuId=childMenu.id" class="{{selectedMenuId==childMenu.id?'active':''}}"  >
-            <a routerLink="{{childMenu.href}}" ><i class="{{childMenu.icon}}"></i>{{childMenu.title}}</a>
+          <li *ngFor="let childMenu of menu?.children" (click)="selectedSecondMenu(childMenu,childMenu.href)"   [ngClass]="{'active':selectedMenuId==childMenu.id}">
+            <a ><i class="{{childMenu.icon}}"></i>{{childMenu.title}}</a>
           </li>
         </ul>
       </li>

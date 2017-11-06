@@ -82,8 +82,12 @@ const routes: Routes = [
       component: TGroupAddUserComponent
     },
     {
-     path: 'tGroupAuthority/:id',
+      path: 'tGroupAuthority/:id',
       component: TGroupAuthorityComponent
+    },
+    { path: '**',
+      redirectTo: 'dashboard',
+      pathMatch: 'full'
     }
   ]},
   { path: '**',
