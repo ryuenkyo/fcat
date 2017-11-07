@@ -2,6 +2,8 @@ package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xfdmao.fcat.common.controller.BaseController;
+import com.xfdmao.fcat.common.enumtype.ResultCodeEnum;
+import com.xfdmao.fcat.common.util.CheckUtil;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.common.util.TreeUtil;
 import com.xfdmao.fcat.user.entity.TElement;
@@ -14,10 +16,7 @@ import com.xfdmao.fcat.user.service.TUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +32,31 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
     private TMenuService tMenuService;
     @Autowired
     private TElementService tElementService;
+
+    /**
+     * 注册用户
+     * @return
+     * @throws RuntimeException
+     */
+    @ApiOperation(value = "注册用户信息" )
+    @RequestMapping(value = "registerUser", method = RequestMethod.POST)
+    public JSONObject registerUser(@RequestBody TUser tUser)throws Exception{
+        String username = tUser.getUsername();
+        String name = tUser.getName();
+        String password = tUser.getPassword();
+        String email = tUser.getEmail();
+
+        if(!CheckUtil.checkEmaile(email)){
+            return JsonUtil.getResultJson(ResultCodeEnum.EMAILCHECKFAIL);
+        }
+        TUser tUser1 = bsi.getByUsername(username);
+        if(tUser1!=null){
+            return JsonUtil.getResultJson(ResultCodeEnum.USER_EXIST);
+        }
+        //发送邮件
+        bsi.insert(tUser);
+        return JsonUtil.getSuccessJsonObject();
+    }
     /**
      * 通过名称模糊搜索获取用户列表
      * @return
