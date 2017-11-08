@@ -52,7 +52,7 @@ http {
     keepalive_timeout  65;
     server {
         listen       80;
-	    server_name  localhost:4200; 
+	server_name  www.xfdmao.com; 
         location / {
             proxy_pass   http://localhost:4200;
         } 
