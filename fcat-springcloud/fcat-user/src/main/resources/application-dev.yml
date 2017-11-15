@@ -30,6 +30,17 @@ spring:
           min-idle: 0
           max-idle: 0
           max-wait: -1
+    mail:
+        host: smtp.qq.com
+        username: angularliu@qq.com
+        password: ABCabc123
+        properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: false
+                required: false
 
 server:
     port: 8964
