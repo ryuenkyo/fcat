@@ -33,7 +33,7 @@ spring:
     mail:
         host: smtp.qq.com
         username: angularliu@qq.com
-        password: ABCabc123
+        password:  
         properties:
           mail:
             smtp:
