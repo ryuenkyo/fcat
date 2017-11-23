@@ -22,7 +22,7 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
     redis:
-        host:  192.168.9.202
+        host: localhost
         database: 7
         timeout: 1800
         pool:

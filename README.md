@@ -15,11 +15,12 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 
 ## 开发环境
 - node-v6.11.0-x64.msi
-- redis
+- redis3.X
 - jdk1.8
-- mysql
-- maven
-- IDEA
+- MySQL Server 5.6
+- maven3.X
+- IntelliJ IDEA 2016.3.4
+- webstorm
 
 
 
