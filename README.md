@@ -19,11 +19,11 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - jdk1.8
 - MySQL Server 5.6
 - maven3.X
-- IntelliJ IDEA 2016.3.4
+- IntelliJ IDEA 
 - webstorm
 
 
-
+## fcat-v1分支项目部署
 #### 部署
 ```
 安装node-v6.11.0-x64.msi
@@ -33,14 +33,14 @@ npm install -g @angular/cli
 cd FCat\fcat-angular
 npm install
 ```
-#### 使用master分支——默认CORS解决跨域问题
+#### 默认CORS解决跨域问题
 ``` 
 - 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
 - 前端：ng serve  
 - 访问： http://localhost:4200 
 ```
 
-#### 使用master分支——nginx做转发
+#### 另外一种解决跨域问题——nginx做转发
 nginx.conf配置
 ```
 worker_processes  1;
@@ -68,31 +68,10 @@ http {
             root   html;
         }
     }
-}
-```
-将fcat-angular/src/app/app-config.ts 文件中的baseUrl的值"http://localhost:8965"修改为"/apis"
-
-#### 使用fcat-v1分支
-``` 
-- 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
-- 前端：ng serve --base-href /fcat-angular/  
-- 访问： http://localhost:8965 
-```
-
-#### 使用fcat-angular分支，只有前端项目，利用模拟数据
-``` 
-- 前端：ng serve    
-- 访问： http://localhost:4200
-```
-
-#### 只部署前端代码，后端调用演示地址的api，使用master分支中的fcat-angular项目
-``` 
-- 前端：ng serve 
-- 访问： http://localhost:4200
-```
+} 
 
 
-##### 功能    
+## 功能    
 - 项目搭建、架构设计  
 - 用户管理     
 - 菜单管理  
