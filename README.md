@@ -23,13 +23,13 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - webstorm
 
 
-## fcat-v1分支项目部署
-#### 部署
+## 使用fcat-v1分支项目部署
+#### 部署  
+安装node-v6.11.0-x64.msi  
+cdm下运行一下命令：  
 ```
-安装node-v6.11.0-x64.msi
 npm config set registry https://registry.npm.taobao.org
 npm install -g @angular/cli
-
 cd FCat\fcat-angular
 npm install
 ```
