@@ -3,7 +3,7 @@ package com.xfdmao.fcat.common.bean;
 /**
  * ${DESCRIPTION}
  *
- * @author xiangfei
+ * @author fier
  * @create 2017-06-08 17:31
  */
 public class Page {

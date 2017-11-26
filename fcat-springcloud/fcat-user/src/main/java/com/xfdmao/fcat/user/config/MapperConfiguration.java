@@ -1,7 +1,5 @@
 package com.xfdmao.fcat.user.config;
 
-
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +9,6 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 
 @Configuration
-@AutoConfigureAfter(MybatisConfiguration.class)
 public class MapperConfiguration implements EnvironmentAware {
 
     private RelaxedPropertyResolver propertyResolver;

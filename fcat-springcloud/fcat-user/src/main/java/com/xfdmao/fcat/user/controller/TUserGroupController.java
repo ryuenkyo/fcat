@@ -26,7 +26,6 @@ public class TUserGroupController extends BaseController<TUserGroupService,TUser
     @RequestMapping(value = "addByUserIdAndGroupId", method = RequestMethod.POST)
     public JSONObject addByUserIdAndGroupId(@RequestBody TUserGroup tUserGroup)throws Exception{
         Boolean result = bsi.addByUserIdAndGroupId(tUserGroup);
-        System.err.println(tUserGroup);
         return JsonUtil.getSuccessJsonObject(result);
     }
 
@@ -39,7 +38,6 @@ public class TUserGroupController extends BaseController<TUserGroupService,TUser
     @RequestMapping(value = "deleteByUserIdAndGroupId", method = RequestMethod.POST)
     public JSONObject deleteByUserIdAndGroupId(@RequestBody TUserGroup tUserGroup)throws Exception{
         Boolean result = bsi.deleteByUserIdAndGroupId(tUserGroup);
-        System.err.println(tUserGroup);
         return JsonUtil.getSuccessJsonObject(result);
     }
 }

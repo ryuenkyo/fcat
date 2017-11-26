@@ -19,4 +19,16 @@
     SELECT a.*
     FROM t_group a WHERE a.group_type_id=#{groupTypeId}
   </select>
+
+  <select id="getListByUsername" parameterType="String" resultMap="BaseResultMap"
+          statementType="PREPARED">
+    SELECT a.*
+    FROM t_group a
+    join t_user_group b
+    join t_user c
+    where a.id = b.group_id
+    and c.id = b.user_id
+    and c.username = #{username}
+  </select>
+
 </mapper>

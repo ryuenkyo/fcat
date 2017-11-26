@@ -10,7 +10,6 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
  */
 @EnableEurekaServer
 @SpringBootApplication
-@EnableZuulProxy
 public class CenterBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(CenterBootstrap.class, args);

@@ -1,9 +1,14 @@
 package com.xfdmao.fcat.user.entity;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "t_user_group")
+@Data
 public class TUserGroup {
     @Id
     private Integer id;
@@ -15,7 +20,7 @@ public class TUserGroup {
     private Integer userId;
 
     /**
-     * 'member'-≥…‘±£¨'leader'-¡Ïµº
+     * 'member'-ÊàêÂëòÔºå'leader'-È¢ÜÂØº
      */
     private String type;
 
@@ -25,91 +30,4 @@ public class TUserGroup {
     @Column(name = "update_time")
     private Date updateTime;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return group_id
-     */
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    /**
-     * @param groupId
-     */
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
-    /**
-     * @return user_id
-     */
-    public Integer getUserId() {
-        return userId;
-    }
-
-    /**
-     * @param userId
-     */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * ªÒ»°'member'-≥…‘±£¨'leader'-¡Ïµº
-     *
-     * @return type - 'member'-≥…‘±£¨'leader'-¡Ïµº
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * …Ë÷√'member'-≥…‘±£¨'leader'-¡Ïµº
-     *
-     * @param type 'member'-≥…‘±£¨'leader'-¡Ïµº
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * @return create_time
-     */
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    /**
-     * @param createTime
-     */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
-     * @return update_time
-     */
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    /**
-     * @param updateTime
-     */
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

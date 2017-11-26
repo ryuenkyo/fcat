@@ -1,6 +1,9 @@
 package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xfdmao.fcat.api.util.UserDetailsUtil;
+import com.xfdmao.fcat.api.vo.user.TUserVo;
+import com.xfdmao.fcat.api.vo.user.UserInfo;
 import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.enumtype.ResultCodeEnum;
 import com.xfdmao.fcat.common.util.CheckUtil;
@@ -32,6 +35,32 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
     private TMenuService tMenuService;
     @Autowired
     private TElementService tElementService;
+
+    /**
+     * 获取当前用户的用户名
+     *
+     * @return 用户名
+     */
+    @GetMapping("/info")
+    public UserInfo user() {
+        UserInfo userInfo = new UserInfo();
+
+        //设置用户
+        TUser tUser = bsi.getByUsername(UserDetailsUtil.getUsername(request));
+        TUserVo tUserVo = new TUserVo();
+        BeanUtils.copyProperties(tUser,tUserVo);
+        userInfo.setTUserVo(tUserVo);
+
+        //设置角色列表
+        List<String>  roleList = UserDetailsUtil.getRole(request);
+        String[] roles = roleList.toArray(new String[roleList.size()]);
+        userInfo.setRoles(roles);
+
+        //设置权限列表（menu.permission）
+        String[] permissions = tElementService.getPermissionsByRoles(roles);
+        userInfo.setPermissions(permissions);
+        return userInfo;
+    }
 
     /**
      * 注册用户

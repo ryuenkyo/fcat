@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TGroupMapper extends Mapper<TGroup> {
     List<TGroup> getListByGroupTypeId(Integer groupTypeId);
+
+    List<TGroup> getListByUsername(String username);
 }
