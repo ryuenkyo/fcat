@@ -1,0 +1,20 @@
+server:
+  port: 8960
+
+spring:
+  application:
+    name: fcat-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/xfdm_admin/fcat-config.git
+    bus:
+      trace:
+        enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8961/eureka/
+
