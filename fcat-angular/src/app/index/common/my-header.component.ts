@@ -29,6 +29,14 @@ export class MyHeaderComponent  implements OnInit{
 
   ngOnInit():void {
   }
+
+  logout(){
+    this.tUserService.logout().subscribe(data =>{
+      console.log("logout:",data);
+      top.location.href = "/";
+    });
+  }
+
   dropdownToggle(){
     this.sidebar = !this.sidebar;
     if(this.sidebar){

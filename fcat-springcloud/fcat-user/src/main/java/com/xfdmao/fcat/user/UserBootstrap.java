@@ -18,24 +18,9 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * @author xiangfei
  * @create 2017-05-25 12:44
  */
-
-//@EnableEurekaClient
-//@EnableHystrix
-//@SpringBootApplication
-//@ServletComponentScan("com.xfdmao.fcat.area.config.druid")
-////@EnableRedisHttpSession
-//@EnableFeignClients
-//@EnableDiscoveryClient
-//@EnableAsync
-
-
 @SpringBootApplication
 @ServletComponentScan("com.xfdmao.fcat.user.config.druid")
-
 @EnableEurekaClient
-@EnableHystrix
-@EnableFeignClients
-
 @EnableDiscoveryClient  //激活eureka中的DiscoveryClient实现
 @EnableAsync
 @EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)

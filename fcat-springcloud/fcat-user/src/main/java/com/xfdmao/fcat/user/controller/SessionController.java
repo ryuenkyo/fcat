@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.xfdmao.fcat.api.vo.authority.SessionInfo;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.user.entity.LoginUser;
-import com.xfdmao.fcat.user.rpc.TUserServiceRpc;
+import com.xfdmao.fcat.user.feign.TUserServiceFeign;
 import com.xfdmao.fcat.user.service.LoginUserService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.RandomStringUtils;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("v1/session")
-public class SessionController extends TUserServiceRpc{
+public class SessionController extends TUserServiceFeign {
     @Autowired
     protected HttpServletRequest request;
     @Autowired

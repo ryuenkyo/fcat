@@ -67,4 +67,9 @@ export class TUserService{
     let url = this.baseUrl+"/getAuthority/"+username;
     return this.httpUtil.get(url);
   }
+
+  logout() {
+    let url = "/logout";
+    return this.httpUtil.get(url);
+  }
 }

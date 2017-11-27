@@ -2,8 +2,7 @@ package com.xfdmao.fcat.api.vo.authority;
 
 import java.io.Serializable;
 
-import com.xfdmao.fcat.api.vo.user.AuthInfo;
-
+import com.xfdmao.fcat.api.vo.user.TUserVo;
 import lombok.Data;
 
 /**
@@ -24,6 +23,21 @@ public class SessionInfo implements Serializable{
 	 * 登录名
 	 */
     private String username;
+
+	/**
+	 * 用户基本信息
+	 */
+	private TUserVo tUserVo;
+
+	/**
+	 * 权限标识集合
+	 */
+	private String[] permissions;
+
+	/**
+	 * 角色集合
+	 */
+	private String[] roles;
 
 
 }

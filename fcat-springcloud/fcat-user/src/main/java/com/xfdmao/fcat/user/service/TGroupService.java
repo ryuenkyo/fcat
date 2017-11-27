@@ -11,4 +11,6 @@ import java.util.List;
 public interface TGroupService extends BaseService<TGroup>{
 
     List<TGroup> getListBygroupTypeId(Integer groupTypeId);
+
+    String[] getCodeByUsername(String username);
 }

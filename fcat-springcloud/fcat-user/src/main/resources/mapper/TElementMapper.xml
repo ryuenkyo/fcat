@@ -32,4 +32,10 @@
   where a.username = #{username} and c.authority_type = 'group' and c.resource_type = 'element';
   </select>
 
+  <select id="getListByRole" resultMap="BaseResultMap" parameterType="String">
+    select DISTINCT a.* from t_element  a
+    join t_authority b on a.id = b.resource_id
+    join t_group c on c.id = b.authority_id
+    where c.`code` = #{role}
+  </select>
 </mapper>

@@ -23,7 +23,7 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - webstorm
 
 
-## 使用fcat-v1分支部署项目
+## 部署项目
 #### 部署  
 安装node-v6.11.0-x64.msi  
 cdm下运行一下命令：  
@@ -81,8 +81,7 @@ http {
   
  
 ## 前端效果
-![img](http://upload-images.jianshu.io/upload_images/6756205-6407580dc46eb227.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![img](http://upload-images.jianshu.io/upload_images/6756205-aaa3421a65982aad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![img](http://upload-images.jianshu.io/upload_images/6756205-3ef6ab8d6760bfc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![img](http://upload-images.jianshu.io/upload_images/6756205-b28990f4e8dd1e0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![img](http://upload-images.jianshu.io/upload_images/6756205-2354fc7cdebf2089.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![img](http://image.xfdmao.com/fcat/demo/fcat-login.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-userList.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-menu.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-group.png)

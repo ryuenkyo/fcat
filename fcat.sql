@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50611
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : fcat
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-10-22 17:24:02
+Date: 2017-11-27 19:28:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `t_authority` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2857 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2903 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_authority
@@ -66,6 +66,41 @@ INSERT INTO `t_authority` VALUES ('2853', '2', 'group', '32', 'element', null, n
 INSERT INTO `t_authority` VALUES ('2854', '2', 'group', '33', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('2855', '2', 'group', '34', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('2856', '2', 'group', '35', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2868', '1', 'group', '13', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2869', '1', 'group', '5', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2870', '1', 'group', '1', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2871', '1', 'group', '6', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2872', '1', 'group', '7', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2873', '1', 'group', '8', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2874', '1', 'group', '21', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2875', '1', 'group', '14', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2876', '1', 'group', '33', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2877', '1', 'group', '34', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2878', '1', 'group', '35', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('2879', '1', 'group', '3', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2880', '1', 'group', '4', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2881', '1', 'group', '5', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2882', '1', 'group', '23', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2883', '1', 'group', '10', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2884', '1', 'group', '11', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2885', '1', 'group', '12', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2886', '1', 'group', '13', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2887', '1', 'group', '14', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2888', '1', 'group', '15', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2889', '1', 'group', '24', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2890', '1', 'group', '27', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2891', '1', 'group', '16', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2892', '1', 'group', '17', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2893', '1', 'group', '18', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2894', '1', 'group', '19', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2895', '1', 'group', '20', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2896', '1', 'group', '21', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2897', '1', 'group', '22', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2898', '1', 'group', '28', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2899', '1', 'group', '32', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2900', '1', 'group', '33', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2901', '1', 'group', '34', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('2902', '1', 'group', '35', 'element', null, null);
 
 -- ----------------------------
 -- Table structure for t_element
@@ -89,30 +124,30 @@ CREATE TABLE `t_element` (
 -- ----------------------------
 -- Records of t_element
 -- ----------------------------
-INSERT INTO `t_element` VALUES ('3', 'userManager:btn_add', 'button', '新增', '/fcat-user/user', '1', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('4', 'userManager:btn_edit', 'button', '编辑', '/fcat-user/user', '1', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('5', 'userManager:btn_del', 'button', '删除', '/fcat-user/user', '1', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('10', 'menuManager:btn_add', 'button', '新增', '/fcat-user/menu', '6', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('11', 'menuManager:btn_edit', 'button', '编辑', '/fcat-user/menu', '6', '0', '', 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('12', 'menuManager:btn_del', 'button', '删除', '/fcat-user/menu', '6', '0', '', 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('13', 'menuManager:btn_element_add', 'button', '新增元素', '/fcat-user/element', '6', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('14', 'menuManager:btn_element_edit', 'button', '编辑元素', '/fcat-user/element', '6', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('15', 'menuManager:btn_element_del', 'button', '删除元素', '/fcat-user/element', '6', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('16', 'groupManager:btn_add', 'button', '新增', '/fcat-user/group', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('17', 'groupManager:btn_edit', 'button', '编辑', '/fcat-user/group', '7', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('18', 'groupManager:btn_del', 'button', '删除', '/fcat-user/group', '7', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('19', 'groupManager:btn_userManager', 'button', '分配用户', '/fcat-user/group/{*}/user', '7', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('20', 'groupManager:btn_resourceManager', 'button', '分配权限', '/fcat-user/group/{*}/authority', '7', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('21', 'groupManager:menu', 'uri', '分配菜单', '/fcat-user/group/{*}/authority/menu', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('22', 'groupManager:element', 'uri', '分配元素', '/fcat-user/group/{*}/authority/element', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('23', 'userManager:view', 'uri', '查看', '/fcat-user/user', '1', '0', '', 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('24', 'menuManager:view', 'uri', '查看', '/fcat-user/menu', '6', '0', '', 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('27', 'menuManager:element_view', 'uri', '查看元素', '/fcat-user/element', '6', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('28', 'groupManager:view', 'uri', '查看', '/fcat-user/group', '7', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('32', 'groupTypeManager:view', 'uri', '查看', '/fcat-user/groupType', '8', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('33', 'groupTypeManager:btn_add', 'button', '新增', '/fcat-user/groupType', '8', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('34', 'groupTypeManager:btn_edit', 'button', '编辑', '/fcat-user/groupType', '8', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
-INSERT INTO `t_element` VALUES ('35', 'groupTypeManager:btn_del', 'button', '删除', '/fcat-user/groupType', '8', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('3', 'userManager:btn_add', 'button', '新增', '/fcat-user/v1/tUser/**', '1', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('4', 'userManager:btn_edit', 'button', '编辑', '/fcat-user/v1/tUser/**', '1', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('5', 'userManager:btn_del', 'button', '删除', '/fcat-user/v1/tUser/**', '1', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('10', 'menuManager:btn_add', 'button', '新增', '/fcat-user/v1/tMenu/**', '6', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('11', 'menuManager:btn_edit', 'button', '编辑', '/fcat-user/v1/tMenu/**', '6', '0', '', 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('12', 'menuManager:btn_del', 'button', '删除', '/fcat-user/v1/tMenu/**', '6', '0', '', 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('13', 'menuManager:btn_element_add', 'button', '新增元素', '/fcat-user/v1/tElement/**', '6', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('14', 'menuManager:btn_element_edit', 'button', '编辑元素', '/fcat-user/v1/tElement/**', '6', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('15', 'menuManager:btn_element_del', 'button', '删除元素', '/fcat-user/v1/tElement/**', '6', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('16', 'groupManager:btn_add', 'button', '新增', '/fcat-user/v1/tGroup/**', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('17', 'groupManager:btn_edit', 'button', '编辑', '/fcat-user/v1/tGroup/**', '7', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('18', 'groupManager:btn_del', 'button', '删除', '/fcat-user/v1/tGroup/**', '7', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('19', 'groupManager:btn_userManager', 'button', '分配用户', '/fcat-user/v1/tUserGroup/**', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('20', 'groupManager:btn_resourceManager', 'button', '分配权限', '/fcat-user/v1/tAuthority/**', '7', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('21', 'groupManager:menu', 'uri', '分配菜单', '/fcat-user/v1/tAuthority/**', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('22', 'groupManager:element', 'uri', '分配元素', '/fcat-user/v1/tAuthority/**', '7', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('23', 'userManager:view', 'uri', '查看', '/fcat-user/v1/tUser/**', '1', '0', '', 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('24', 'menuManager:view', 'uri', '查看', '/fcat-user/v1/tMenu/**', '6', '0', '', 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('27', 'menuManager:element_view', 'uri', '查看元素', '/fcat-user/v1/tElement/**', '6', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('28', 'groupManager:view', 'uri', '查看', '/fcat-user/v1/tGroup/**', '7', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('32', 'groupTypeManager:view', 'uri', '查看', '/fcat-user/v1/tGroupType/**', '8', null, null, 'GET', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('33', 'groupTypeManager:btn_add', 'button', '新增', '/fcat-user/v1/tGroupType/**', '8', null, null, 'POST', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('34', 'groupTypeManager:btn_edit', 'button', '编辑', '/fcat-user/v1/tGroupType/**', '8', null, null, 'PUT', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
+INSERT INTO `t_element` VALUES ('35', 'groupTypeManager:btn_del', 'button', '删除', '/fcat-user/v1/tGroupType/**', '8', null, null, 'DELETE', '2017-10-06 15:24:15', '2017-10-06 15:24:15');
 
 -- ----------------------------
 -- Table structure for t_group
@@ -214,7 +249,7 @@ CREATE TABLE `t_user` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
@@ -224,7 +259,8 @@ INSERT INTO `t_user` VALUES ('2', 'aki', '123456', '阿沂', '1989-02-11', '广�
 INSERT INTO `t_user` VALUES ('3', 'xiaoxiong', '123456', '小熊', '1995-02-11', '广东省深圳市宝安', '13225442101', '07997287922', 'xiaoxiong@163.com', 'M', 'Y', '2017-10-06 14:40:36', '2017-10-06 14:40:36');
 INSERT INTO `t_user` VALUES ('4', 'xiaofei', '123456', '小飞', '1992-02-11', '广东省深圳市盐田', '13225442101', '07997287922', 'xiaofei@163.com', 'M', 'Y', '2017-10-08 16:15:59', '2017-10-08 16:15:59');
 INSERT INTO `t_user` VALUES ('5', 'xiaoxiang', '123456', '小翔', '1992-02-11', '广东省深圳市盐田', '13225442103', '07997287923', 'xiaoxiang@163.com', 'S', 'Y', '2017-10-17 17:55:24', '2017-10-17 17:55:24');
-INSERT INTO `t_user` VALUES ('7', '18925231121', '1', '2', '1', '1', '1', '1', '1', 'S', 'Y', '2017-10-17 18:18:59', '2017-10-17 18:18:59');
+INSERT INTO `t_user` VALUES ('7', '18925231121', '1', '2334', '1', '1', '1', '1', '1', 'S', 'Y', '2017-10-17 18:18:59', '2017-10-17 18:18:59');
+INSERT INTO `t_user` VALUES ('8', 'hbk619', '123456', '小王', null, null, '13923772870', null, '463061820@qq.com', 'M', 'Y', '2017-11-03 15:08:09', '2017-11-03 15:08:09');
 
 -- ----------------------------
 -- Table structure for t_user_group
@@ -238,7 +274,7 @@ CREATE TABLE `t_user_group` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_group
@@ -254,3 +290,4 @@ INSERT INTO `t_user_group` VALUES ('46', '2', '3', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('47', '2', '4', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('48', '2', '5', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('49', '2', '7', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('50', '1', '2', 'leader', null, null);

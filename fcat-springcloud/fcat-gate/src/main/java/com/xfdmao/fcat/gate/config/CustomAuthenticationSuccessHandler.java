@@ -5,6 +5,8 @@ import com.xfdmao.fcat.api.vo.authority.SessionInfo;
 import com.xfdmao.fcat.common.util.HttpHelper;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.common.util.UserDetailsUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -20,6 +22,7 @@ import java.util.Map;
  * Created by xiangfei on 2017/10/26.
  */
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         String result = JSON.toJSONString(JsonUtil.getSuccessJsonObject(true));
@@ -30,7 +33,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 map.put("success", true);
                 UserDetails userDetails = UserDetailsUtil.getCurrentUser();
                 map.put("userDetails",userDetails);
-
+                logger.info("FCat:userDetails:{}",userDetails);
                 if(userDetails!=null) {
                     SessionInfo sessionInfo = new SessionInfo();
                     sessionInfo.setUsername(userDetails.getUsername());

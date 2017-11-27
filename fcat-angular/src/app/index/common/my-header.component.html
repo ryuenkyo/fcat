@@ -25,7 +25,7 @@
           <ul *dropdownMenu class="dropdown-menu">
             <!-- User image -->
             <li role="menuitem" class="user-header">
-              <img src="assets/img/fcat-128x128.png" class="img-circle" alt="User Image">
+              <img src="assets/img/FCat-left.png" class="img-circle" alt="User Image">
 
               <p>
                 {{username}} - 架构师
@@ -40,7 +40,7 @@
               <!--  <a href="/index" class="btn btn-default btn-flat">配置</a>-->
               </div>
               <div class="pull-right">
-                <a href="/" class="btn btn-default btn-flat">登出</a>
+                <a (click)="logout()" class="btn btn-default btn-flat">登出</a>
               </div>
             </li>
           </ul>

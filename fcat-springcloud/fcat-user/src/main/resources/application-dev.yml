@@ -46,13 +46,6 @@ server:
     port: 8964
 
 security:
-    oauth2:
-      client:
-        client-id: xfdmao-client
-        client-secret: xfdmao-secret
-        scope: read,write
-        auto-approve-scopes: '.*'
-        grant-type: password
     user:
         name: admin
         password: admin
