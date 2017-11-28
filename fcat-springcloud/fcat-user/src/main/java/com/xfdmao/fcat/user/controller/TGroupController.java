@@ -29,7 +29,7 @@ public class TGroupController extends BaseController<TGroupService,TGroup,Intege
     @ApiOperation(value = "通过menuId获取元素列表" )
     @RequestMapping(value = "groupTypeId/{groupTypeId}", method = RequestMethod.GET)
     public JSONObject getByMenuId(@PathVariable Integer groupTypeId)throws Exception{
-        List<TGroup> result = bsi.getListBygroupTypeId(groupTypeId);
+        List<TGroup> result = baseServiceImpl.getListBygroupTypeId(groupTypeId);
         return JsonUtil.getSuccessJsonObject(result);
     }
 

@@ -25,7 +25,7 @@ public class TUserGroupController extends BaseController<TUserGroupService,TUser
     @ApiOperation(value = "通过用户Id和组织Id添加记录" )
     @RequestMapping(value = "addByUserIdAndGroupId", method = RequestMethod.POST)
     public JSONObject addByUserIdAndGroupId(@RequestBody TUserGroup tUserGroup)throws Exception{
-        Boolean result = bsi.addByUserIdAndGroupId(tUserGroup);
+        Boolean result = baseServiceImpl.addByUserIdAndGroupId(tUserGroup);
         System.err.println(tUserGroup);
         return JsonUtil.getSuccessJsonObject(result);
     }
@@ -38,7 +38,7 @@ public class TUserGroupController extends BaseController<TUserGroupService,TUser
     @ApiOperation(value = "通过用户Id和组织Id删除记录" )
     @RequestMapping(value = "deleteByUserIdAndGroupId", method = RequestMethod.POST)
     public JSONObject deleteByUserIdAndGroupId(@RequestBody TUserGroup tUserGroup)throws Exception{
-        Boolean result = bsi.deleteByUserIdAndGroupId(tUserGroup);
+        Boolean result = baseServiceImpl.deleteByUserIdAndGroupId(tUserGroup);
         System.err.println(tUserGroup);
         return JsonUtil.getSuccessJsonObject(result);
     }

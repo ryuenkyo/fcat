@@ -49,12 +49,12 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         if(!CheckUtil.checkEmaile(email)){
             return JsonUtil.getResultJson(ResultCodeEnum.EMAILCHECKFAIL);
         }
-        TUser tUser1 = bsi.getByUsername(username);
+        TUser tUser1 = baseServiceImpl.getByUsername(username);
         if(tUser1!=null){
             return JsonUtil.getResultJson(ResultCodeEnum.USER_EXIST);
         }
         //发送邮件
-        bsi.insert(tUser);
+        baseServiceImpl.insert(tUser);
         return JsonUtil.getSuccessJsonObject();
     }
     /**
@@ -65,7 +65,7 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
     @ApiOperation(value = "通过名称模糊搜索获取用户列表" )
     @RequestMapping(value = "getList/{key}", method = RequestMethod.GET)
     public JSONObject getList(@PathVariable String key)throws Exception{
-        List<TUser> result = bsi.getByKey(key);
+        List<TUser> result = baseServiceImpl.getByKey(key);
         return JsonUtil.getSuccessJsonObject(result);
     }
 
@@ -78,8 +78,8 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
     @RequestMapping(value = "getListByGroupId/{groupId}", method = RequestMethod.GET)
     public JSONObject getLeadersByGroupId(@PathVariable Integer groupId)throws Exception{
         JSONObject result = new JSONObject();
-        List<TUser> leaders = bsi.getLeadersByGroupId(groupId);
-        List<TUser> members = bsi.getMembersByGroupId(groupId);
+        List<TUser> leaders = baseServiceImpl.getLeadersByGroupId(groupId);
+        List<TUser> members = baseServiceImpl.getMembersByGroupId(groupId);
         result.put("leaders",leaders);
         result.put("members",members);
         return JsonUtil.getSuccessJsonObject(result);

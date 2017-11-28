@@ -31,7 +31,7 @@ public class TElementServiceImpl extends BaseServiceImpl<TElementMapper,TElement
         return mapper.getAuthorityElementsByUsername(username);
     }
 
-    @Cacheable(value = "telement_role", key = "'role_element_'+#role")
+    /*@Cacheable(value = "telement_role", key = "'role_element_'+#role")*/
     public List<TElementVo> getListByRole(String role) {
         List<TElementVo> resultList = new ArrayList<>();
         List<TElement> tElements = mapper.getListByRole(role);
