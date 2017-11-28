@@ -33,6 +33,10 @@ import {TGroupAddUserComponent} from "./t-group-add-user.component";
 import {TGroupAuthorityComponent} from "./t-group-authority.component";
 import {TAuthorityService} from "./t-authority.service";
 import {TUserGroupService} from "./t-user-group.service";
+import {TDictComponent} from "./dict/t-dict.component";
+import {TDictService} from "./dict/t-dict.service";
+import {TDictUpdateComponent} from "./dict/t-dict-update.component";
+import {TDictAddComponent} from "./dict/t-dict-add.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule],
@@ -41,10 +45,11 @@ import {TUserGroupService} from "./t-user-group.service";
     TElementAddComponent,TElementUpdateComponent,
     TGroupTypeListComponent,TGroupTypeUpdateComponent,TGroupTypeAddComponent,
     TGroupListComponent,TGroupAddComponent,TGroupUpdateComponent,TGroupAddUserComponent,TGroupAuthorityComponent,
+    TDictComponent,TDictUpdateComponent,TDictAddComponent,
     InfoComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,
-    CommonHttpService,TAuthorityService,TUserGroupService
+    CommonHttpService,TAuthorityService,TUserGroupService,TDictService
   ]
 })
 export class TUserModule {

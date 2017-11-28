@@ -17,6 +17,9 @@ import {TGroupAddComponent} from "./t-group-add.component";
 import {TGroupUpdateComponent} from "./t-group-update.component";
 import {TGroupAddUserComponent} from "./t-group-add-user.component";
 import {TGroupAuthorityComponent} from "./t-group-authority.component";
+import {TDictComponent} from "./dict/t-dict.component";
+import {TDictUpdateComponent} from "./dict/t-dict-update.component";
+import {TDictAddComponent} from "./dict/t-dict-add.component";
 
 
 const routes: Routes = [
@@ -85,9 +88,21 @@ const routes: Routes = [
       path: 'tGroupAuthority/:id',
       component: TGroupAuthorityComponent
     },
+    {
+      path: 'tDictList',
+      component: TDictComponent
+    },
     { path: '**',
       redirectTo: 'dashboard',
       pathMatch: 'full'
+    },
+    {
+      path: 'tDictUpdate/:id',
+      component: TDictUpdateComponent
+    },
+    {
+      path: 'tDictAdd',
+      component: TDictAddComponent
     }
   ]},
   { path: '**',

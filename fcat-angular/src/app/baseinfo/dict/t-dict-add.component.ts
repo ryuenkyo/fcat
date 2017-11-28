@@ -1,20 +1,20 @@
 import {Location} from "@angular/common";
 import {Component, OnInit, enableProdMode} from "@angular/core";
-import {TGroupType} from "./t-group-type";
-import {TGroupTypeService} from "./t-group-type.service";
+import {TDict} from "./t-dict";
+import {TDictService} from "./t-dict.service";
 enableProdMode();
 @Component({
-  templateUrl: './t-group-type-add.component.html',
+  templateUrl: './t-dict-add.component.html',
 })
-export class TGroupTypeAddComponent implements OnInit {
+export class TDictAddComponent implements OnInit {
 
   msg:string;
-  tGroupType:any = new TGroupType();
+  tDict:any = new TDict();
   data:any;
   errorMessage:any;
   firstName:string = '基础配置';
   secondName:string = '组织类型管理';
-  constructor(private tGroupTypeService:TGroupTypeService,
+  constructor(private tDictService:TDictService,
               private location:Location) {
   }
 
@@ -23,23 +23,23 @@ export class TGroupTypeAddComponent implements OnInit {
   msg_(msg_:string) {
     this.msg = msg_;
   }
-  checkGroupType(groupType:TGroupType){
+  checkDict(dict:TDict){
     let result =true;
-    if(!groupType.name){
+    if(!dict.name){
       this.msg = '名称不能为空';
       result = false;
     }
-    if(!groupType.code){
+    if(!dict.code){
       this.msg = '编码不能为空';
       result = false;
     }
     return result;
   }
   onSubmit(){
-    if(!this.checkGroupType(this.tGroupType)){
+    if(!this.checkDict(this.tDict)){
       return;
     }
-    this.tGroupTypeService.add(this.tGroupType)
+    this.tDictService.add(this.tDict)
       .subscribe(
         data  => {
           if(data.code == 0){
