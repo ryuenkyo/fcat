@@ -2,11 +2,16 @@ package com.xfdmao.fcat.user.aop;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.xfdmao.fcat.api.vo.authority.SessionInfo;
+import com.xfdmao.fcat.user.entity.TUserLog;
+import com.xfdmao.fcat.user.service.TUserLogService;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -24,6 +29,9 @@ import java.util.*;
 public class LogAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
     private static final ThreadLocal<Long> timeTreadLocal = new ThreadLocal<>();
+
+    @Autowired
+    private TUserLogService tUserLogService;
 
     @Pointcut("execution(* com.xfdmao.fcat.user.controller..*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     //@Pointcut("execution(* com.xfdmao.fcat.user.controller..*(..))")
@@ -51,6 +59,17 @@ public class LogAspect {
         logger.info("请求方法requestMethod = {}", request.getMethod());
         logger.info("请求资源uri = {}", request.getRequestURI());
         logger.info("所有的请求参数 key：value = {}", keyValue);
+        TUserLog tUserLog = new TUserLog();
+        tUserLog.setAction(method.getDeclaringClass()+"");
+        tUserLog.setOptTime(new Date());
+        tUserLog.setMethod(methodName);
+        tUserLog.setSessionId(request.getSession().getId());
+        SessionInfo sessionInfo  = (SessionInfo) request.getSession().getAttribute("sessionInfo");
+        if(StringUtils.isNotBlank(sessionInfo.getUsername())){
+            tUserLog.setUsername(sessionInfo.getUsername());
+            tUserLog.setCreateTime(new Date());
+            tUserLogService.insert(tUserLog);
+        }
     }
 
 
@@ -96,19 +115,14 @@ public class LogAspect {
             return null;
         }
         Enumeration<String> enumeration = request.getParameterNames();
-        //StringBuilder stringBuilder = new StringBuilder();
         JSONArray jsonArray = new JSONArray();
         while (enumeration.hasMoreElements()) {
             String key = enumeration.nextElement();
             String value = request.getParameter(key);
             JSONObject json = new JSONObject();
-            //String keyValue = key+" : " +value+" ; ";
             json.put(key, value);
-            //stringBuilder.append(keyValue);
             jsonArray.add(json);
         }
-        //JSONObject jsonObject = new JSONObject();
-        //jsonObject.put("请求参数为：",jsonArray.toString());
         return jsonArray.toString();
     }
 }

@@ -14,9 +14,13 @@
 			<property name="mappers" value="tk.mybatis.mapper.common.Mapper" />
 		</plugin>
 
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+<!--		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost:3306/fcat?useUnicode=true&amp;characterEncoding=UTF8"
 			userId="root" password="xfd4m463$#ked@&amp;!EDQd">
+		</jdbcConnection>-->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/fcat?useUnicode=true&amp;characterEncoding=UTF8"
+						userId="root" password="">
 		</jdbcConnection>
 
 		<javaModelGenerator targetPackage="${targetModelPackage}"
@@ -33,8 +37,9 @@
 		<table tableName="t_authority" domainObjectName="TAuthority"/>
 		<table tableName="t_group" domainObjectName="TGroup"/>
 		<table tableName="t_group_type" domainObjectName="TGroupType"/>
-		<table tableName="t_user_group" domainObjectName="TUserGroup"/>-->
-		<table tableName="t_dict" domainObjectName="TDict"/>
+		<table tableName="t_user_group" domainObjectName="TUserGroup"/>
+		<table tableName="t_dict" domainObjectName="TDict"/>-->
+		<table tableName="t_user_log" domainObjectName="TUserLog"/>
 
 	</context>
 </generatorConfiguration>

@@ -36,6 +36,14 @@ export class TDictUpdateComponent implements OnInit {
       this.msg = '编码不能为空';
       result = false;
     }
+    if(!dict.name){
+      this.msg = '名称不能为空';
+      result = false;
+    }
+    if(!dict.sort){
+      this.msg = '排序不能为空，且为数字';
+      result = false;
+    }
     return result;
   }
   onSubmit(){

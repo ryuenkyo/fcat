@@ -20,6 +20,7 @@ import {TGroupAuthorityComponent} from "./t-group-authority.component";
 import {TDictComponent} from "./dict/t-dict.component";
 import {TDictUpdateComponent} from "./dict/t-dict-update.component";
 import {TDictAddComponent} from "./dict/t-dict-add.component";
+import {TUserLogComponent} from "./userLog/t-user-log.component";
 
 
 const routes: Routes = [
@@ -103,6 +104,10 @@ const routes: Routes = [
     {
       path: 'tDictAdd',
       component: TDictAddComponent
+    },
+    {
+      path: 'tUserLogList',
+      component: TUserLogComponent
     }
   ]},
   { path: '**',
