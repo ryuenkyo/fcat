@@ -10,7 +10,7 @@ export class TUserService{
   }
 
   getSessionInfo(){
-    let url = "/fcat-user/v1/session/sessionInfo";
+    let url = this.baseUrl+"/info";
     return  this.httpUtil.get(url);
   }
 

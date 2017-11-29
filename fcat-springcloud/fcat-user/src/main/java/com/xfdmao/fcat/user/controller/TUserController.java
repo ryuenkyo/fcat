@@ -42,7 +42,7 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
      * @return 用户名
      */
     @GetMapping("/info")
-    public UserInfo user() {
+    public JSONObject user() {
         UserInfo userInfo = new UserInfo();
 
         //设置用户
@@ -59,7 +59,7 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         //设置权限列表（menu.permission）
         String[] permissions = tElementService.getPermissionsByRoles(roles);
         userInfo.setPermissions(permissions);
-        return userInfo;
+        return JsonUtil.getSuccessJsonObject(userInfo);
     }
 
     /**

@@ -10,7 +10,6 @@ import {Config} from "../app-config";
 @Injectable()
 export class HttpUtil{
   private baseUrl:any;
-  private withCredentials:boolean = true;
   constructor(private config:Config, private http: Http){
     let app = config.appConfig;
     this.baseUrl = app.baseUrl;
@@ -19,24 +18,16 @@ export class HttpUtil{
   post(url:string, param?:any){
     url = this.baseUrl + url;
     //url = this.getSessionIdUrl(url);
-    let headers = new Headers({ 'X-Requested-With' :'XMLHttpRequest'});
-    let options = new RequestOptions({ withCredentials: this.withCredentials});
+    let options;
+    if(url.indexOf("oauth/token")>0){
+      let headers = new Headers({'Authorization' :'Basic ZmNhdDpmY2F0U2VjcmV0'});
+      options = new RequestOptions({headers:headers});
+    }else{
+
+    }
+
     //noinspection TypeScriptValidateTypes
     return this.http.post(url, param,options)
-      .map(this.extractData)
-      .catch(this.handleError);
-
-  }
-  postForm(url:string, param?:any){
-    url = this.baseUrl + url;
-    let headers = new Headers({ 'X-Requested-With' :'XMLHttpRequest'});
-    let options = new RequestOptions({ withCredentials: this.withCredentials});
-    let formData: FormData = new FormData();
-    formData.append('username', param.username);
-    formData.append('password', param.password);
-
-    //noinspection TypeScriptValidateTypes
-    return this.http.post(url, formData, options)
       .map(this.extractData)
       .catch(this.handleError);
 
@@ -46,8 +37,8 @@ export class HttpUtil{
   put(url:string, param?:any){
     url = this.baseUrl + url;
     //url = this.getSessionIdUrl(url);
-    let headers = new Headers({ 'X-Requested-With' :'XMLHttpRequest'});
-    let options = new RequestOptions({ withCredentials: this.withCredentials});
+    let headers = new Headers({});
+    let options = new RequestOptions({ });
     //noinspection TypeScriptValidateTypes
     return this.http.put(url, param,options)
       .map(this.extractData)
@@ -58,8 +49,8 @@ export class HttpUtil{
   delete(url:string){
     url = this.baseUrl + url;
     //url = this.getSessionIdUrl(url);
-    let headers = new Headers({ 'X-Requested-With' :'XMLHttpRequest'});
-    let options = new RequestOptions({ withCredentials: this.withCredentials});
+    let headers = new Headers({ });
+    let options = new RequestOptions({ });
     //noinspection TypeScriptValidateTypes
     return this.http.delete(url, options)
       .map(this.extractData)
@@ -70,8 +61,10 @@ export class HttpUtil{
   get(url:string){
     url = this.baseUrl + url;
     //url = this.getSessionIdUrl(url);
-    let headers = new Headers({ 'X-Requested-With' :'XMLHttpRequest'});
-    let options = new RequestOptions({headers:headers, withCredentials:this.withCredentials});
+    let token = JSON.parse(localStorage.getItem("token"));
+    console.log("GET:"+url,token);
+    let headers = new Headers({Authorization:token.token_type+" "+token.access_token});
+    let options = new RequestOptions({ headers:headers});
     //noinspection TypeScriptValidateTypes
     return  this.http.get(url, options)
       .map(this.extractData)

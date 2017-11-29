@@ -18,9 +18,10 @@ export class MyHeaderComponent  implements OnInit{
               private tUserService:TUserService){
     this.app = config.appConfig;
     this.tUserService.getSessionInfo().subscribe(data =>{
-      if( data.code==0 && data.data && data.data.username){
+      console.log("Header:sessionInfo:",JSON.stringify(data));
+      if( data.code==0 && data.data && data.data.tuserVo){
         this.tUserService.setLocalSessionInfo(data.data);
-        this.username = data.data.username;
+        this.username = data.data.tuserVo.username;
       }else{
         top.location.href = "/";
       }

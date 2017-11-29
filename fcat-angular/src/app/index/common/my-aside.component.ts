@@ -33,7 +33,7 @@ export class MyAsideComponent implements OnInit{
     this.selectedMenuId = sessionStorage.getItem("secondMenu");
     this.tUserService.getSessionInfo().subscribe(data =>{
       this.tUserService.setLocalSessionInfo(data.data);
-      this.username = data.data.username;
+      this.username = data.data.tuserVo.username;
       //this.getUserMenu();
       this.tUserService.getAuthorityByUsername(this.username).subscribe(data =>{
         this.treeMenu = data.data.tMenuTrees;
@@ -43,7 +43,7 @@ export class MyAsideComponent implements OnInit{
     });
   }
   selectFirstMenu(menu:any){
-    menu.isOpen=!menu.isOpen; 
+    menu.isOpen=!menu.isOpen;
     if(menu.isOpen){
       this.selectedFirstMenuId = menu.id;
       sessionStorage.setItem("firstMenu",this.selectedFirstMenuId);
@@ -77,7 +77,7 @@ export class MyAsideComponent implements OnInit{
     for(let i=0;i<this.treeMenu.length;i++){
       if(this.treeMenu[i].id==this.selectedSystemId){
         this.menuList = this.treeMenu[i].children;
-        this.menuList.forEach(menu=>{ 
+        this.menuList.forEach(menu=>{
           if(menu.id==this.selectedFirstMenuId){
             menu.isOpen = true;
           }

@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit{
   }
   login(){
     this.loginService.login(this.username,this.password).subscribe(data =>{
-      if(data.data && data.data.success && data.data.userDetails.username){
-       // window.location.href = "/index/dashboard";
+      if(data.access_token){
+        localStorage.setItem("token",JSON.stringify(data));
         this.router.navigate(['/index/dashboard']);
       }
     });
