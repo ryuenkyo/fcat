@@ -65,7 +65,7 @@ public class LogAspect {
         tUserLog.setMethod(methodName);
         tUserLog.setSessionId(request.getSession().getId());
         SessionInfo sessionInfo  = (SessionInfo) request.getSession().getAttribute("sessionInfo");
-        if(StringUtils.isNotBlank(sessionInfo.getUsername())){
+        if(sessionInfo!=null && StringUtils.isNotBlank(sessionInfo.getUsername())){
             tUserLog.setUsername(sessionInfo.getUsername());
             tUserLog.setCreateTime(new Date());
             tUserLogService.insert(tUserLog);

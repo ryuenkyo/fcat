@@ -24,7 +24,9 @@ export class RegisterComponent implements OnInit{
   }
   ngOnInit(){
   }
-
+  msg_(msg_:string) {
+    this.msg = msg_;
+  }
   check(user:TUser){
     let result =true;
     if(!user.username){
@@ -43,9 +45,11 @@ export class RegisterComponent implements OnInit{
   }
   register(){
     this.check(this.tUser);
-    this.tUserService.add(this.tUser).subscribe(data =>{
+    this.tUserService.register(this.tUser).subscribe(data =>{
       if(data.code == 0){
         this.router.navigate(['/login']);
+      }else{
+        this.msg = data.msg;
       }
     });
   }

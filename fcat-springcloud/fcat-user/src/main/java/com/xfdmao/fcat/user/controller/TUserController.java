@@ -39,11 +39,9 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
      * @throws RuntimeException
      */
     @ApiOperation(value = "注册用户信息" )
-    @RequestMapping(value = "registerUser", method = RequestMethod.POST)
+    @RequestMapping(value = "register", method = RequestMethod.POST)
     public JSONObject registerUser(@RequestBody TUser tUser)throws Exception{
         String username = tUser.getUsername();
-        String name = tUser.getName();
-        String password = tUser.getPassword();
         String email = tUser.getEmail();
 
         if(!CheckUtil.checkEmaile(email)){
@@ -53,8 +51,6 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         if(tUser1!=null){
             return JsonUtil.getResultJson(ResultCodeEnum.USER_EXIST);
         }
-        //发送邮件
-        baseServiceImpl.insert(tUser);
         return JsonUtil.getSuccessJsonObject();
     }
     /**

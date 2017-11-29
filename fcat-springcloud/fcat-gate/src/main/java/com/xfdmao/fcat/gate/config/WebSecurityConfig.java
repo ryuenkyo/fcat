@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //解决Refused to display 'http://......' in a frame because it set 'X-Frame-Options' to 'DENY'. "错误
     http.headers().frameOptions().disable();
 
-    http.authorizeRequests().antMatchers("/","/fcat-user/v1/tUser/add").permitAll()
+    http.authorizeRequests().antMatchers("/","/fcat-user/v1/tUser/register").permitAll()
             .antMatchers("/**/session/**").authenticated()//登录即可获取session信息
             // 其他地址的访问均需验证权限（需要登录，且有指定的权限）
             .anyRequest().access("@permissionService.hasPermission(request,authentication)").and()
