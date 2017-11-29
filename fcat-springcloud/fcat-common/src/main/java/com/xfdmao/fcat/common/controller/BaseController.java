@@ -15,16 +15,16 @@ import java.util.*;
 /**
  * Created by xiangfei on 2017/10/16.
  */
-public class BaseController<Bsi extends BaseService,Entity,T> {
+public class BaseController<BaseServiceImpl extends BaseService,Entity,T> {
     @Autowired
     protected HttpServletRequest request;
     @Autowired
-    protected Bsi bsi;
+    protected BaseServiceImpl baseServiceImpl;
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public JSONObject add(@RequestBody Entity entity){
-        int result=bsi.insertSelective(entity);
+        int result= baseServiceImpl.insertSelective(entity);
         if(result==0){
             return JsonUtil.getFailJsonObject();
         }else{
@@ -35,13 +35,13 @@ public class BaseController<Bsi extends BaseService,Entity,T> {
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject get(@PathVariable T id){
-        return JsonUtil.getSuccessJsonObject(bsi.selectById(id));
+        return JsonUtil.getSuccessJsonObject(baseServiceImpl.selectById(id));
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
     public JSONObject update(@RequestBody Entity entity){
-        int result=bsi.updateById(entity);
+        int result= baseServiceImpl.updateById(entity);
         if(result==0){
             return JsonUtil.getFailJsonObject();
         }else{
@@ -51,7 +51,7 @@ public class BaseController<Bsi extends BaseService,Entity,T> {
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody
     public JSONObject remove(@PathVariable T id){
-        int result=bsi.deleteById(id);
+        int result= baseServiceImpl.deleteById(id);
         if(result <= 0){
             return JsonUtil.getFailJsonObject();
         }else{
@@ -62,7 +62,7 @@ public class BaseController<Bsi extends BaseService,Entity,T> {
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject list(){
-        return JsonUtil.getSuccessJsonObject(bsi.selectListAll());
+        return JsonUtil.getSuccessJsonObject(baseServiceImpl.selectListAll());
     }
 
     @RequestMapping(value = "/listByPage",method = RequestMethod.GET)
@@ -73,7 +73,7 @@ public class BaseController<Bsi extends BaseService,Entity,T> {
         pageSize = pageSize == null?CommonConstant.PAGE_SIZE:pageSize;
 
         PageHelper.startPage(pageNum, pageSize);
-        List<Entity> tMenuList = bsi.selectListAll();
+        List<Entity> tMenuList = baseServiceImpl.selectListAll();
         PageInfo page = new PageInfo(tMenuList);
         return JsonUtil.getSuccessJsonObject(page);
     }

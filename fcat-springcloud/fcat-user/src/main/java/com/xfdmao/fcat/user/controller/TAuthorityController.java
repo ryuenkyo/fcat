@@ -26,7 +26,7 @@ public class TAuthorityController extends BaseController<TAuthorityService,TAuth
     public JSONObject groupId(@PathVariable Integer groupId,@RequestBody JSONObject param)throws Exception{
         JSONArray menuIds = param.getJSONArray("menuIds");
         JSONArray elementIds = param.getJSONArray("elementIds");
-        boolean result = bsi.saveBatch(groupId,menuIds,elementIds);
+        boolean result = baseServiceImpl.saveBatch(groupId,menuIds,elementIds);
         return JsonUtil.getSuccessJsonObject(result);
     }
 
@@ -38,7 +38,7 @@ public class TAuthorityController extends BaseController<TAuthorityService,TAuth
     @ApiOperation(value = "通过groupId获取授权信息" )
     @RequestMapping(value = "{groupId}", method = RequestMethod.GET)
     public JSONObject get(@PathVariable Integer groupId){
-        JSONObject result = bsi.getAuthority(groupId);
+        JSONObject result = baseServiceImpl.getAuthority(groupId);
         return JsonUtil.getSuccessJsonObject(result);
     }
 }

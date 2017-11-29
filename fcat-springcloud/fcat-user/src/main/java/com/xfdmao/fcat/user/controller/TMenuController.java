@@ -32,7 +32,7 @@ public class TMenuController extends BaseController<TMenuService,TMenu,Integer>{
     @RequestMapping(value = "allTree", method = RequestMethod.GET)
     public JSONObject allTree()throws Exception{
         List<TMenuTree> tMenuTreeList = new ArrayList<>();
-        List<TMenu> menuList = bsi.selectListAll();
+        List<TMenu> menuList = baseServiceImpl.selectListAll();
         for(TMenu tMenu:menuList){
             TMenuTree tMenuTree = new TMenuTree();
             BeanUtils.copyProperties(tMenu,tMenuTree);

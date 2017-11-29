@@ -28,7 +28,7 @@ public class TElementController extends BaseController<TElementService,TElement,
     @ApiOperation(value = "通过menuId获取元素列表" )
     @RequestMapping(value = "getByMenuId/{menuId}", method = RequestMethod.GET)
     public JSONObject getByMenuId(@PathVariable Integer menuId)throws Exception{
-        List<TElement> result = bsi.getListByMenuId(menuId);
+        List<TElement> result = baseServiceImpl.getListByMenuId(menuId);
         return JsonUtil.getSuccessJsonObject(result);
     }
 }
