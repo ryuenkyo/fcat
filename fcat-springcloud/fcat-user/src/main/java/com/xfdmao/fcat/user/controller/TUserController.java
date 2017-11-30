@@ -1,6 +1,9 @@
 package com.xfdmao.fcat.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xfdmao.fcat.common.constant.CommonConstant;
 import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.enumtype.ResultCodeEnum;
 import com.xfdmao.fcat.common.util.CheckUtil;
@@ -121,5 +124,48 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         result.put("tMenuTrees",tMenuTrees);
         result.put("tElements",tElements);
         return JsonUtil.getSuccessJsonObject(result);
+    }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject get(@PathVariable Integer id){
+        TUser tUser = baseServiceImpl.selectById(id);
+        tUser.setPassword(null);
+        return JsonUtil.getSuccessJsonObject(tUser);
+    }
+
+    @RequestMapping(value = "/update",method = RequestMethod.PUT)
+    @ResponseBody
+    public JSONObject update(@RequestBody TUser entity){
+        entity.setPassword(baseServiceImpl.selectOne(entity).getPassword());
+        int result= baseServiceImpl.updateById(entity);
+        if(result==0){
+            return JsonUtil.getFailJsonObject();
+        }else{
+            return JsonUtil.getSuccessJsonObject();
+        }
+    }
+
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject list(){
+        List<TUser> tUserList = baseServiceImpl.selectListAll();
+        tUserList.forEach(tUser -> tUser.setPassword(null));
+        return JsonUtil.getSuccessJsonObject(tUserList);
+    }
+
+
+    @RequestMapping(value = "/listByPage",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject listByPage(Integer pageNum, Integer pageSize){
+
+        pageNum = pageNum == null? CommonConstant.PAGE_NUM:pageNum;
+        pageSize = pageSize == null?CommonConstant.PAGE_SIZE:pageSize;
+
+        PageHelper.startPage(pageNum, pageSize);
+        List<TUser> list = baseServiceImpl.selectListAll();
+        list.forEach(tUser -> tUser.setPassword(null));
+        PageInfo page = new PageInfo(list);
+        return JsonUtil.getSuccessJsonObject(page);
     }
 }

@@ -76,8 +76,8 @@ public class BaseController<BaseServiceImpl extends BaseService,Entity,T> {
         pageSize = pageSize == null?CommonConstant.PAGE_SIZE:pageSize;
 
         PageHelper.startPage(pageNum, pageSize);
-        List<Entity> tMenuList = baseServiceImpl.selectListAll();
-        PageInfo page = new PageInfo(tMenuList);
+        List<Entity> list = baseServiceImpl.selectListAll();
+        PageInfo page = new PageInfo(list);
         return JsonUtil.getSuccessJsonObject(page);
     }
 
