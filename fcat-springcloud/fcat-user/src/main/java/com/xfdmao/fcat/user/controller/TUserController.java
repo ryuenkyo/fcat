@@ -14,9 +14,11 @@ import com.xfdmao.fcat.user.service.TElementService;
 import com.xfdmao.fcat.user.service.TMenuService;
 import com.xfdmao.fcat.user.service.TUserService;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.collections.ListUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,7 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
     public JSONObject registerUser(@RequestBody TUser tUser)throws Exception{
         String username = tUser.getUsername();
         String email = tUser.getEmail();
+        String mobilePhone = tUser.getMobilePhone();
 
         if(!CheckUtil.checkEmaile(email)){
             return JsonUtil.getResultJson(ResultCodeEnum.EMAILCHECKFAIL);
@@ -50,6 +53,19 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         TUser tUser1 = baseServiceImpl.getByUsername(username);
         if(tUser1!=null){
             return JsonUtil.getResultJson(ResultCodeEnum.USER_EXIST);
+        }
+        tUser1 = new TUser();
+        tUser1.setMobilePhone(mobilePhone);
+        List<TUser> tUserList = baseServiceImpl.selectList(tUser1);
+        if(tUserList !=null && tUserList.size()>0){
+            return JsonUtil.getResultJson(ResultCodeEnum.MOBILE_PHONE_CHECK_FAIL);
+        }
+
+        tUser1 = new TUser();
+        tUser1.setEmail(tUser.getEmail());
+        tUserList = baseServiceImpl.selectList(tUser1);
+        if(tUserList !=null && tUserList.size()>0){
+            return JsonUtil.getResultJson(ResultCodeEnum.EMAIL_EXIST);
         }
 
         baseServiceImpl.register(tUser);
