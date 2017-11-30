@@ -3,6 +3,7 @@ package com.xfdmao.fcat.user.aop;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xfdmao.fcat.api.vo.authority.SessionInfo;
+import com.xfdmao.fcat.common.util.HttpUtil;
 import com.xfdmao.fcat.user.entity.TUserLog;
 import com.xfdmao.fcat.user.service.TUserLogService;
 import org.apache.commons.lang3.StringUtils;
@@ -64,8 +65,16 @@ public class LogAspect {
         tUserLog.setOptTime(new Date());
         tUserLog.setMethod(methodName);
         tUserLog.setSessionId(request.getSession().getId());
+        try {
+            String ip = HttpUtil.getIpAddr(request);
+            logger.info("FCat: ip:{}", ip);
+            tUserLog.setIp(ip);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("FCat: ip error");
+        }
         SessionInfo sessionInfo  = (SessionInfo) request.getSession().getAttribute("sessionInfo");
-        if(StringUtils.isNotBlank(sessionInfo.getUsername())){
+        if(sessionInfo!=null && StringUtils.isNotBlank(sessionInfo.getUsername())){
             tUserLog.setUsername(sessionInfo.getUsername());
             tUserLog.setCreateTime(new Date());
             tUserLogService.insert(tUserLog);

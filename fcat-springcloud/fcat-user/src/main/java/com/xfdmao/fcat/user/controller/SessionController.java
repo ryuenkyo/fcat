@@ -5,6 +5,8 @@ import com.xfdmao.fcat.api.vo.authority.SessionInfo;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import com.xfdmao.fcat.user.feign.TUserServiceFeign;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("v1/session")
 public class SessionController extends TUserServiceFeign {
+    private Logger logger = LoggerFactory.getLogger(SessionController.class);
     @Autowired
     protected HttpServletRequest request;
     /**
@@ -30,7 +33,7 @@ public class SessionController extends TUserServiceFeign {
     public JSONObject sessionUserInfo()throws Exception{
         try {
             SessionInfo sessionInfo  = (SessionInfo) request.getSession().getAttribute("sessionInfo");
-            System.err.println("sessionInfo :"+sessionInfo);
+            logger.info("FCat:sessionInfo:{}",sessionInfo);
             return JsonUtil.getSuccessJsonObject(sessionInfo);
         }catch ( Exception e){
             e.printStackTrace();

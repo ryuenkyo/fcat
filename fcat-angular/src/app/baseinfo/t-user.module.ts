@@ -17,7 +17,6 @@ import {TGroupTypeService} from "./t-group-type.service";
 import {TGroupService} from "./t-group.service";
 import {TUserAddComponent} from "./t-user-add.component";
 import {TUserUpdateComponent} from "./t-user-update.component";
-import {InfoComponent} from "../info/info.component";
 
 import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
 import {TMenuAddComponent} from "./t-menu-add.component";
@@ -39,17 +38,17 @@ import {TDictUpdateComponent} from "./dict/t-dict-update.component";
 import {TDictAddComponent} from "./dict/t-dict-add.component";
 import {TUserLogComponent} from "./userLog/t-user-log.component";
 import {TUserLogService} from "./userLog/t-user-log.service";
+import {InfoModule} from "../info/info.module";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule],
+  imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule,InfoModule],
   declarations: [TUserListComponent,TUserAddComponent,TUserUpdateComponent,
     TMenuListComponent,TMenuAddComponent,TMenuUpdateComponent,
     TElementAddComponent,TElementUpdateComponent,
     TGroupTypeListComponent,TGroupTypeUpdateComponent,TGroupTypeAddComponent,
     TGroupListComponent,TGroupAddComponent,TGroupUpdateComponent,TGroupAddUserComponent,TGroupAuthorityComponent,
     TDictComponent,TDictUpdateComponent,TDictAddComponent,
-    TUserLogComponent,
-    InfoComponent
+    TUserLogComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,
     CommonHttpService,TAuthorityService,TUserGroupService,TDictService,TUserLogService

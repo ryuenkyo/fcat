@@ -17,4 +17,6 @@ public interface TUserService extends BaseService<TUser>{
     List<TUser> getLeadersByGroupId(Integer groupId);
 
     List<TUser> getMembersByGroupId(Integer groupId);
+
+    void register(TUser tUser);
 }

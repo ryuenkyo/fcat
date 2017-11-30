@@ -12,7 +12,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   imports: [BrowserModule,
-    AppRoutingModule,LoginModule,IndexModule],
+    AppRoutingModule,LoginModule,IndexModule ],
   declarations: [AppComponent
      ],
   providers: [

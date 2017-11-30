@@ -14,12 +14,17 @@ public class CheckUtil {
      * @return 匹配成功返回true 否则返回false;
      */
     public static boolean checkEmaile(String emaile){
-        String RULE_EMAIL = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
-        //正则表达式的模式
-        Pattern p = Pattern.compile(RULE_EMAIL);
-        //正则表达式的匹配器
-        Matcher m = p.matcher(emaile);
-        //进行正则匹配
-        return m.matches();
+        try{
+            String RULE_EMAIL = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
+            //正则表达式的模式
+            Pattern p = Pattern.compile(RULE_EMAIL);
+            //正则表达式的匹配器
+            Matcher m = p.matcher(emaile);
+            //进行正则匹配
+            return m.matches();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

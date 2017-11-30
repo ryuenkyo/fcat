@@ -4,8 +4,9 @@ package com.xfdmao.fcat.common.enumtype;
  * Created by xiangfei on 2017/7/3.
  */
 public enum ResultCodeEnum {
-    SUCCESS("success",0),FAIL("fail",1),NOLOGIN("no login",100),
-    EMAILCHECKFAIL("email check fail",1000), USER_EXIST("user exist",101);
+    SUCCESS("success",0),FAIL("fail",1),NOLOGIN("未登录",100),
+    EMAILCHECKFAIL("邮箱验证失败",100), USER_EXIST("用户已存在",101), MOBILE_PHONE_CHECK_FAIL("手机号码已注册", 102),
+    EMAIL_EXIST("邮箱已注册",103);
     private String key;
     private Integer value;
 
