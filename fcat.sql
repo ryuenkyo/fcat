@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50611
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : fcat
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-29 00:23:42
+Date: 2017-11-30 13:38:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `t_authority` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3048 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3089 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_authority
@@ -107,6 +107,47 @@ INSERT INTO `t_authority` VALUES ('3044', '2', 'group', '37', 'element', null, n
 INSERT INTO `t_authority` VALUES ('3045', '2', 'group', '38', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('3046', '2', 'group', '39', 'element', null, null);
 INSERT INTO `t_authority` VALUES ('3047', '2', 'group', '40', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3048', '9', 'group', '13', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3049', '9', 'group', '5', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3050', '9', 'group', '1', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3051', '9', 'group', '6', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3052', '9', 'group', '7', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3053', '9', 'group', '8', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3054', '9', 'group', '21', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3055', '9', 'group', '36', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3056', '9', 'group', '14', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3057', '9', 'group', '33', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3058', '9', 'group', '34', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3059', '9', 'group', '35', 'menu', null, null);
+INSERT INTO `t_authority` VALUES ('3060', '9', 'group', '3', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3061', '9', 'group', '4', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3062', '9', 'group', '5', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3063', '9', 'group', '23', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3064', '9', 'group', '10', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3065', '9', 'group', '11', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3066', '9', 'group', '12', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3067', '9', 'group', '13', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3068', '9', 'group', '14', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3069', '9', 'group', '15', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3070', '9', 'group', '24', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3071', '9', 'group', '27', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3072', '9', 'group', '16', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3073', '9', 'group', '17', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3074', '9', 'group', '18', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3075', '9', 'group', '19', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3076', '9', 'group', '20', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3077', '9', 'group', '21', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3078', '9', 'group', '22', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3079', '9', 'group', '28', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3080', '9', 'group', '32', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3081', '9', 'group', '33', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3082', '9', 'group', '34', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3083', '9', 'group', '35', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3084', '9', 'group', '36', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3085', '9', 'group', '37', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3086', '9', 'group', '38', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3087', '9', 'group', '39', 'element', null, null);
+INSERT INTO `t_authority` VALUES ('3088', '9', 'group', '40', 'element', null, null);
 
 -- ----------------------------
 -- Table structure for t_dict
@@ -122,7 +163,7 @@ CREATE TABLE `t_dict` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `code` (`code`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_dict
@@ -197,17 +238,18 @@ CREATE TABLE `t_group` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_group
 -- ----------------------------
 INSERT INTO `t_group` VALUES ('1', 'role', '角色', '-1', '/role', '1', '2017-10-12 13:14:13', '2017-10-12 13:14:13');
-INSERT INTO `t_group` VALUES ('2', 'superAdmin', '超级管理员', '1', '/role/superAdmin', '1', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
+INSERT INTO `t_group` VALUES ('2', 'ADMIN', '管理员', '1', '/role/admin', '1', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
 INSERT INTO `t_group` VALUES ('4', 'tourist', '游客', '1', '/role/tourist', '1', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
 INSERT INTO `t_group` VALUES ('6', 'company', '深圳华为技术有限公司', '-1', '/company', '2', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
 INSERT INTO `t_group` VALUES ('7', 'financeDepart', '财务部', '6', '/company/financeDepart', '2', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
 INSERT INTO `t_group` VALUES ('8', 'hrDepart', '人力资源部', '6', '/company/hrDepart', '2', '2017-10-06 21:29:40', '2017-10-06 21:29:40');
+INSERT INTO `t_group` VALUES ('9', 'USER', '普通用户', '1', '/role/user', '1', '2017-11-30 09:32:52', '2017-11-30 09:32:52');
 
 -- ----------------------------
 -- Table structure for t_group_type
@@ -284,7 +326,7 @@ CREATE TABLE `t_user` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
@@ -296,6 +338,8 @@ INSERT INTO `t_user` VALUES ('4', 'xiaofei', '123456', '小飞', '1992-02-11', '
 INSERT INTO `t_user` VALUES ('5', 'xiaoxiang', '123456', '小翔', '1992-02-11', '广东省深圳市盐田', '13225442103', '07997287923', 'xiaoxiang@163.com', 'S', 'Y', '2017-10-17 17:55:24', '2017-10-17 17:55:24');
 INSERT INTO `t_user` VALUES ('7', '18925231121', '1', '2334', '1', '1', '1', '1', '1', 'S', 'Y', '2017-10-17 18:18:59', '2017-10-17 18:18:59');
 INSERT INTO `t_user` VALUES ('8', 'hbk619', '123456', '小王', null, null, '13923772870', null, '463061820@qq.com', 'M', 'Y', '2017-11-03 15:08:09', '2017-11-03 15:08:09');
+INSERT INTO `t_user` VALUES ('9', '1', '1', null, null, null, '13025442198', null, '1@163.com', 'S', null, null, null);
+INSERT INTO `t_user` VALUES ('10', 'liu', 'liu', null, null, null, '13025442107', null, '12@163.com', 'S', null, null, null);
 
 -- ----------------------------
 -- Table structure for t_user_group
@@ -309,7 +353,7 @@ CREATE TABLE `t_user_group` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_group
@@ -326,6 +370,8 @@ INSERT INTO `t_user_group` VALUES ('47', '2', '4', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('48', '2', '5', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('49', '2', '7', 'leader', null, null);
 INSERT INTO `t_user_group` VALUES ('50', '1', '2', 'leader', null, null);
+INSERT INTO `t_user_group` VALUES ('51', '9', '9', 'member', null, null);
+INSERT INTO `t_user_group` VALUES ('52', '9', '10', 'member', null, null);
 
 -- ----------------------------
 -- Table structure for t_user_log
@@ -336,87 +382,10 @@ CREATE TABLE `t_user_log` (
   `username` varchar(255) DEFAULT NULL COMMENT '用户名',
   `opt_time` datetime DEFAULT NULL COMMENT '操作时间',
   `session_id` varchar(255) DEFAULT NULL COMMENT '用户sessionId',
+  `ip` varchar(255) DEFAULT NULL,
   `action` varchar(255) DEFAULT NULL COMMENT '操作',
   `method` varchar(255) DEFAULT NULL COMMENT '访问的方法',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '数据库创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_user_log
--- ----------------------------
-INSERT INTO `t_user_log` VALUES ('7', 'aki', '2017-11-28 23:51:04', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-28 23:51:04');
-INSERT INTO `t_user_log` VALUES ('8', 'aki', '2017-11-28 23:51:05', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-28 23:51:05');
-INSERT INTO `t_user_log` VALUES ('9', 'aki', '2017-11-28 23:51:05', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-28 23:51:05');
-INSERT INTO `t_user_log` VALUES ('10', 'aki', '2017-11-28 23:51:14', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TGroupController', 'getByMenuId', '2017-11-28 23:51:14');
-INSERT INTO `t_user_log` VALUES ('11', 'aki', '2017-11-28 23:51:15', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TMenuController', 'allTree', '2017-11-28 23:51:15');
-INSERT INTO `t_user_log` VALUES ('12', 'aki', '2017-11-28 23:58:21', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-28 23:58:21');
-INSERT INTO `t_user_log` VALUES ('13', 'aki', '2017-11-28 23:58:23', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-28 23:58:23');
-INSERT INTO `t_user_log` VALUES ('14', 'aki', '2017-11-28 23:58:23', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-28 23:58:23');
-INSERT INTO `t_user_log` VALUES ('15', 'aki', '2017-11-28 23:58:24', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-28 23:58:24');
-INSERT INTO `t_user_log` VALUES ('16', 'aki', '2017-11-29 00:01:53', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:01:53');
-INSERT INTO `t_user_log` VALUES ('17', 'aki', '2017-11-29 00:01:53', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:01:53');
-INSERT INTO `t_user_log` VALUES ('18', 'aki', '2017-11-29 00:01:53', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:01:53');
-INSERT INTO `t_user_log` VALUES ('19', 'aki', '2017-11-29 00:01:54', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:01:54');
-INSERT INTO `t_user_log` VALUES ('20', 'aki', '2017-11-29 00:02:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:02:31');
-INSERT INTO `t_user_log` VALUES ('21', 'aki', '2017-11-29 00:02:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:02:31');
-INSERT INTO `t_user_log` VALUES ('22', 'aki', '2017-11-29 00:02:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:02:31');
-INSERT INTO `t_user_log` VALUES ('23', 'aki', '2017-11-29 00:02:32', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:02:32');
-INSERT INTO `t_user_log` VALUES ('24', 'aki', '2017-11-29 00:02:40', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TGroupController', 'getByMenuId', '2017-11-29 00:02:40');
-INSERT INTO `t_user_log` VALUES ('25', 'aki', '2017-11-29 00:02:40', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TMenuController', 'allTree', '2017-11-29 00:02:40');
-INSERT INTO `t_user_log` VALUES ('26', 'aki', '2017-11-29 00:02:41', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:02:41');
-INSERT INTO `t_user_log` VALUES ('27', 'aki', '2017-11-29 00:06:07', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:06:07');
-INSERT INTO `t_user_log` VALUES ('28', 'aki', '2017-11-29 00:06:07', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:06:07');
-INSERT INTO `t_user_log` VALUES ('29', 'aki', '2017-11-29 00:06:07', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:06:07');
-INSERT INTO `t_user_log` VALUES ('30', 'aki', '2017-11-29 00:12:38', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:12:38');
-INSERT INTO `t_user_log` VALUES ('31', 'aki', '2017-11-29 00:12:39', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:12:39');
-INSERT INTO `t_user_log` VALUES ('32', 'aki', '2017-11-29 00:12:39', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:12:39');
-INSERT INTO `t_user_log` VALUES ('33', 'aki', '2017-11-29 00:12:44', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:12:44');
-INSERT INTO `t_user_log` VALUES ('34', 'aki', '2017-11-29 00:13:36', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:13:36');
-INSERT INTO `t_user_log` VALUES ('35', 'aki', '2017-11-29 00:13:36', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:13:36');
-INSERT INTO `t_user_log` VALUES ('36', 'aki', '2017-11-29 00:13:36', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:13:36');
-INSERT INTO `t_user_log` VALUES ('37', 'aki', '2017-11-29 00:13:36', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:13:36');
-INSERT INTO `t_user_log` VALUES ('38', 'aki', '2017-11-29 00:13:58', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:13:58');
-INSERT INTO `t_user_log` VALUES ('39', 'aki', '2017-11-29 00:13:58', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:13:58');
-INSERT INTO `t_user_log` VALUES ('40', 'aki', '2017-11-29 00:13:58', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:13:58');
-INSERT INTO `t_user_log` VALUES ('41', 'aki', '2017-11-29 00:13:58', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:13:58');
-INSERT INTO `t_user_log` VALUES ('42', 'aki', '2017-11-29 00:14:05', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:14:05');
-INSERT INTO `t_user_log` VALUES ('43', 'aki', '2017-11-29 00:14:06', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:14:06');
-INSERT INTO `t_user_log` VALUES ('44', 'aki', '2017-11-29 00:14:06', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:14:06');
-INSERT INTO `t_user_log` VALUES ('45', 'aki', '2017-11-29 00:14:06', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:14:06');
-INSERT INTO `t_user_log` VALUES ('46', 'aki', '2017-11-29 00:16:30', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:16:30');
-INSERT INTO `t_user_log` VALUES ('47', 'aki', '2017-11-29 00:16:30', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:16:30');
-INSERT INTO `t_user_log` VALUES ('48', 'aki', '2017-11-29 00:16:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:16:31');
-INSERT INTO `t_user_log` VALUES ('49', 'aki', '2017-11-29 00:16:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:16:31');
-INSERT INTO `t_user_log` VALUES ('50', 'aki', '2017-11-29 00:16:35', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:16:35');
-INSERT INTO `t_user_log` VALUES ('51', 'aki', '2017-11-29 00:16:35', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:16:35');
-INSERT INTO `t_user_log` VALUES ('52', 'aki', '2017-11-29 00:16:35', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.SessionController', 'sessionUserInfo', '2017-11-29 00:16:35');
-INSERT INTO `t_user_log` VALUES ('53', 'aki', '2017-11-29 00:16:35', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserController', 'getAuthority', '2017-11-29 00:16:35');
-INSERT INTO `t_user_log` VALUES ('54', 'aki', '2017-11-29 00:17:07', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TMenuController', 'allTree', '2017-11-29 00:17:07');
-INSERT INTO `t_user_log` VALUES ('55', 'aki', '2017-11-29 00:17:08', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:08');
-INSERT INTO `t_user_log` VALUES ('56', 'aki', '2017-11-29 00:17:11', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:11');
-INSERT INTO `t_user_log` VALUES ('57', 'aki', '2017-11-29 00:17:13', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:13');
-INSERT INTO `t_user_log` VALUES ('58', 'aki', '2017-11-29 00:17:13', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:13');
-INSERT INTO `t_user_log` VALUES ('59', 'aki', '2017-11-29 00:17:14', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:14');
-INSERT INTO `t_user_log` VALUES ('60', 'aki', '2017-11-29 00:17:15', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:15');
-INSERT INTO `t_user_log` VALUES ('61', 'aki', '2017-11-29 00:17:19', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:19');
-INSERT INTO `t_user_log` VALUES ('62', 'aki', '2017-11-29 00:17:23', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TGroupController', 'getByMenuId', '2017-11-29 00:17:23');
-INSERT INTO `t_user_log` VALUES ('63', 'aki', '2017-11-29 00:17:24', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TMenuController', 'allTree', '2017-11-29 00:17:24');
-INSERT INTO `t_user_log` VALUES ('64', 'aki', '2017-11-29 00:17:24', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TGroupController', 'getByMenuId', '2017-11-29 00:17:24');
-INSERT INTO `t_user_log` VALUES ('65', 'aki', '2017-11-29 00:17:25', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:25');
-INSERT INTO `t_user_log` VALUES ('66', 'aki', '2017-11-29 00:17:26', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:26');
-INSERT INTO `t_user_log` VALUES ('67', 'aki', '2017-11-29 00:17:27', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:27');
-INSERT INTO `t_user_log` VALUES ('68', 'aki', '2017-11-29 00:17:28', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:28');
-INSERT INTO `t_user_log` VALUES ('69', 'aki', '2017-11-29 00:17:31', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:31');
-INSERT INTO `t_user_log` VALUES ('70', 'aki', '2017-11-29 00:17:32', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:32');
-INSERT INTO `t_user_log` VALUES ('71', 'aki', '2017-11-29 00:17:32', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:32');
-INSERT INTO `t_user_log` VALUES ('72', 'aki', '2017-11-29 00:17:33', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:33');
-INSERT INTO `t_user_log` VALUES ('73', 'aki', '2017-11-29 00:17:34', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:34');
-INSERT INTO `t_user_log` VALUES ('74', 'aki', '2017-11-29 00:17:34', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:34');
-INSERT INTO `t_user_log` VALUES ('75', 'aki', '2017-11-29 00:17:37', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:37');
-INSERT INTO `t_user_log` VALUES ('76', 'aki', '2017-11-29 00:17:40', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:40');
-INSERT INTO `t_user_log` VALUES ('77', 'aki', '2017-11-29 00:17:41', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:41');
-INSERT INTO `t_user_log` VALUES ('78', 'aki', '2017-11-29 00:17:41', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:41');
-INSERT INTO `t_user_log` VALUES ('79', 'aki', '2017-11-29 00:17:41', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:41');
-INSERT INTO `t_user_log` VALUES ('80', 'aki', '2017-11-29 00:17:41', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:41');
-INSERT INTO `t_user_log` VALUES ('81', 'aki', '2017-11-29 00:17:43', '0332e3a4-d649-4d44-b7c4-2bb471aa2899', 'class com.xfdmao.fcat.user.controller.TUserLogController', 'listByPage', '2017-11-29 00:17:43');
+) ENGINE=InnoDB AUTO_INCREMENT=355 DEFAULT CHARSET=utf8;
+ 
