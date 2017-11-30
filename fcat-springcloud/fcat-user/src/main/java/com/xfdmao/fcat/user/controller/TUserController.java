@@ -70,7 +70,8 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         if(tUserList !=null && tUserList.size()>0){
             return JsonUtil.getResultJson(ResultCodeEnum.EMAIL_EXIST);
         }
-
+        tUser.setCreateTime(new Date());
+        tUser.setUpdateTime(new Date());
         baseServiceImpl.register(tUser);
         return JsonUtil.getSuccessJsonObject();
     }
