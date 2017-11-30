@@ -7,15 +7,18 @@ import {TUserModule} from "../baseinfo/t-user.module";
 import {LoginComponent} from "./login.component";
 import {LoginRoutingModule} from "./login-routing.module";
 import {LoginService} from "./Login.service";
+import {RegisterComponent} from "./register.component";
+import {InfoModule} from "../info/info.module";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,
     LoginRoutingModule,
     HttpModule,
     JsonpModule,
-    TUserModule
+    TUserModule,
+    InfoModule
   ],
-  declarations: [LoginComponent
+  declarations: [LoginComponent,RegisterComponent
      ],
   providers: [
     Config,LoginService

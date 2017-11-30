@@ -1,6 +1,8 @@
 {
-  "/api": {
-    "target": "http://localhost:4200",
-    "secure": false
+  "/fcat-user": {
+    "target": "http://localhost:8965"
+  },
+  "/": {
+    "target": "http://localhost:8965"
   }
 }

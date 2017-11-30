@@ -39,7 +39,7 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
      * @throws RuntimeException
      */
     @ApiOperation(value = "注册用户信息" )
-    @RequestMapping(value = "registerUser", method = RequestMethod.POST)
+    @RequestMapping(value = "register", method = RequestMethod.POST)
     public JSONObject registerUser(@RequestBody TUser tUser)throws Exception{
         String username = tUser.getUsername();
         String email = tUser.getEmail();

@@ -44,6 +44,12 @@ export class TUserService{
     let url = this.baseUrl+"/add";
     return this.httpUtil.post(url, tUser);
   }
+
+  register(tUser:TUser):any {
+    let url = this.baseUrl+"/register";
+    return this.httpUtil.post(url, tUser);
+  }
+
   getById(id:number){
     let url = this.baseUrl+"/"+id;
     return this.httpUtil.get(url);
@@ -72,4 +78,5 @@ export class TUserService{
     let url = "/logout";
     return this.httpUtil.get(url);
   }
+
 }
