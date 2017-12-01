@@ -9,6 +9,9 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 [^_^] 演示地址： http://fcat.xfdmao.com     
 用户名/密码，自行注册  
 
+[【FCat-基于session共享分支】](https://gitee.com/xfdm/FCat) 
+[【FCat-基于Oauth2、jwt鉴权分支】](https://gitee.com/xfdm_admin/Angular-SpringCloud-Oauth2)
+
 【CSDN教程地址】：http://edu.csdn.net/course/detail/6358
 # 架构设计 
 ![img](http://on-img.com/chart_image/5954b886e4b0ad619ac73246.png)
