@@ -1,11 +1,9 @@
-
 import {Component, OnInit} from '@angular/core';
 import {Config} from "../app-config";
 import {LoginService} from "./Login.service";
 import {Router} from "@angular/router";
 import {AlertEnum} from "../alert/alert";
 import {TUser} from "../baseinfo/t-user";
-import {TUserService} from "../baseinfo/t-user.service";
 
 @Component({
   selector: 'my-app',
@@ -23,17 +21,13 @@ export class LoginComponent implements OnInit{
   password:string;
   constructor(private router:Router,
               private config:Config,
-              private loginService:LoginService,
-              private tUserService:TUserService){
+              private loginService:LoginService){
     this.app = config.appConfig;
   }
   ngOnInit(){
-    this.tUserService.getSessionInfo().subscribe(data =>{
-      if(data && data.data && data.data.username){
-        this.router.navigate(['/index']);
-      }
-    });
   }
+
+
   msg_(msg_:string) {
     this.msg = msg_;
   }

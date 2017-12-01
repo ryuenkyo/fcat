@@ -23,11 +23,11 @@
       <form class="form" id="f2"   method="post">
         <p class="inp">
           <input  class="f-u" name="username" [(ngModel)]="username"  placeholder="请输入用户名"
-                  type="text" readonly onfocus="this.removeAttribute('readonly');">
+                  type="text" readonly onfocus="this.removeAttribute('readonly');" (keyup.enter)="login()">
         </p>
         <p class="inp">
           <input class="f-p" name="password" [(ngModel)]="password" placeholder="密码"
-                 type="password" readonly onfocus="this.removeAttribute('readonly');">
+                 type="password" readonly onfocus="this.removeAttribute('readonly');" (keyup.enter)="login()">
         </p>
         <p class="inp2">
           <a class='unit-reg' routerLink="../register">注册</a>
