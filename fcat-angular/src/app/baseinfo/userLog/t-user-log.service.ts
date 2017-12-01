@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {TUserLog} from "./t-user-log";
 import {HttpUtil} from "../../util/http.util";
 
 

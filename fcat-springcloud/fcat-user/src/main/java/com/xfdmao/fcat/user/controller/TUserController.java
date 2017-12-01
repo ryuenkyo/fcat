@@ -17,13 +17,12 @@ import com.xfdmao.fcat.user.service.TElementService;
 import com.xfdmao.fcat.user.service.TMenuService;
 import com.xfdmao.fcat.user.service.TUserService;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.collections.ListUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,7 +69,8 @@ public class TUserController extends BaseController<TUserService,TUser,Integer>{
         if(tUserList !=null && tUserList.size()>0){
             return JsonUtil.getResultJson(ResultCodeEnum.EMAIL_EXIST);
         }
-
+        tUser.setCreateTime(new Date());
+        tUser.setUpdateTime(new Date());
         baseServiceImpl.register(tUser);
         return JsonUtil.getSuccessJsonObject();
     }
