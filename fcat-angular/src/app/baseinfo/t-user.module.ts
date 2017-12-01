@@ -39,6 +39,7 @@ import {TDictAddComponent} from "./dict/t-dict-add.component";
 import {TUserLogComponent} from "./userLog/t-user-log.component";
 import {TUserLogService} from "./userLog/t-user-log.service";
 import {InfoModule} from "../info/info.module";
+import {DashboardComponent} from "./dashboard.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,TUserRoutingModule,PaginationModule.forRoot(),AmexioWidgetModule,InfoModule],
@@ -48,7 +49,8 @@ import {InfoModule} from "../info/info.module";
     TGroupTypeListComponent,TGroupTypeUpdateComponent,TGroupTypeAddComponent,
     TGroupListComponent,TGroupAddComponent,TGroupUpdateComponent,TGroupAddUserComponent,TGroupAuthorityComponent,
     TDictComponent,TDictUpdateComponent,TDictAddComponent,
-    TUserLogComponent
+    TUserLogComponent,
+    DashboardComponent
      ],
   providers: [Config,TUserService,TMenuService,TElementService,TGroupTypeService,TGroupService,
     CommonHttpService,TAuthorityService,TUserGroupService,TDictService,TUserLogService

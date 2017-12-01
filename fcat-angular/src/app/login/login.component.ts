@@ -5,6 +5,7 @@ import {LoginService} from "./Login.service";
 import {Router} from "@angular/router";
 import {AlertEnum} from "../alert/alert";
 import {TUser} from "../baseinfo/t-user";
+import {TUserService} from "../baseinfo/t-user.service";
 
 @Component({
   selector: 'my-app',
@@ -22,10 +23,16 @@ export class LoginComponent implements OnInit{
   password:string;
   constructor(private router:Router,
               private config:Config,
-              private loginService:LoginService){
+              private loginService:LoginService,
+              private tUserService:TUserService){
     this.app = config.appConfig;
   }
   ngOnInit(){
+    this.tUserService.getSessionInfo().subscribe(data =>{
+      if(data && data.data && data.data.username){
+        this.router.navigate(['/index']);
+      }
+    });
   }
   msg_(msg_:string) {
     this.msg = msg_;
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit{
     this.loginService.login(this.username,this.password).subscribe(data =>{
       if(data.data && data.data.success && data.data.userDetails.username){
        // window.location.href = "/index/dashboard";
-        this.router.navigate(['/index/dashboard']);
+        this.router.navigate(['/index']);
       }else{
         this.msg = "用户名密码错误";
       }
