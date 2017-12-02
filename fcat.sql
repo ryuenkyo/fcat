@@ -338,7 +338,6 @@ INSERT INTO `t_user` VALUES ('4', 'xiaofei', '123456', '小飞', '1992-02-11', '
 INSERT INTO `t_user` VALUES ('5', 'xiaoxiang', '123456', '小翔', '1992-02-11', '广东省深圳市盐田', '13225442103', '07997287923', 'xiaoxiang@163.com', 'S', 'Y', '2017-10-17 17:55:24', '2017-10-17 17:55:24');
 INSERT INTO `t_user` VALUES ('7', '18925231121', '1', '2334', '1', '1', '1', '1', '1', 'S', 'Y', '2017-10-17 18:18:59', '2017-10-17 18:18:59');
 INSERT INTO `t_user` VALUES ('8', 'hbk619', '123456', '小王', null, null, '13923772870', null, '463061820@qq.com', 'M', 'Y', '2017-11-03 15:08:09', '2017-11-03 15:08:09');
-INSERT INTO `t_user` VALUES ('9', '1', '1', null, null, null, '13025442198', null, '1@163.com', 'S', null, null, null);
 
 -- ----------------------------
 -- Table structure for t_user_group
