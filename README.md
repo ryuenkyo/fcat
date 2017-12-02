@@ -17,6 +17,28 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 # 架构设计 
 ![img](http://on-img.com/chart_image/5954b886e4b0ad619ac73246.png)
 
+## 前端技术：Angular；
+- 支持angular2以上版本；
+## 后端技术：SpringCloud；
+- Eureka  
+    服务器用作服务注册服务器。
+    一个java客户端，用来简化与服务器的交互、作为轮询负载均衡器，并提供服务的故障切换支持。
+- Zuul  
+    基于JVM路由和服务端的负载均衡器
+    类似nginx，反向代理的功能
+- Hystrix  
+    提供了熔断、隔离、Fallback、cache、监控等功能，能够在一个、或多个依赖同时出现问题时保证系统依然可用。
+- Feign  
+    是声明式、模板化的http客户端。旨在用最少的开销和代码将您的代码连接到http apis。
+- Ribbon  
+    提供客户端的软件负载均衡算法
+- Redis  
+    存储热点数据
+- Session
+    redis共享会话数据
+- Security  
+    提供声明式的安全访问控制解决方案的安全框架
+
 ## 开发环境
 - node-v6.11.0-x64.msi
 - redis3.X
