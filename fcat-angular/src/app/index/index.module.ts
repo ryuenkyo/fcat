@@ -5,14 +5,13 @@ import {FormsModule}   from '@angular/forms';
 
 import {IndexComponent}        from './index.component';
 import {IndexRoutingModule} from "./index-routing.module";
-import {MyAsideComponent} from "./common/my-aside.component";
 import { HttpModule, JsonpModule } from '@angular/http';
 import {Config} from "../app-config";
 import {MyHeaderComponent} from "./common/my-header.component";
 
 import {TUserModule} from "../baseinfo/t-user.module";
-import {DashboardComponent} from "../baseinfo/dashboard.component";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {AsideComponent} from "../aside/aside.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule,
@@ -23,7 +22,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     TUserModule
   ],
   declarations: [IndexComponent, MyHeaderComponent,
-    MyAsideComponent,DashboardComponent
+    AsideComponent
      ],
   providers: [
     Config

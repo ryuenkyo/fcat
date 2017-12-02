@@ -4,13 +4,7 @@ import {IndexComponent} from "./index.component";
 import {DashboardComponent} from "../baseinfo/dashboard.component";
 
 const routes: Routes = [
-  {path: 'index',  component: IndexComponent,children: [
-    {
-      path: 'dashboard',
-      component:DashboardComponent
-    } 
-  ]
-  }
+
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

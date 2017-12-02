@@ -20,7 +20,8 @@ import {TGroupAuthorityComponent} from "./t-group-authority.component";
 import {TDictComponent} from "./dict/t-dict.component";
 import {TDictUpdateComponent} from "./dict/t-dict-update.component";
 import {TDictAddComponent} from "./dict/t-dict-add.component";
-import {TUserLogComponent} from "./userLog/t-user-log.component";
+import {TUserLogComponent} from "./userLog/t-user-log.component"; 
+import {DashboardComponent} from "./dashboard.component"; 
 
 
 const routes: Routes = [
@@ -93,10 +94,6 @@ const routes: Routes = [
       path: 'tDictList',
       component: TDictComponent
     },
-    { path: '**',
-      redirectTo: 'dashboard',
-      pathMatch: 'full'
-    },
     {
       path: 'tDictUpdate/:id',
       component: TDictUpdateComponent
@@ -107,7 +104,15 @@ const routes: Routes = [
     },
     {
       path: 'tUserLogList',
-      component: TUserLogComponent
+      component: TUserLogComponent 
+    },
+    {
+      path: 'dashboard',
+      component: DashboardComponent
+    },
+    { path: '**',
+      redirectTo: '/index/dashboard',
+      pathMatch: 'full' 
     }
   ]},
   { path: '**',

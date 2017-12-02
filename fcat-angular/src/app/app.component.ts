@@ -3,7 +3,9 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {Config} from "./app-config";
- 
+import {Router} from "@angular/router";
+import {TUserService} from "./baseinfo/t-user.service";
+
 @Component({
   selector: 'my-app',
   template: `
@@ -13,10 +15,20 @@ import {Config} from "./app-config";
 
 export class AppComponent implements  OnInit{
   app:any;
-  constructor(private config:Config){
+  constructor(private router:Router,
+              private config:Config,
+              private tUserService:TUserService){
     this.app = config.appConfig;
   };
   ngOnInit(){
+    this.checkLogin();
+  }
+  checkLogin(){
+    this.tUserService.getSessionInfo().subscribe(data =>{
+      if(data && data.data && data.data.username){
+        this.router.navigate(['/index']);
+      }
+    });
   }
 
 }

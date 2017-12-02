@@ -1,4 +1,3 @@
-
 import {Component, OnInit} from '@angular/core';
 import {Config} from "../app-config";
 import {LoginService} from "./Login.service";
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit{
     this.app = config.appConfig;
   }
   ngOnInit(){
-  }
+  } 
   msg_(msg_:string) {
     this.msg = msg_;
   }
@@ -48,8 +47,8 @@ export class LoginComponent implements OnInit{
     if(!this.check())return;
     this.loginService.login(this.username,this.password).subscribe(data =>{
       if(data.data && data.data.success && data.data.userDetails.username){
-       // window.location.href = "/index/dashboard";
-        this.router.navigate(['/index/dashboard']);
+       // window.location.href = "/index/dashboard";  
+        this.router.navigate(['/index']); 
       }else{
         this.msg = "用户名密码错误";
       }

@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core'; 
+import {Component, OnInit} from '@angular/core';
 
 @Component({
+  selector: 'fcat-dashboard',
   templateUrl: './dashboard.component.html'
 })
 
