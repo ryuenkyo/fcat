@@ -88,16 +88,20 @@ ng serve
 http://localhost:4200 
 ```
 
-## 功能    
-- 项目搭建、架构设计  
+## 功能      
 - 用户管理     
 - 菜单管理  
 - 组织类型管理  
 - 组织架构管理————组织管理、关联用户、组织授权  
+- 数据字典
+- 日志管理
   
  
-## 前端效果
+## 效果展示
 ![img](http://image.xfdmao.com/fcat/demo/fcat-login.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-dashboard.png)
 ![img](http://image.xfdmao.com/fcat/demo/FCat-userList.png)
 ![img](http://image.xfdmao.com/fcat/demo/FCat-menu.png)
 ![img](http://image.xfdmao.com/fcat/demo/FCat-group.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-dict.png)
+![img](http://image.xfdmao.com/fcat/demo/FCat-log.png)
