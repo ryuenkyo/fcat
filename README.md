@@ -1,5 +1,6 @@
-#  **FCat** 
-FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理、区域管理、GIS地图、......)，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子，其目标是帮助企业搭建一套基础功能框架；
+#  **FCat 全栈必备** 
+    FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理、区域管理、GIS地图、......)，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子，其目标是帮助企业搭建一套基础功能框架；
+    核心技术：angualr、Spring Cloud、OAuth2、jwt、Spring Cloud Security、Eureka、Zuul、Hystrix、Feign、Ribbon、Redis、Mybatis、Mysql。
 
 - 前端技术：Angular4；
 - 后端技术：SpringCloud；
@@ -18,6 +19,12 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 
 ## 前端技术：Angular；
 - 支持angular2以上版本；
+- 组件
+- 模块
+- Http
+- 动态路由
+- 
+
 ## 后端技术：SpringCloud；
 - Eureka  
     服务器用作服务注册服务器。
@@ -49,53 +56,27 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 
 
 ## 部署项目
-#### 部署  
+#### 前端部署  
 安装node-v6.11.0-x64.msi  
-cdm下运行一下命令：  
+cmd下运行一下命令：  
 ```
 npm config set registry https://registry.npm.taobao.org
 npm install -g @angular/cli
 cd FCat\fcat-angular
 npm install
-```
-#### 默认CORS解决跨域问题
-``` 
-- 后台依次启动：CenterBootstrap、GateBootstrap、UserBootstrap 
-- 前端：ng serve  
-- 访问： http://localhost:4200 
+ng serve
 ```
 
-#### 另外一种解决跨域问题——nginx做转发
-nginx.conf配置
-```
-worker_processes  1;
-events {
-    worker_connections  1024;
-}
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-    sendfile        on;
-    keepalive_timeout  65;
-    server {
-        listen       80;
-	server_name  localhost; 
-        location / {
-            proxy_pass   http://localhost:4200;
-        } 
-	location /apis {
-	    rewrite    ^.+apis/?(.*)$ /$1 break;
-            include  uwsgi_params;
-            proxy_pass   http://localhost:8965;
-        }
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
-    }
-} 
-```
+#### 后台部署 
+后台依次启动
+- CenterBootstrap
+- GateBootstrap
+- UserBootstrap  
 
+#### 访问
+```
+http://localhost:4200 
+```
 
 ## 功能    
 - 项目搭建、架构设计  
