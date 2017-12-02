@@ -1,6 +1,6 @@
 #  **FCat 全栈必备** 
-FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理、区域管理、GIS地图、......)，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子，其目标是帮助企业搭建一套基础功能框架；
-核心技术：angualr、Spring Cloud、OAuth2、jwt、Spring Cloud Security、Eureka、Zuul、Hystrix、Feign、Ribbon、Redis、Mybatis、Mysql。
+FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理、区域管理、GIS地图、......)，其核心设计目标是分离前后端、开发快速、学习简单、功能强大、不重复造轮子，其目标是帮助企业搭建一套基础功能框架；  
+核心技术：angualr、Spring Cloud、OAuth2、jwt、Spring Cloud Security、Eureka、Zuul、Hystrix、Feign、Ribbon、Redis、Mybatis、Mysql。  
 
 - 前端技术：Angular4；
 - 后端技术：SpringCloud；
@@ -18,12 +18,17 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 ![img](http://on-img.com/chart_image/5954b886e4b0ad619ac73246.png)
 
 ## 前端技术：Angular；
-- 支持angular2以上版本；
+支持angular2、4、5版本，UI使用[AdminLTE](https://github.com/almasaeed2010/AdminLTE)；
+- angular-cli
+- TypeScript
 - 组件
+- 模板 
 - 模块
+- 服务
+- 依赖注入
+- 动态路由 
 - Http
-- 动态路由
-- 
+
 
 ## 后端技术：SpringCloud；
 - Eureka  
@@ -41,9 +46,15 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 - Redis  
     存储热点数据
 - Session
-    redis共享会话数据
+    redis存储热点、共享会话数据
 - Security  
     提供声明式的安全访问控制解决方案的安全框架
+- OAuth2  
+    一种授权框架，提供了一套详细的授权机制。用户或应用可以通过公开的或私有的设置，授权第三方应用访问特定资源。
+- JWT
+    提供了一种用于发布接入令牌（Access Token),并对发布的签名接入令牌进行验证的方法。 令牌（Token）本身包含了一系列声明，应用程序可以根据这些声明限制用户对资源的访问。
+- Config  
+    配置文件统一管理
 
 ## 开发环境
 - node-v6.11.0-x64.msi
@@ -58,7 +69,6 @@ FCat是基于Angular4+SpringCloud的企业级基础功能框架(户权限管理�
 ## 部署项目
 #### 前端部署  
 安装node-v6.11.0-x64.msi  
-cmd下运行一下命令：  
 ```
 npm config set registry https://registry.npm.taobao.org
 npm install -g @angular/cli
