@@ -16,3 +16,11 @@
   -webkit-animation: rotation 3s linear infinite;
   -o-animation: rotation 3s linear infinite;
 }
+
+.skin-blue .main-header .logo{
+  background-color:#40485b
+}
+
+.skin-blue .main-header .navbar{
+  background-color:#40485b
+}
