@@ -1,14 +1,14 @@
 import { Component,OnInit } from '@angular/core';
-import { Config } from '../../app-config';
-import {TUserService} from "../../baseinfo/t-user.service";
+import {TUserService} from "../user/t-user.service";
 import {Router} from "@angular/router";
+import {Config} from "../app-config";
 
 @Component({
-  selector: 'my-header',
-  templateUrl: './my-header.component.html'
+  selector: 'fcat-header',
+  templateUrl: './header.component.html'
 })
 
-export class MyHeaderComponent  implements OnInit{
+export class HeaderComponent  implements OnInit{
   app:any;
   username:string;
 

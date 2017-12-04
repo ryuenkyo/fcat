@@ -3,11 +3,11 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {TGroupTypeService} from "./t-group-type.service";
+import {TGroupTypeService} from "../groupType/t-group-type.service";
 import {TGroupService} from "./t-group.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroup} from "./t-group";
-import {TUserService} from "./t-user.service";
+import {TUserService} from "../user/t-user.service";
 
 @Component({
   templateUrl: 't-group-list.component.html'

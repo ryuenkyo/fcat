@@ -3,7 +3,7 @@ import {Config} from "../app-config";
 import {LoginService} from "./Login.service";
 import {Router} from "@angular/router";
 import {AlertEnum} from "../alert/alert";
-import {TUser} from "../baseinfo/t-user";
+import {TUser} from "../user/t-user";
 
 @Component({
   selector: 'my-app',

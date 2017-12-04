@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpUtil} from "../../util/http.util";
+import {HttpUtil} from "../util/http.util";
 
 
 @Injectable()

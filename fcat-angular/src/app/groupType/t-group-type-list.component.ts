@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {TGroupTypeService} from "./t-group-type.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroupType} from "./t-group-type";
-import {TUserService} from "./t-user.service";
+import {TUserService} from "../user/t-user.service";
 
 @Component({
   templateUrl: './t-group-type-list.component.html',

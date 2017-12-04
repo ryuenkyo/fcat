@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Config } from '../app-config';
-import {TMenuService} from "../baseinfo/t-menu.service";
-import {TUserService} from "../baseinfo/t-user.service";
+import {TMenuService} from "../menu/t-menu.service";
+import {TUserService} from "../user/t-user.service";
 import {Router} from "@angular/router";
 
 @Component({

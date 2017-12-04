@@ -3,16 +3,16 @@
  */
 import {Component, OnInit, enableProdMode} from "@angular/core";
 import {Router, Params, ActivatedRoute} from "@angular/router";
-import {TUserService} from "./t-user.service";
-import {TUser} from "./t-user";
+import {TUserService} from "../user/t-user.service";
+import {TUser} from "../user/t-user";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 import {TGroup} from "./t-group";
 import {Location} from "@angular/common";
 import {TGroupService} from "./t-group.service";
-import {TUserGroup} from "./t-user-group";
-import {TUserGroupService} from "./t-user-group.service";
+import {TUserGroup} from "../user/t-user-group";
+import {TUserGroupService} from "../user/t-user-group.service";
 enableProdMode();//阻止报错：Expression has changed after it was checked
-  
+
 @Component({
   templateUrl: './t-group-add-user.component.html',
 })

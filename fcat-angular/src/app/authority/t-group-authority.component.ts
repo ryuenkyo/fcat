@@ -3,14 +3,13 @@
  */
 import {Component, OnInit,  enableProdMode} from '@angular/core';
 import {Router, Params, ActivatedRoute} from '@angular/router';
-import {TMenuService} from './t-menu.service';
-import {TElementService} from "./t-element.service";
-import {TMenu} from "./t-menu";
-import {TElement} from "./t-element";
-import {TGroup} from "./t-group";
-import {TGroupService} from "./t-group.service";
-import {TAuthorityService} from "./t-authority.service";
-import {element} from "protractor/built/index";
+import {TMenuService} from '../menu/t-menu.service';
+import {TElementService} from "../element/t-element.service";
+import {TMenu} from "../menu/t-menu";
+import {TElement} from "../element/t-element";
+import {TGroup} from "../group/t-group";
+import {TGroupService} from "../group/t-group.service";
+import {TAuthorityService} from "./t-authority.service"; 
 enableProdMode();
 @Component({
   templateUrl: './t-group-authority.component.html',
