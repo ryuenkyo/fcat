@@ -40,7 +40,7 @@ public class BtcCoin {
      * 24小时成交额
      */
     @Column(name = "turnover_24h")
-    private String turnover24h;
+    private Long turnover24h;
 
     /**
      * 24小时涨幅
@@ -52,7 +52,7 @@ public class BtcCoin {
      * 换手率
      */
     @Column(name = "turnover_rate")
-    private String turnoverRate;
+    private Double turnoverRate;
 
     /**
      * 流通率
@@ -186,7 +186,7 @@ public class BtcCoin {
      *
      * @return turnover_24h - 24小时成交额
      */
-    public String getTurnover24h() {
+    public Long getTurnover24h() {
         return turnover24h;
     }
 
@@ -195,7 +195,7 @@ public class BtcCoin {
      *
      * @param turnover24h 24小时成交额
      */
-    public void setTurnover24h(String turnover24h) {
+    public void setTurnover24h(Long turnover24h) {
         this.turnover24h = turnover24h;
     }
 
@@ -222,7 +222,7 @@ public class BtcCoin {
      *
      * @return turnover_rate - 换手率
      */
-    public String getTurnoverRate() {
+    public Double getTurnoverRate() {
         return turnoverRate;
     }
 
@@ -231,7 +231,7 @@ public class BtcCoin {
      *
      * @param turnoverRate 换手率
      */
-    public void setTurnoverRate(String turnoverRate) {
+    public void setTurnoverRate(Double turnoverRate) {
         this.turnoverRate = turnoverRate;
     }
 

@@ -73,7 +73,6 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
         List<JSONObject> coinList = ReadWriteExcel.getList(new File(savePath+"/"+fileName)); // 创建文件对象)
 
         List<BtcCoin> btcCoinList = new ArrayList<BtcCoin>();
-
         for(JSONObject jsonObject:coinList){
             BtcCoin btcCoin = new BtcCoin();
             btcCoin.setCode(jsonObject.getString("1").split("-")[0]);
@@ -96,25 +95,24 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
             }catch (Exception e){
                 btcCoin.setPrice(0.0);
             }
-            btcCoin.setTurnover24h(jsonObject.getString("5"));
-            btcCoin.setTurnoverRate(jsonObject.getString("7"));
+            try{
+                btcCoin.setTurnover24h(Math.round(Double.valueOf(jsonObject.getString("5"))));
+            }catch (Exception e){
+                btcCoin.setTurnover24h(0L);
+            }
+            String tor = jsonObject.getString("7");
+            if(tor!=null && !tor.trim().equals("?") && !tor.isEmpty()){
+                btcCoin.setTurnoverRate(Double.valueOf(tor));
+            }else{
+                btcCoin.setTurnoverRate(0.0);
+            }
 
-
-            System.out.println("");
-            System.out.println("");
-            System.out.println("=====================start==========================");
             if(userConstant.btcCoinMyCoins.indexOf(btcCoin.getCode())>-1){
                 System.out.println(btcCoin.getName()+"    "+btcCoin.getPrice());
             }
-            System.out.println("=======================end==========================");
-            System.out.println("");
-            System.out.println("");
-
-
-
             btcCoinList.add(btcCoin);
         }
-        if(!btcCoinList.isEmpty()){
+         if(!btcCoinList.isEmpty()){
             baseServiceImpl.insertList(btcCoinList);
         }
         return JsonUtil.getSuccessJsonObject();

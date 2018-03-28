@@ -11,9 +11,9 @@
     <result column="market_value" property="marketValue" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="market_quantity" property="marketQuantity" jdbcType="VARCHAR" />
-    <result column="turnover_24h" property="turnover24h" jdbcType="VARCHAR" />
+    <result column="turnover_24h" property="turnover24h" jdbcType="INTEGER" />
     <result column="gain_24h" property="gain24h" jdbcType="VARCHAR" />
-    <result column="turnover_rate" property="turnoverRate" jdbcType="VARCHAR" />
+    <result column="turnover_rate" property="turnoverRate" jdbcType="DOUBLE" />
     <result column="market_rate" property="marketRate" jdbcType="VARCHAR" />
     <result column="fork" property="fork" jdbcType="VARCHAR" />
     <result column="crowdfunding_price" property="crowdfundingPrice" jdbcType="DECIMAL" />
@@ -21,7 +21,7 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <select id="listByPageNewRecord" resultMap="BaseResultMap">
-    select * from btc_coin  where collecte_time = (select max(collecte_time) from btc_coin) order by turnover_24h asc
+    select * from btc_coin   where turnover_24h!='?' and collecte_time >= (select max(collecte_time) from btc_coin ) order by turnover_24h desc
   </select>
 
 
@@ -49,9 +49,9 @@
       #{item.marketValue,jdbcType=VARCHAR},
       #{item.price,jdbcType=DOUBLE},
       #{item.marketQuantity,jdbcType=VARCHAR},
-      #{item.turnover24h,jdbcType=VARCHAR},
+      #{item.turnover24h,jdbcType=INTEGER},
       #{item.gain24h,jdbcType=VARCHAR},
-      #{item.turnoverRate,jdbcType=VARCHAR},
+      #{item.turnoverRate,jdbcType=DOUBLE},
       #{item.marketRate,jdbcType=VARCHAR},
       #{item.fork,jdbcType=VARCHAR},
       #{item.crowdfundingPrice,jdbcType=DECIMAL},

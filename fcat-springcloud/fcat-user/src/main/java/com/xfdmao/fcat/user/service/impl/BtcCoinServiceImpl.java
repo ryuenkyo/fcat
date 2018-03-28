@@ -8,6 +8,7 @@ import com.xfdmao.fcat.user.mapper.TUserLogMapper;
 import com.xfdmao.fcat.user.service.BtcCoinService;
 import com.xfdmao.fcat.user.service.TUserLogService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class BtcCoinServiceImpl extends BaseServiceImpl<BtcCoinMapper,BtcCoin> i
     }
 
     @Override
+    @Transactional
     public boolean insertList(List<BtcCoin> btcCoinList) {
         return mapper.insertList(btcCoinList);
     }
