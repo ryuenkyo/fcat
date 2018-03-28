@@ -39,7 +39,7 @@
 		<table tableName="t_group_type" domainObjectName="TGroupType"/>
 		<table tableName="t_user_group" domainObjectName="TUserGroup"/>
 		<table tableName="t_dict" domainObjectName="TDict"/>-->
-		<table tableName="t_user_log" domainObjectName="TUserLog"/>
+		<table tableName="btc_coin" domainObjectName="BtcCoin"/>
 
 	</context>
 </generatorConfiguration>

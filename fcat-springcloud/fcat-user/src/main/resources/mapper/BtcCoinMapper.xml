@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xfdmao.fcat.user.mapper.BtcCoinMapper" >
+  <resultMap id="BaseResultMap" type="com.xfdmao.fcat.user.entity.BtcCoin" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="market_value" property="marketValue" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="market_quantity" property="marketQuantity" jdbcType="VARCHAR" />
+    <result column="turnover_24h" property="turnover24h" jdbcType="VARCHAR" />
+    <result column="gain_24h" property="gain24h" jdbcType="VARCHAR" />
+    <result column="turnover_rate" property="turnoverRate" jdbcType="VARCHAR" />
+    <result column="market_rate" property="marketRate" jdbcType="VARCHAR" />
+    <result column="fork" property="fork" jdbcType="VARCHAR" />
+    <result column="crowdfunding_price" property="crowdfundingPrice" jdbcType="DECIMAL" />
+    <result column="collecte_time" property="collecteTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="listByPageNewRecord" resultMap="BaseResultMap">
+    select * from btc_coin  where collecte_time = (select max(collecte_time) from btc_coin) order by turnover_24h asc
+  </select>
+
+
+  <insert id="insertList" parameterType="java.util.List">
+    insert  into  btc_coin  (
+    `name`,
+    `code`,
+    `market_value`,
+    `price`,
+    `market_quantity`,
+    `turnover_24h`,
+    `gain_24h`,
+    `turnover_rate`,
+    `market_rate`,
+    `fork`,
+    `crowdfunding_price`,
+    `collecte_time`,
+    `create_time`
+    )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.name,jdbcType=VARCHAR},
+      #{item.code,jdbcType=VARCHAR},
+      #{item.marketValue,jdbcType=VARCHAR},
+      #{item.price,jdbcType=DOUBLE},
+      #{item.marketQuantity,jdbcType=VARCHAR},
+      #{item.turnover24h,jdbcType=VARCHAR},
+      #{item.gain24h,jdbcType=VARCHAR},
+      #{item.turnoverRate,jdbcType=VARCHAR},
+      #{item.marketRate,jdbcType=VARCHAR},
+      #{item.fork,jdbcType=VARCHAR},
+      #{item.crowdfundingPrice,jdbcType=DECIMAL},
+      #{item.collecteTime,jdbcType=TIMESTAMP},
+      #{item.createTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+</mapper>

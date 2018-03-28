@@ -76,8 +76,8 @@ hystrix:
 
 logging:
     level:
-        tk.mybatis: DEBUG
-        com.xfdmao.fcat.user: DEBUG
+        tk.mybatis: ERROR
+        com.xfdmao.fcat.user: ERROR
     config: classpath:logback.xml
     path: /fcat/user
 
@@ -87,3 +87,9 @@ swagger:
         name: fcat-user
         description: fcat-user后端服务接口
         developer: F1
+
+btcCoin:
+    excel:
+        path: D:/platform/git-xfdmao-oschina/daily_homework/test
+    myCoins: BTC;EOS;HT
+
