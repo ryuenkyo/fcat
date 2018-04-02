@@ -63,6 +63,7 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
         String savePath = userConstant.btcExcelPath;
         String fileName = sdf.format(now)+".xls";
+        File excelFile = new File(savePath+"/"+fileName);
         try{
             UrlUtil.downLoadFromUrl("https://api.feixiaohao.com/coins/download/",
                     fileName,savePath);
@@ -70,7 +71,7 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
             logger.error(e.toString());
            return JsonUtil.getFailJsonObject();
         }
-        List<JSONObject> coinList = ReadWriteExcel.getList(new File(savePath+"/"+fileName)); // 创建文件对象)
+        List<JSONObject> coinList = ReadWriteExcel.getList(excelFile); // 创建文件对象)
 
         List<BtcCoin> btcCoinList = new ArrayList<BtcCoin>();
         for(JSONObject jsonObject:coinList){
@@ -115,6 +116,7 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
          if(!btcCoinList.isEmpty()){
             baseServiceImpl.insertList(btcCoinList);
         }
+        excelFile.delete();
         return JsonUtil.getSuccessJsonObject();
     }
 }
