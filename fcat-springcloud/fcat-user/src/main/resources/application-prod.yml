@@ -84,3 +84,8 @@ swagger:
         name: fcat-user
         description: fcat-user后端服务接口
         developer: F1
+
+btcCoin:
+    excel:
+        path: /root/FCat/excel
+    myCoins: BTC;EOS;HT
