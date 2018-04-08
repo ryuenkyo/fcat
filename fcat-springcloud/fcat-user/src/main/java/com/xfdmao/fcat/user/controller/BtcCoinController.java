@@ -55,7 +55,7 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
         return JsonUtil.getSuccessJsonObject(page);
     }
 
-    @Scheduled(fixedRate = 15000, initialDelay = 0)
+    @Scheduled(fixedRate = 216000000, initialDelay = 0)
     @RequestMapping(value = "/getExcel",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject getExcel() throws IOException {
