@@ -42,6 +42,13 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
     private UserConstant userConstant;
     private Logger logger = LoggerFactory.getLogger(BtcCoinController.class);
 
+    @RequestMapping(value = "/listByPageNewRecord",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject listByPageNewRecord(){
+        List<BtcCoin> btcCoins = baseServiceImpl.listByPageNewRecord();
+        return JsonUtil.getSuccessJsonObject(btcCoins);
+    }
+
     @RequestMapping(value = "/listByPage",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject listByPage(Integer pageNum, Integer pageSize){
@@ -55,10 +62,11 @@ public class BtcCoinController extends BaseController<BtcCoinService,BtcCoin,Int
         return JsonUtil.getSuccessJsonObject(page);
     }
 
-    @Scheduled(fixedRate = 216000000, initialDelay = 0)
+    @Scheduled(fixedRate = 60000, initialDelay = 0)
     @RequestMapping(value = "/getExcel",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject getExcel() throws IOException {
+        if(!userConstant.btcCoinFlag)return JsonUtil.getFailJsonObject();
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
         String savePath = userConstant.btcExcelPath;

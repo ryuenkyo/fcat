@@ -45,4 +45,7 @@ public class UserConstant {
 
     @Value("${btcCoin.myCoins}")
     public String btcCoinMyCoins;
+
+    @Value("${btcCoin.flag}")
+    public boolean btcCoinFlag;
 }

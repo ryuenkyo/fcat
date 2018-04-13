@@ -21,7 +21,7 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <select id="listByPageNewRecord" resultMap="BaseResultMap">
-    select * from btc_coin   where turnover_24h!='?' and collecte_time >= (select max(collecte_time) from btc_coin ) order by turnover_24h desc
+    select * from btc_coin  where code!='USDT' and turnover_24h!='?' and collecte_time = (select max(collecte_time) from btc_coin) order by turnover_24h desc  limit 100
   </select>
 
 
