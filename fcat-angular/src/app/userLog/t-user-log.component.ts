@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {TUserLog} from "./t-user-log";
 import {TUserLogService} from "./t-user-log.service";
-import {TUserService} from "../t-user.service";
+import {TUserService} from "../user/t-user.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
 
 @Component({

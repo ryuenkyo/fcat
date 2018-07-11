@@ -4,10 +4,10 @@
 import {Component, OnInit, enableProdMode} from "@angular/core";
 import {Router} from "@angular/router";
 import {TMenuService} from "./t-menu.service";
-import {TElementService} from "./t-element.service";
+import {TElementService} from "../element/t-element.service";
 import {TMenu} from "./t-menu";
-import {TElement} from "./t-element";
-import {TUserService} from "./t-user.service";
+import {TElement} from "../element/t-element";
+import {TUserService} from "../user/t-user.service";
 enableProdMode();
 @Component({
   templateUrl: './t-menu-list.component.html',

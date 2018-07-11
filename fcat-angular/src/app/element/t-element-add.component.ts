@@ -4,13 +4,13 @@ import {TElement} from "./t-element";
 import {TElementService} from "./t-element.service";
 import 'rxjs/add/operator/switchMap';
 import {Params, ActivatedRoute} from '@angular/router';
-import {TMenu} from "./t-menu";
-import {TMenuService} from "./t-menu.service";
+import {TMenu} from "../menu/t-menu";
+import {TMenuService} from "../menu/t-menu.service";
 enableProdMode();
 @Component({
-  templateUrl: './t-element-update.component.html',
+  templateUrl: './t-element-add.component.html',
 })
-export class TElementUpdateComponent implements OnInit {
+export class TElementAddComponent implements OnInit {
 
   msg:string = "";
   tElement:any = new TElement();
@@ -29,20 +29,22 @@ export class TElementUpdateComponent implements OnInit {
   ngOnInit():void {
     //noinspection TypeScriptValidateTypes
     this.route.params
-      .switchMap((params: Params) => this.tElementService.getById(+params['id']))
+      .switchMap((params: Params) => this.tMenuService.getById(+params['id']))
       .subscribe(data => {
-        this.tElement = data.data;
+        this.tMenu = data.data;
+        this.tElement.menuId = this.tMenu.id;
       });
     this.getMenuList();
+    this.tElement.type = 'button';
+    this.tElement.method = 'GET';
   }
-
   msg_(msg_:string) {
     this.msg = msg_;
   }
 
   getMenuList(){
     this.tMenuService.getList(1,1000).subscribe(data => {
-      this.menuList = data.data.list;
+      this.menuList = data.data;
     });
   }
 
@@ -71,10 +73,7 @@ export class TElementUpdateComponent implements OnInit {
     if(!this.checkElement(this.tElement)){
       return;
     }
-    if(typeof this.tElement.menuId === 'string'){
-      this.tElement.menuId = Number(this.tElement.menuId);
-    }
-    this.tElementService.update(this.tElement)
+    this.tElementService.add(this.tElement)
       .subscribe(
         data  => {
           if(data.code == 0){
@@ -89,4 +88,7 @@ export class TElementUpdateComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+
 }
+

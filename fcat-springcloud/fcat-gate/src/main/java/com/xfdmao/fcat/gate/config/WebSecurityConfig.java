@@ -68,8 +68,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
               HttpHelper.setResponseJsonData(response,result);
             }).and()
             .addFilterBefore(corsFilter,LogoutFilter.class)
-            .formLogin().loginProcessingUrl("/login").permitAll().and()
-            .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
+            .formLogin().loginPage("/login_page")
+            .loginProcessingUrl("/login").permitAll().and()
+            .logout().deleteCookies("remember-me").logoutSuccessHandler(logoutSuccessHandler()).permitAll();
+            /*.formLogin().loginProcessingUrl("/login").permitAll().and()
+            .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();*/
     http.csrf().disable();
   }
 

@@ -1,13 +1,14 @@
 import {Injectable} from "@angular/core";
-import {TDict} from "./t-dict";
-import {HttpUtil} from "../../util/http.util";
+import {HttpUtil} from "../util/http.util";
+import {TGroup} from "../group/t-group";
 
 
 @Injectable()
-export class TDictService{
-  private baseUrl = "/fcat-user/v1/tDict";
+export class TAuthorityService{
+  private baseUrl = "/fcat-user/v1/tAuthority";
   constructor(private httpUtil: HttpUtil){
   }
+
   getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
     let url = this.baseUrl+"/listByPage"+param;
@@ -19,16 +20,25 @@ export class TDictService{
     return this.httpUtil.delete(url);
   }
 
-  add(tDict: TDict){
+  add(tGroup: TGroup){
     let url = this.baseUrl+"/add";
-    return this.httpUtil.post(url, tDict);
+    return this.httpUtil.post(url, tGroup);
   }
   getById(id:number){
     let url = this.baseUrl+"/"+id;
     return this.httpUtil.get(url);
   }
-  update(tDict: TDict){
+  update(tGroup: TGroup){
     let url = this.baseUrl+"/update";
-    return this.httpUtil.put(url, tDict);
+    return this.httpUtil.put(url, tGroup);
+  }
+  authority(param:any,groupId:number) {
+    let url = this.baseUrl+"/"+groupId;
+    return this.httpUtil.post(url, param);
+  }
+
+  getAuthority(groupId:number) {
+    let url = this.baseUrl+"/"+groupId;
+    return this.httpUtil.get(url);
   }
 }

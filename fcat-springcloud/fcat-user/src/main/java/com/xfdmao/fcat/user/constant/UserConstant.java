@@ -1,8 +1,12 @@
 package com.xfdmao.fcat.user.constant;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by xiangfei on 2017/7/25.
  */
+@Component
 public class UserConstant {
     public final static int ROOT = -1;
     public final static int DEFAULT_GROUP_TYPE = 0;
@@ -36,4 +40,12 @@ public class UserConstant {
      */
     public final static String USER_GROUP_TYPE_MEMBER = "member";
 
+    @Value("${btcCoin.excel.path}")
+    public String btcExcelPath;
+
+    @Value("${btcCoin.myCoins}")
+    public String btcCoinMyCoins;
+
+    @Value("${btcCoin.flag}")
+    public boolean btcCoinFlag;
 }

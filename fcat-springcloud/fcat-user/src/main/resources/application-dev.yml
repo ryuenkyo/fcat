@@ -3,9 +3,9 @@ spring:
         name: fcat-user
     datasource:
         name: test
-        url: jdbc:mysql://localhost:3306/fcat?useUnicode=true&characterEncoding=UTF8
+        url: jdbc:mysql://192.168.9.202:3306/fcat?useUnicode=true&characterEncoding=UTF8
         username: root
-        password: xfd4m463$#ked@&!EDQd
+        password: 123456
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         filters: stat
@@ -22,7 +22,7 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
     redis:
-        host: localhost
+        host: 192.168.9.202
         database: 7
         timeout: 1800
         pool:
@@ -76,8 +76,8 @@ hystrix:
 
 logging:
     level:
-        tk.mybatis: DEBUG
-        com.xfdmao.fcat.user: DEBUG
+        tk.mybatis: ERROR
+        com.xfdmao.fcat.user: ERROR
     config: classpath:logback.xml
     path: /fcat/user
 
@@ -87,3 +87,10 @@ swagger:
         name: fcat-user
         description: fcat-user后端服务接口
         developer: F1
+
+btcCoin:
+    flag: false
+    excel:
+        path: D:/platform/git-xfdmao-oschina/daily_homework/test
+    myCoins: BTC;EOS;HT
+

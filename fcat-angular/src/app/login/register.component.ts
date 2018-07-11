@@ -3,8 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import {Config} from "../app-config";
 import { Location }               from '@angular/common';
 import {Router} from "@angular/router";
-import {TUserService} from "../baseinfo/t-user.service";
-import {TUser} from "../baseinfo/t-user";
+import {TUserService} from "../user/t-user.service";
+import {TUser} from "../user/t-user";
 import {AlertEnum} from "../alert/alert";
 
 @Component({

@@ -1,14 +1,13 @@
 import {Injectable} from "@angular/core";
+import {TDict} from "./t-dict"; 
 import {HttpUtil} from "../util/http.util";
-import {TGroup} from "./t-group";
 
 
 @Injectable()
-export class TGroupService{
-  private baseUrl = "/fcat-user/v1/tGroup";
+export class TDictService{
+  private baseUrl = "/fcat-user/v1/tDict";
   constructor(private httpUtil: HttpUtil){
   }
-
   getList(currentPage:number, pageSize:number) {
     let param = "?pageSize="+pageSize+"&pageNum="+currentPage;
     let url = this.baseUrl+"/listByPage"+param;
@@ -20,21 +19,16 @@ export class TGroupService{
     return this.httpUtil.delete(url);
   }
 
-  add(tGroup: TGroup){
+  add(tDict: TDict){
     let url = this.baseUrl+"/add";
-    return this.httpUtil.post(url, tGroup);
+    return this.httpUtil.post(url, tDict);
   }
   getById(id:number){
     let url = this.baseUrl+"/"+id;
     return this.httpUtil.get(url);
   }
-  update(tGroup: TGroup){
+  update(tDict: TDict){
     let url = this.baseUrl+"/update";
-    return this.httpUtil.put(url, tGroup);
-  }
-
-  getListByGroupTypeId(groupTypeId:number|any) {
-    let url = this.baseUrl+"/groupTypeId/"+groupTypeId;
-    return this.httpUtil.get(url);
+    return this.httpUtil.put(url, tDict);
   }
 }

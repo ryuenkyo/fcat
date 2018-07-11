@@ -2,7 +2,7 @@ spring:
     application:
         name: fcat-gate
     redis:
-        host: localhost
+        host: 192.168.9.202
         database: 7
         pool:
           max-active: 8

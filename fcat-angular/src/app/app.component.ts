@@ -4,7 +4,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Config} from "./app-config";
 import {Router} from "@angular/router";
-import {TUserService} from "./baseinfo/t-user.service";
+import {TUserService} from "./user/t-user.service";
 
 @Component({
   selector: 'my-app',

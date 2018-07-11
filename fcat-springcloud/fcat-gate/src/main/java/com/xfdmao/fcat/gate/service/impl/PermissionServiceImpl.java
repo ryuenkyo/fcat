@@ -51,6 +51,8 @@ public class PermissionServiceImpl implements PermissionService {
                     break;
                 }
             }
+            //TODO 暂时放开权限
+           // hasPermission = true;
         }
         logger.info("FCat:hasPermission:{}", hasPermission);
         return hasPermission;

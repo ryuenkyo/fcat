@@ -1,11 +1,11 @@
 import {Injectable} from "@angular/core";
 import {HttpUtil} from "../util/http.util";
-import {TGroup} from "./t-group";
+import {TGroup} from "../group/t-group";
 
 
 @Injectable()
-export class TAuthorityService{
-  private baseUrl = "/fcat-user/v1/tAuthority";
+export class TGroupService{
+  private baseUrl = "/fcat-user/v1/tGroup";
   constructor(private httpUtil: HttpUtil){
   }
 
@@ -32,13 +32,9 @@ export class TAuthorityService{
     let url = this.baseUrl+"/update";
     return this.httpUtil.put(url, tGroup);
   }
-  authority(param:any,groupId:number) {
-    let url = this.baseUrl+"/"+groupId;
-    return this.httpUtil.post(url, param);
-  }
 
-  getAuthority(groupId:number) {
-    let url = this.baseUrl+"/"+groupId;
+  getListByGroupTypeId(groupTypeId:number|any) {
+    let url = this.baseUrl+"/groupTypeId/"+groupTypeId;
     return this.httpUtil.get(url);
   }
 }

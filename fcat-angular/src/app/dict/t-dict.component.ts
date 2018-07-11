@@ -2,8 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {TDict} from "./t-dict";
 import {TDictService} from "./t-dict.service";
-import {TUserService} from "../t-user.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination/pagination.component";
+import {TUserService} from "../user/t-user.service";
 
 @Component({
   templateUrl: './t-dict.component.html',
