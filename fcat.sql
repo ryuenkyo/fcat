@@ -298,8 +298,8 @@ INSERT INTO `t_menu` VALUES ('5', 'baseManager', '基础配置', '13', '/', 'fa 
 INSERT INTO `t_menu` VALUES ('6', 'menuManager', '菜单管理', '5', '/index/tMenuList', 'fa fa-list', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
 INSERT INTO `t_menu` VALUES ('7', 'groupManager', '组织架构管理', '5', '/index/tGroupList', 'fa fa-users', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
 INSERT INTO `t_menu` VALUES ('8', 'groupTypeManager', '组织类型管理', '5', '/index/tGroupTypeList', 'fa fa-object-group', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
-INSERT INTO `t_menu` VALUES ('13', 'adminSys', '权限管理系统', '-1', '/', 'fa fa-terminal', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
-INSERT INTO `t_menu` VALUES ('14', 'contentSys', '区域管理系统', '-1', '/', 'fa-newspaper-o', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
+INSERT INTO `t_menu` VALUES ('13', 'adminSys', '权限管理系统', '-1', '/', 'fa fa-user-md', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
+INSERT INTO `t_menu` VALUES ('14', 'contentSys', '区域管理系统', '-1', '/', 'fa fa-th', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
 INSERT INTO `t_menu` VALUES ('21', 'dictManager', '数据字典', '5', '/index/tDictList', 'fa fa-book', '0', null, 'Y', '2017-10-06 15:36:15', '2017-10-06 15:36:15');
 INSERT INTO `t_menu` VALUES ('33', 'areaManager', '区域管理', '14', '/', 'fa fa-map-o', '0', null, 'Y', '2017-10-17 21:44:03', '2017-10-17 21:44:03');
 INSERT INTO `t_menu` VALUES ('34', 'country', '国家', '33', '/index/tDictList', 'fa fa-clone', '0', null, 'Y', '2017-10-17 21:46:21', '2017-10-17 21:46:21');
