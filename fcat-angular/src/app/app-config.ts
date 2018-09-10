@@ -4,8 +4,8 @@ import {Injectable} from "@angular/core";
  */
 @Injectable()
 export class Config{
-  public appConfig:any = { 
-    baseUrl:"http://fcat.xfdmao.com/apis", 
+  public appConfig:any = {
+    baseUrl:"/apis",
     name: 'FCat',
     version: '4.0.0',
     testFlag:true,
