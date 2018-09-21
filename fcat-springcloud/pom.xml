@@ -25,7 +25,8 @@
         <module>fcat-api</module>
         <module>fcat-gate</module>
         <module>fcat-common</module> 
-        <module>fcat-user</module>    
+        <module>fcat-user</module>
+        <module>fcat-coin</module>
     </modules>
     <packaging>pom</packaging>
     <developers>
