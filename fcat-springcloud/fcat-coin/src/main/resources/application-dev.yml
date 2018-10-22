@@ -87,3 +87,7 @@ swagger:
         name: fcat-coin
         description: fcat-coin后端服务接口
         developer: F1
+
+coin:
+  fxh:
+    allCoinDataFilePath: F:/coin
