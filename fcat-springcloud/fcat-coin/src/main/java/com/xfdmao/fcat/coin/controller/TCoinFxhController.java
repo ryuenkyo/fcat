@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by fier on 2018/10/22
@@ -66,5 +68,21 @@ public class TCoinFxhController  {
             return JsonUtil.getFailJsonObject();
         }
         return JsonUtil.getSuccessJsonObject();
+    }
+
+    @GetMapping(value = "/dealFile")
+    public JSONObject dealFile(){
+        List<File> files = new ArrayList<File>();
+        File file= new File(allCoinFileSavePath);
+        if(!file.isDirectory()){
+            return JsonUtil.getFailJsonObject();
+        }else if(file.isDirectory()){
+            String[] filelist=file.list();
+            for(int i = 0;i<filelist.length;i++){
+                File readfile = new File(allCoinFileSavePath+"/"+filelist[i]);
+                files.add(readfile);
+            }
+        }
+        return JsonUtil.getSuccessJsonObject(files);
     }
 }

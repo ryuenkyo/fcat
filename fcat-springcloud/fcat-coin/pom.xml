@@ -147,6 +147,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
+
+        <!-- POI  EXCEL 文件读写 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>3.14</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>fcat-coin</finalName>
