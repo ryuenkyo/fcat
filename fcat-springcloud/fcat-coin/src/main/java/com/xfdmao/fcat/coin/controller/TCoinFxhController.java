@@ -1,10 +1,14 @@
 package com.xfdmao.fcat.coin.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.netflix.discovery.converters.Auto;
+import com.xfdmao.fcat.coin.entity.BtcCoin;
 import com.xfdmao.fcat.coin.entity.TDict;
+import com.xfdmao.fcat.coin.service.BtcCoinService;
 import com.xfdmao.fcat.coin.service.TDictService;
 import com.xfdmao.fcat.common.controller.BaseController;
 import com.xfdmao.fcat.common.util.DateUtil;
+import com.xfdmao.fcat.common.util.ExcelReaderUtil;
 import com.xfdmao.fcat.common.util.JsonUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,6 +19,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,8 +45,10 @@ public class TCoinFxhController  {
     @Value("${coin.fxh.allCoinDataFilePath}")
     private  String  allCoinFileSavePath;
 
-   // @Scheduled(cron = "0 5 8 * * ?")
-   @Scheduled(cron = "0 59 16 * * ?")
+    @Autowired
+    private BtcCoinService btcCoinService;
+
+   @Scheduled(cron = "0 5 8 * * ?")
     @GetMapping(value = "/getFile")
     public JSONObject getFile(){
         String urlsrc = "https://api.feixiaohao.com/coins/download/";
@@ -63,6 +71,7 @@ public class TCoinFxhController  {
             }
             in.close();
             out.close();
+            dealFile();
         }catch(Exception e){
             e.printStackTrace();
             return JsonUtil.getFailJsonObject();
@@ -72,17 +81,35 @@ public class TCoinFxhController  {
 
     @GetMapping(value = "/dealFile")
     public JSONObject dealFile(){
-        List<File> files = new ArrayList<File>();
-        File file= new File(allCoinFileSavePath);
-        if(!file.isDirectory()){
-            return JsonUtil.getFailJsonObject();
-        }else if(file.isDirectory()){
-            String[] filelist=file.list();
-            for(int i = 0;i<filelist.length;i++){
-                File readfile = new File(allCoinFileSavePath+"/"+filelist[i]);
-                files.add(readfile);
+        new Thread() {
+            public void run() {
+                List<File> files = new ArrayList<File>();
+                File file= new File(allCoinFileSavePath);
+                if(!file.isDirectory()){
+                }else if(file.isDirectory()){
+                    String[] filelist=file.list();
+                    for(int i = 0;i<filelist.length;i++){
+                        File readfile = new File(allCoinFileSavePath+"/"+filelist[i]);
+                        files.add(readfile);
+                        String dateString = "";
+                        try{
+                            dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("\\")+1).replaceAll(".xls","");
+                        }catch (Exception e){
+                            dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("/")+1).replaceAll(".xls","");
+                        }
+                        Date colloctDate = DateUtil.toDate(dateString,DateUtil.TIME_PATTERN_DAY);
+                        boolean flag = btcCoinService.selectListByColloctDate(colloctDate);
+                        if(!flag){
+                            new Thread() {
+                                public void run() {
+                                    btcCoinService.saveBtcCoins(ExcelReaderUtil.readExcel(readfile.getAbsolutePath()),colloctDate);
+                                }
+                            }.start();
+                        }
+                    }
+                }
             }
-        }
-        return JsonUtil.getSuccessJsonObject(files);
+        }.start();
+        return JsonUtil.getSuccessJsonObject();
     }
 }
