@@ -90,4 +90,4 @@ swagger:
 
 coin:
   fxh:
-    allCoinDataFilePath: F:/coin
+    allCoinDataFilePath: /root/data/coin/allCoin
