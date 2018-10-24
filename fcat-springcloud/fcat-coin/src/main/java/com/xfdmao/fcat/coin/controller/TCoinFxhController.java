@@ -57,25 +57,64 @@ public class TCoinFxhController  {
         InputStream in = null;
         // 文件输出流
         FileOutputStream out = null;
-        try{
-            HttpClient httpClient = HttpClients.createDefault();
-            HttpGet httpget2 = new HttpGet(urlsrc); //对下载链接get实现下载
-            HttpResponse httpResponse2 = httpClient.execute(httpget2);
-            HttpEntity entity = httpResponse2.getEntity(); // 获取响应里面的内容
-            in = entity.getContent(); // 得到服务气端发回的响应的内容（都在一个流里面）
-            out = new FileOutputStream(new File(outpath));
-            byte[] b = new byte[1024];
-            int len = 0;
-            while((len=in.read(b))!= -1){
-                out.write(b,0,len);
+       File outFile = new File(outpath);
+       if(!outFile.exists()){
+           try{
+               HttpClient httpClient = HttpClients.createDefault();
+               HttpGet httpget2 = new HttpGet(urlsrc); //对下载链接get实现下载
+               HttpResponse httpResponse2 = httpClient.execute(httpget2);
+               HttpEntity entity = httpResponse2.getEntity(); // 获取响应里面的内容
+               in = entity.getContent(); // 得到服务气端发回的响应的内容（都在一个流里面）
+               out = new FileOutputStream(outFile);
+               byte[] b = new byte[1024];
+               int len = 0;
+               while((len=in.read(b))!= -1){
+                   out.write(b,0,len);
+               }
+               in.close();
+               out.close();
+               dealTodayFile();
+           }catch(Exception e){
+               e.printStackTrace();
+               return JsonUtil.getFailJsonObject();
+           }
+       }
+        return JsonUtil.getSuccessJsonObject();
+    }
+
+    @GetMapping(value = "/dealTodayFile")
+    public JSONObject dealTodayFile(){
+        new Thread() {
+            public void run() {
+                List<File> files = new ArrayList<File>();
+                File file= new File(allCoinFileSavePath);
+                if(!file.isDirectory()){
+                }else if(file.isDirectory()){
+                    String[] filelist=file.list();
+                    for(int i = 0;i<filelist.length;i++){
+                        File readfile = new File(allCoinFileSavePath+"/"+filelist[i]);
+                        files.add(readfile);
+                        String dateString = "";
+                        try{
+                            dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("\\")+1).replaceAll(".xls","");
+                        }catch (Exception e){
+                            dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("/")+1).replaceAll(".xls","");
+                        }
+                        Date colloctDate = DateUtil.toDate(dateString,DateUtil.TIME_PATTERN_DAY);
+                        boolean flag = btcCoinService.selectListByColloctDate(colloctDate);
+                        if(!flag){
+                            if(colloctDate.equals(DateUtil.toDate(DateUtil.formatDate(new Date(),DateUtil.TIME_PATTERN_DAY),DateUtil.TIME_PATTERN_DAY))){
+                                new Thread() {
+                                    public void run() {
+                                        btcCoinService.saveBtcCoins(ExcelReaderUtil.readExcel(readfile.getAbsolutePath()),colloctDate);
+                                    }
+                                }.start();
+                            }
+                        }
+                    }
+                }
             }
-            in.close();
-            out.close();
-            dealFile();
-        }catch(Exception e){
-            e.printStackTrace();
-            return JsonUtil.getFailJsonObject();
-        }
+        }.start();
         return JsonUtil.getSuccessJsonObject();
     }
 
