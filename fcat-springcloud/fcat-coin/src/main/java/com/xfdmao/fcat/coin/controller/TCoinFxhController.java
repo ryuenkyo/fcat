@@ -95,9 +95,9 @@ public class TCoinFxhController  {
                         File readfile = new File(allCoinFileSavePath+"/"+filelist[i]);
                         files.add(readfile);
                         String dateString = "";
-                        try{
+                        if(readfile.getAbsolutePath().contains("//")){
                             dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("\\")+1).replaceAll(".xls","");
-                        }catch (Exception e){
+                        }else{
                             dateString = readfile.getAbsolutePath().substring(readfile.getAbsolutePath().lastIndexOf("/")+1).replaceAll(".xls","");
                         }
                         Date colloctDate = DateUtil.toDate(dateString,DateUtil.TIME_PATTERN_DAY);
