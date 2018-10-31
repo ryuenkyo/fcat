@@ -1,5 +1,6 @@
 package com.xfdmao.fcat.coin.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -7,7 +8,7 @@ import javax.persistence.*;
  * Created by fier on 2018/09/20
  */
 @Table(name = "t_dict")
-public class TDict {
+public class TDict{
     @Id
     private Integer id;
 

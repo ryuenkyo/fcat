@@ -15,7 +15,7 @@
 		</plugin>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://112.74.73.143:3307/fcat1?useUnicode=true&amp;characterEncoding=UTF8"
+						connectionURL="jdbc:mysql://112.74.73.143:3306/fcat?useUnicode=true&amp;characterEncoding=UTF8"
 						userId="" password="">
 		</jdbcConnection>
 
@@ -27,7 +27,7 @@
 
 		<javaClientGenerator targetPackage="${targetMapperPackage}"
 			targetProject="${targetJavaProject}" type="XMLMAPPER" />
-		<table tableName="btc_coin" domainObjectName="BtcCoin"/>
+		<table tableName="btc_hold" domainObjectName="BtcHold"/>
 
 	</context>
 </generatorConfiguration>

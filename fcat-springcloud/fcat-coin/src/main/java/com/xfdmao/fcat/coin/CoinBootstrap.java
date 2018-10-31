@@ -15,8 +15,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  */
 @SpringBootApplication
 @ServletComponentScan("com.xfdmao.fcat.coin.config.druid")
-@EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableEurekaClient
+//@EnableDiscoveryClient
 @EnableAsync
 @EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 @EnableCaching

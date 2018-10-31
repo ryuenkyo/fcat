@@ -1,6 +1,8 @@
 spring:
     application:
         name: fcat-coin
+    thymeleaf:
+        cache: false
     datasource:
         name: test
         url: jdbc:mysql://localhost:3306/fcat?useUnicode=true&characterEncoding=UTF8
@@ -21,15 +23,6 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-    redis:
-        host: localhost
-        database: 7
-        timeout: 1800
-        pool:
-          max-active: 8
-          min-idle: 0
-          max-idle: 0
-          max-wait: -1
     mail:
         host: smtp.qq.com
         username: angularliu@qq.com

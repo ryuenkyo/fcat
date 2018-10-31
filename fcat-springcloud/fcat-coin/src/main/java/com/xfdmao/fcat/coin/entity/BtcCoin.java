@@ -1,11 +1,15 @@
 package com.xfdmao.fcat.coin.entity;
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "btc_coin")
 public class BtcCoin {
+
     @Id
     private Integer id;
 

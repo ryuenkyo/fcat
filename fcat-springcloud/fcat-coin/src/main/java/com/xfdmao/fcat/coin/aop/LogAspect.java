@@ -30,7 +30,7 @@ public class LogAspect {
     private static final ThreadLocal<Long> timeTreadLocal = new ThreadLocal<>();
 
 
-    @Pointcut("execution(* com.xfdmao.fcat.user.controller..*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut("execution(* com.xfdmao.fcat.coin.controller..*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     //@Pointcut("execution(* com.xfdmao.fcat.user.controller..*(..))")
     public void log() {
     }

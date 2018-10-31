@@ -68,6 +68,9 @@ public class BtcCoinServiceImpl extends BaseServiceImpl<BtcCoinMapper,BtcCoin> i
         BtcCoin btcCoin = new BtcCoin();
         btcCoin.setCollecteTime(colloctDate);
         List<BtcCoin> btcCoins = selectList(btcCoin);
+        for (BtcCoin b:btcCoins){
+            System.out.println(b.getPrice());
+        }
         if(btcCoins==null || btcCoins.isEmpty()){
             return false;
         }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by fier on 2017/11/28.
  */
@@ -21,6 +23,10 @@ public class TDictController extends BaseController<TDictService,TDict,Integer> 
     public JSONObject getByCode(@PathVariable(value = "code") String code){
         TDict tDict = new TDict();
         tDict.setCode(code);
-        return JsonUtil.getSuccessJsonObject(baseServiceImpl.selectList(tDict));
+        List<TDict> list = baseServiceImpl.selectList(tDict);
+        for(TDict t:list){
+            System.out.println(t.getName());
+        }
+        return JsonUtil.getSuccessJsonObject(list);
     }
 }

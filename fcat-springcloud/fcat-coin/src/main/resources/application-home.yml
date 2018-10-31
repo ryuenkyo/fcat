@@ -1,6 +1,8 @@
 spring:
     application:
         name: fcat-coin
+    thymeleaf:
+        cache: false
     datasource:
         name: test
         url: jdbc:mysql://localhost:3306/fcat?useUnicode=true&characterEncoding=UTF8
